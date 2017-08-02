@@ -223,19 +223,47 @@
                                     <constraint firstAttribute="height" constant="295" id="zNb-zK-C4E"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umX-PF-LK6">
+                                <rect key="frame" x="127.5" y="544" width="120" height="30"/>
+                                <color key="backgroundColor" red="0.17080962202933536" green="0.74726458885941649" blue="0.19010306615120992" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="u1T-iI-hv3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="888-407-9786">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUB-CZ-a6T">
+                                <rect key="frame" x="127.5" y="604" width="120" height="33"/>
+                                <color key="backgroundColor" red="0.27546849731744061" green="0.41040774490366849" blue="0.74726458885941649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Nkj-H7-19q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Directions">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XLb-5n-azK" firstAttribute="leading" secondItem="GYE-27-Hu1" secondAttribute="leading" id="5t3-DX-y5n"/>
                             <constraint firstItem="wzD-xH-ZVH" firstAttribute="centerY" secondItem="GYE-27-Hu1" secondAttribute="centerY" constant="100" id="GhK-bF-9YB"/>
                             <constraint firstItem="XLb-5n-azK" firstAttribute="top" secondItem="t2E-Zm-utL" secondAttribute="bottom" id="Ndt-Sz-Sm2"/>
+                            <constraint firstItem="bew-Q2-THd" firstAttribute="top" secondItem="zUB-CZ-a6T" secondAttribute="bottom" constant="30" id="VaZ-ZX-3o2"/>
+                            <constraint firstItem="umX-PF-LK6" firstAttribute="centerX" secondItem="GYE-27-Hu1" secondAttribute="centerX" id="Y8k-1N-JRq"/>
+                            <constraint firstItem="zUB-CZ-a6T" firstAttribute="top" secondItem="umX-PF-LK6" secondAttribute="bottom" constant="30" id="YXf-oh-0n7"/>
                             <constraint firstItem="wzD-xH-ZVH" firstAttribute="centerX" secondItem="GYE-27-Hu1" secondAttribute="centerX" id="ZOG-4D-mXG"/>
+                            <constraint firstItem="zUB-CZ-a6T" firstAttribute="centerX" secondItem="GYE-27-Hu1" secondAttribute="centerX" id="pA1-oa-VWM"/>
                             <constraint firstAttribute="trailing" secondItem="XLb-5n-azK" secondAttribute="trailing" id="scV-Oq-1mC"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="callButton" destination="umX-PF-LK6" id="xdz-Km-DP8"/>
                         <outlet property="detailsImage" destination="XLb-5n-azK" id="epB-rW-s8H"/>
                         <outlet property="detailsLabel" destination="wzD-xH-ZVH" id="ke8-wu-eN5"/>
+                        <outlet property="directionsButton" destination="zUB-CZ-a6T" id="pPF-m2-BMc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuF-Mh-SmB" userLabel="First Responder" sceneMemberID="firstResponder"/>

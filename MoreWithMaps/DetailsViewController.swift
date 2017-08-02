@@ -17,10 +17,19 @@ class DetailsViewController: UIViewController {
     var thedetails: String?
     var anAnnot: CustomAnnotat?
     
+    @IBOutlet weak var callButton: UIButton!
+    
+    @IBOutlet weak var directionsButton: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        callButton.layer.cornerRadius = 5
+        callButton.layer.masksToBounds = true
+        directionsButton.layer.cornerRadius = 5
+        directionsButton.layer.masksToBounds = true
+
         
         guard let thisAnnot = anAnnot else { return }
        // detailsImage.image =
