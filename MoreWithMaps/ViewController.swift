@@ -144,26 +144,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
 
     
+    @IBAction func goToUserLocationTapped(_ sender: UIBarButtonItem) {
+        myMapView.zoomToUserLocation(with: myMapView)
+    }
     
     
     @IBAction func zoomTapped(_ sender: UIButton) {
-        myMapView.zoomToUserLocation()
+       // myMapView.zoomToUserLocation()
     }
 
-    @IBAction func zoomToAugustaTapped(_ sender: UIButton) {
-        let coordinate = CLLocationCoordinate2DMake(33.473244, -81.967437)
-        
-       // let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 4100, pitch: 0, heading: 23)
-        let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 3000, pitch: 0, heading: 23)
-        
-        UIView.animate(withDuration: 2.0, animations: {
-            self.myMapView.setCamera(camera, animated: true)
-        }) { (true) in
-            UIView.animate(withDuration: 2.0) {
-                self.createCustomAnnots()
-            }
-        }
-    }
     
     func createCustomAnnots() {
         for annotDict in annotArry {
@@ -221,8 +210,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         return annotationView
     }
-    
-    
     
     
     func zoomToAugusta() {
@@ -347,6 +334,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 ]
 
 /*
+ @IBAction func zoomToAugustaTapped(_ sender: UIButton) {
+ let coordinate = CLLocationCoordinate2DMake(33.473244, -81.967437)
+ 
+ // let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 4100, pitch: 0, heading: 23)
+ let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 3000, pitch: 0, heading: 23)
+ 
+ UIView.animate(withDuration: 2.0, animations: {
+ self.myMapView.setCamera(camera, animated: true)
+ }) { (true) in
+ UIView.animate(withDuration: 2.0) {
+ self.createCustomAnnots()
+ }
+ }
+ }
+
+ 
+ 
+ 
  func createCustomAnnotation(with locatCoordLat: CLLocationDegrees, locatCoordLong: CLLocationDegrees,  title: String, imageName: String, beaconName: String) {
  let customAnnot = CustomPointAnnotation()
  let custCoord = CLLocationCoordinate2DMake(locatCoordLat, locatCoordLong)

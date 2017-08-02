@@ -25,9 +25,9 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        callButton.layer.cornerRadius = 5
+        callButton.layer.cornerRadius = 4
         callButton.layer.masksToBounds = true
-        directionsButton.layer.cornerRadius = 5
+        directionsButton.layer.cornerRadius = 4
         directionsButton.layer.masksToBounds = true
 
         
@@ -69,6 +69,24 @@ class DetailsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // CALLING A PHONE NUMBER...
+    //UIApplication.shared.openURL(NSURL(string: "telprompt://9809088798")! as URL)
+    
+    @IBAction func callUsingPhoneTapped(_ sender: UIButton) {
+        callNumber(phoneNumber: "321-230-4229")
+    }
+    
+    
+    private func callNumber(phoneNumber: String) {
+        if let phoneCallURL:URL = URL(string:"tel://\(phoneNumber)") {
+            let application = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                //application.openURL(phoneCallURL)
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
+            }
+        }
     }
     
 
