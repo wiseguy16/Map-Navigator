@@ -216,6 +216,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             annotationView!.image = UIImage(named: beaconName)
         }
         
+        //Added to git
         // annotationView!.image = UIImage(named: cpa.imageName)
         
         return annotationView
