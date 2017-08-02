@@ -151,14 +151,13 @@
                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yn2-TE-U8e">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yn2-TE-U8e">
                                 <rect key="frame" x="248.5" y="445.5" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.27546849731744061" green="0.41040774490366849" blue="0.74726458885941649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="4rI-Gb-C4F"/>
                                     <constraint firstAttribute="height" constant="30" id="QpM-DY-84G"/>
                                 </constraints>
-                                <state key="normal" title="Hide">
+                                <state key="normal" image="dropDownIcon">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -343,6 +342,7 @@
     <resources>
         <image name="CurrentLocation" width="15" height="15"/>
         <image name="citysquare.png" width="32" height="37"/>
+        <image name="dropDownIcon" width="256" height="256"/>
         <image name="lighthouse-2.png" width="32" height="37"/>
         <image name="sandwich-2.png" width="32" height="37"/>
         <image name="treasure_chest.png" width="32" height="37"/>

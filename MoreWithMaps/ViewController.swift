@@ -25,6 +25,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var showingHistoric = false
     var showingBusiness = false
     var showingUtility = false
+    let upArrow = UIImage(named: "dropUpIcon")
+    let downArrow = UIImage(named: "dropDownIcon")
     
     // Var for giving directions
     @IBOutlet weak var directionsGoButton: UIButton!
@@ -51,6 +53,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         myMapView.isRotateEnabled = true
         directionsGoButton.layer.cornerRadius = 10
         directionsGoButton.layer.masksToBounds = true
+        hideTable()
         //myMapView.zoomToUserLocation()
         
         // LOAD THE ANNOTATIONS!!!!!!
@@ -86,18 +89,32 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
                 self.tableViewHeight.constant = 180.0
-                sender.setTitle("Hide", for: .normal)
+                sender.setImage(self.upArrow!, for: .normal)
+                //sender.setTitle("Hide", for: .normal)
                 self.view.layoutIfNeeded()
             }
         } else {
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
                 self.tableViewHeight.constant = 0.0
-                sender.setTitle("Show", for: .normal)
+                sender.setImage(self.downArrow!, for: .normal)
+               // sender.setTitle("Show", for: .normal)
                 self.view.layoutIfNeeded()
             }
         }
         isTableHidden = !isTableHidden
+    }
+    
+    func hideTable() {
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3) {
+            self.tableViewHeight.constant = 0.0
+            //sender.setImage(self.downArrow!, for: .normal)
+            // sender.setTitle("Show", for: .normal)
+            self.view.layoutIfNeeded()
+        }
+        isTableHidden = !isTableHidden
+
     }
     
     
