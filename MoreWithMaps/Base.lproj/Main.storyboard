@@ -165,6 +165,19 @@
                                     <action selector="showTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R20-Vt-gOB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-ck-qZL">
+                                <rect key="frame" x="313" y="260" width="50" height="30"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="VuM-h8-cIF"/>
+                                </constraints>
+                                <state key="normal" title="&lt;-GO!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="giveDirectionsTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VO1-71-51D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -181,6 +194,8 @@
                             <constraint firstItem="yn2-TE-U8e" firstAttribute="centerX" secondItem="Vta-0N-qFo" secondAttribute="centerX" id="To2-xT-X4q"/>
                             <constraint firstItem="vP8-uk-Mc2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="U7V-lD-De4"/>
                             <constraint firstAttribute="trailing" secondItem="vP8-uk-Mc2" secondAttribute="trailing" id="VKy-5D-t9I"/>
+                            <constraint firstItem="VN2-ck-qZL" firstAttribute="centerY" secondItem="vP8-uk-Mc2" secondAttribute="centerY" id="YgM-2s-VIf"/>
+                            <constraint firstAttribute="trailing" secondItem="VN2-ck-qZL" secondAttribute="trailing" constant="12" id="ca1-Ua-EfZ"/>
                             <constraint firstItem="zkI-ZQ-Imw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="cwS-CW-eQr"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="heP-9F-Pfe" secondAttribute="bottom" constant="8" id="enj-Ox-d8h"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="zkI-ZQ-Imw" secondAttribute="bottom" constant="2" id="hNY-15-SxR"/>
@@ -201,6 +216,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="augTableView" destination="rM3-vd-hg3" id="49b-qz-IRd"/>
+                        <outlet property="directionsGoButton" destination="VN2-ck-qZL" id="oHn-Ol-BJt"/>
                         <outlet property="moveTableViewConstraint" destination="T2g-gq-cVX" id="JRv-5T-T1D"/>
                         <outlet property="myMapView" destination="vP8-uk-Mc2" id="upa-ux-Tz4"/>
                         <outlet property="tableViewHeight" destination="t6h-fI-Edj" id="CU8-tE-YZL"/>
@@ -306,7 +322,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wy5-R3-c4p" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wFM-ec-DOf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wFM-ec-DOf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.26911064979999999" green="0.27783745529999998" blue="0.31175917390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

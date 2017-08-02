@@ -26,6 +26,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var showingBusiness = false
     var showingUtility = false
     
+    // Var for giving directions
+    @IBOutlet weak var directionsGoButton: UIButton!
+    
+    var destination = MKMapItem()
+    
     @IBOutlet weak var augTableView: UITableView!
     
     @IBOutlet weak var augSegmentControl: UISegmentedControl!
@@ -44,6 +49,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.myMapView.delegate = self
         myMapView.showsUserLocation = true
         myMapView.isRotateEnabled = true
+        directionsGoButton.layer.cornerRadius = 10
+        directionsGoButton.layer.masksToBounds = true
         //myMapView.zoomToUserLocation()
         
         // LOAD THE ANNOTATIONS!!!!!!
@@ -152,6 +159,38 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBAction func zoomTapped(_ sender: UIButton) {
        // myMapView.zoomToUserLocation()
     }
+    
+    @IBAction func giveDirectionsTapped(_ sender: UIButton) {
+        let request = MKDirectionsRequest()
+       // request.setSource(MKMapItem.forCurrentLocation())
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = destination
+        request.requestsAlternateRoutes = false
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { (response: MKDirectionsResponse!, error: Error!) in
+            if error != nil {
+                print("got an errror: \(error.localizedDescription)")
+            } else {
+                // NO ERROR, SO HERE ARE YOUR DIRECTIONS:.....
+                
+                // MAYBE DONT REMOVE OVERLAYS HERE?? SOMEHOW RETAIN THE ONE YOU'RE GOING TO?
+                let overlays = self.myMapView.overlays
+                self.myMapView.removeOverlays(overlays)
+                
+                for route in response.routes {
+                    self.myMapView.add(route.polyline, level: .aboveRoads)
+                    var stepNumber = 0
+                    for next in route.steps {
+                        print("Step \(stepNumber): \(next.instructions)")
+                        stepNumber = stepNumber + 1
+                    }
+                }
+            }
+        }
+        
+    }
+    
 
     
     func createCustomAnnots() {
@@ -211,6 +250,24 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         return annotationView
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+       // print("I selected a placemark")
+        guard let coord = view.annotation?.coordinate else { return }
+        print("placemark is: \(coord.latitude) \(coord.longitude)")
+        // create a placemark and a map item
+        let placeMark = MKPlacemark(coordinate: coord)
+        // This is needed when we need to get directions
+        destination = MKMapItem(placemark: placeMark)
+    }
+    
+    // DRAWING THE DIRECTIONS ON MAP.....
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let routeLine = MKPolylineRenderer(overlay: overlay)
+        routeLine.strokeColor = UIColor.purple
+        routeLine.lineWidth = 3.0
+        return routeLine
+    }
+    
     
     func zoomToAugusta() {
         let coordinate = CLLocationCoordinate2DMake(33.473244, -81.967437)
@@ -227,9 +284,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
-    
-
-
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {

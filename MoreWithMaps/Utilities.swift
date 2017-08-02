@@ -20,7 +20,7 @@ extension MKMapView {
 //        setRegion(region, animated: true)
 //        
         let camera1 = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 30000, pitch: 0, heading: 23)
-        let camera2 = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 2000, pitch: 0, heading: 23)
+        let camera2 = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 3000, pitch: 0, heading: 23)
 
         
         UIView.animate(withDuration: 2.0, animations: {
