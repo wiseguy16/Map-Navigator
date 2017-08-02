@@ -7,15 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0F61F61F2FB7F700BD358D /* humaniTree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A0F61EE1F2FB7F600BD358D /* humaniTree.jpg */; };
+		4A0F61F71F2FB7F700BD358D /* mellowMushroom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A0F61EF1F2FB7F700BD358D /* mellowMushroom.jpg */; };
+		4A0F61F81F2FB7F700BD358D /* metro.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A0F61F01F2FB7F700BD358D /* metro.jpg */; };
+		4A0F61F91F2FB7F700BD358D /* modInk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A0F61F11F2FB7F700BD358D /* modInk.jpg */; };
+		4A0F61FA1F2FB7F700BD358D /* newMoon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A0F61F21F2FB7F700BD358D /* newMoon.jpg */; };
+		4A0F61FB1F2FB7F700BD358D /* pizzaJoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A0F61F31F2FB7F700BD358D /* pizzaJoint.jpg */; };
+		4A0F61FC1F2FB7F700BD358D /* stillWater.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A0F61F41F2FB7F700BD358D /* stillWater.jpg */; };
+		4A0F61FE1F2FD5DC00BD358D /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0F61FD1F2FD5DC00BD358D /* AnnotationView.swift */; };
+		4A0F62001F30DB3E00BD358D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0F61FF1F30DB3E00BD358D /* DetailsViewController.swift */; };
+		4A0F62021F30EB6600BD358D /* craftVine.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A0F62011F30EB6600BD358D /* craftVine.jpg */; };
 		4AC1FEF91F2BB58100613334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FEF81F2BB58100613334 /* AppDelegate.swift */; };
 		4AC1FEFB1F2BB58100613334 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FEFA1F2BB58100613334 /* ViewController.swift */; };
 		4AC1FEFE1F2BB58100613334 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FEFC1F2BB58100613334 /* Main.storyboard */; };
 		4AC1FF011F2BB58100613334 /* MoreWithMaps.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FEFF1F2BB58100613334 /* MoreWithMaps.xcdatamodeld */; };
 		4AC1FF031F2BB58200613334 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF021F2BB58200613334 /* Assets.xcassets */; };
 		4AC1FF061F2BB58200613334 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF041F2BB58200613334 /* LaunchScreen.storyboard */; };
+		4AC1FF0F1F2BB5CC00613334 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC1FF0E1F2BB5CC00613334 /* MapKit.framework */; };
+		4AC1FF111F2BB9C400613334 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC1FF101F2BB9C400613334 /* CoreLocation.framework */; };
+		4AC1FF131F2BBB0600613334 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FF121F2BBB0600613334 /* Utilities.swift */; };
+		4AC1FF1F1F2E28E400613334 /* bigcity.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF1E1F2E28E300613334 /* bigcity.png */; };
+		4AC1FF211F2E28F300613334 /* citysquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF201F2E28F300613334 /* citysquare.png */; };
+		4AC1FF231F2E290D00613334 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF221F2E290D00613334 /* clock.png */; };
+		4AC1FF291F2E292A00613334 /* fooddeliveryservice.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF241F2E292A00613334 /* fooddeliveryservice.png */; };
+		4AC1FF2A1F2E292A00613334 /* foodtruck.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF251F2E292A00613334 /* foodtruck.png */; };
+		4AC1FF2B1F2E292A00613334 /* icecream.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF261F2E292A00613334 /* icecream.png */; };
+		4AC1FF2C1F2E292A00613334 /* sandwich-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF271F2E292A00613334 /* sandwich-2.png */; };
+		4AC1FF2D1F2E292A00613334 /* takeaway.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF281F2E292A00613334 /* takeaway.png */; };
+		4AC1FF2F1F2E294500613334 /* footprint.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF2E1F2E294500613334 /* footprint.png */; };
+		4AC1FF311F2E295300613334 /* lighthouse-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF301F2E295300613334 /* lighthouse-2.png */; };
+		4AC1FF331F2E295F00613334 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF321F2E295F00613334 /* map.png */; };
+		4AC1FF351F2E29C100613334 /* jewishquarter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF341F2E29C100613334 /* jewishquarter.png */; };
+		4AC1FF371F2E29E100613334 /* treasure_chest.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF361F2E29E100613334 /* treasure_chest.png */; };
+		4AC1FF391F2E29F100613334 /* smallcity.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FF381F2E29F100613334 /* smallcity.png */; };
+		4AC1FF3B1F2E3E8E00613334 /* CustomAnnotat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FF3A1F2E3E8E00613334 /* CustomAnnotat.swift */; };
+		4AC1FF3E1F2F909700613334 /* AugustaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FF3D1F2F909700613334 /* AugustaCell.swift */; };
+		4AC1FF401F2F91D800613334 /* RefTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FF3F1F2F91D800613334 /* RefTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A0F61EE1F2FB7F600BD358D /* humaniTree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = humaniTree.jpg; sourceTree = "<group>"; };
+		4A0F61EF1F2FB7F700BD358D /* mellowMushroom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mellowMushroom.jpg; sourceTree = "<group>"; };
+		4A0F61F01F2FB7F700BD358D /* metro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = metro.jpg; sourceTree = "<group>"; };
+		4A0F61F11F2FB7F700BD358D /* modInk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = modInk.jpg; sourceTree = "<group>"; };
+		4A0F61F21F2FB7F700BD358D /* newMoon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = newMoon.jpg; sourceTree = "<group>"; };
+		4A0F61F31F2FB7F700BD358D /* pizzaJoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizzaJoint.jpg; sourceTree = "<group>"; };
+		4A0F61F41F2FB7F700BD358D /* stillWater.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stillWater.jpg; sourceTree = "<group>"; };
+		4A0F61FD1F2FD5DC00BD358D /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
+		4A0F61FF1F30DB3E00BD358D /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		4A0F62011F30EB6600BD358D /* craftVine.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = craftVine.jpg; sourceTree = "<group>"; };
 		4AC1FEF51F2BB58100613334 /* MoreWithMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoreWithMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AC1FEF81F2BB58100613334 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AC1FEFA1F2BB58100613334 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +64,26 @@
 		4AC1FF021F2BB58200613334 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AC1FF051F2BB58200613334 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4AC1FF071F2BB58200613334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AC1FF0E1F2BB5CC00613334 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4AC1FF101F2BB9C400613334 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4AC1FF121F2BBB0600613334 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		4AC1FF1E1F2E28E300613334 /* bigcity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigcity.png; sourceTree = "<group>"; };
+		4AC1FF201F2E28F300613334 /* citysquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = citysquare.png; sourceTree = "<group>"; };
+		4AC1FF221F2E290D00613334 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		4AC1FF241F2E292A00613334 /* fooddeliveryservice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fooddeliveryservice.png; sourceTree = "<group>"; };
+		4AC1FF251F2E292A00613334 /* foodtruck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodtruck.png; sourceTree = "<group>"; };
+		4AC1FF261F2E292A00613334 /* icecream.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icecream.png; sourceTree = "<group>"; };
+		4AC1FF271F2E292A00613334 /* sandwich-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sandwich-2.png"; sourceTree = "<group>"; };
+		4AC1FF281F2E292A00613334 /* takeaway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takeaway.png; sourceTree = "<group>"; };
+		4AC1FF2E1F2E294500613334 /* footprint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = footprint.png; sourceTree = "<group>"; };
+		4AC1FF301F2E295300613334 /* lighthouse-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lighthouse-2.png"; sourceTree = "<group>"; };
+		4AC1FF321F2E295F00613334 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		4AC1FF341F2E29C100613334 /* jewishquarter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jewishquarter.png; sourceTree = "<group>"; };
+		4AC1FF361F2E29E100613334 /* treasure_chest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treasure_chest.png; sourceTree = "<group>"; };
+		4AC1FF381F2E29F100613334 /* smallcity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallcity.png; sourceTree = "<group>"; };
+		4AC1FF3A1F2E3E8E00613334 /* CustomAnnotat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotat.swift; sourceTree = "<group>"; };
+		4AC1FF3D1F2F909700613334 /* AugustaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugustaCell.swift; sourceTree = "<group>"; };
+		4AC1FF3F1F2F91D800613334 /* RefTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC1FF111F2BB9C400613334 /* CoreLocation.framework in Frameworks */,
+				4AC1FF0F1F2BB5CC00613334 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +104,7 @@
 			children = (
 				4AC1FEF71F2BB58100613334 /* MoreWithMaps */,
 				4AC1FEF61F2BB58100613334 /* Products */,
+				4AC1FF0D1F2BB5CC00613334 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +120,59 @@
 			isa = PBXGroup;
 			children = (
 				4AC1FEF81F2BB58100613334 /* AppDelegate.swift */,
+				4AC1FF3F1F2F91D800613334 /* RefTableViewController.swift */,
+				4AC1FF3A1F2E3E8E00613334 /* CustomAnnotat.swift */,
+				4A0F61FF1F30DB3E00BD358D /* DetailsViewController.swift */,
+				4AC1FF3D1F2F909700613334 /* AugustaCell.swift */,
+				4A0F61FD1F2FD5DC00BD358D /* AnnotationView.swift */,
 				4AC1FEFA1F2BB58100613334 /* ViewController.swift */,
+				4AC1FF121F2BBB0600613334 /* Utilities.swift */,
 				4AC1FEFC1F2BB58100613334 /* Main.storyboard */,
 				4AC1FF021F2BB58200613334 /* Assets.xcassets */,
 				4AC1FF041F2BB58200613334 /* LaunchScreen.storyboard */,
 				4AC1FF071F2BB58200613334 /* Info.plist */,
+				4AC1FF3C1F2F8DB600613334 /* photos */,
 				4AC1FEFF1F2BB58100613334 /* MoreWithMaps.xcdatamodeld */,
 			);
 			path = MoreWithMaps;
+			sourceTree = "<group>";
+		};
+		4AC1FF0D1F2BB5CC00613334 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AC1FF101F2BB9C400613334 /* CoreLocation.framework */,
+				4AC1FF0E1F2BB5CC00613334 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4AC1FF3C1F2F8DB600613334 /* photos */ = {
+			isa = PBXGroup;
+			children = (
+				4A0F62011F30EB6600BD358D /* craftVine.jpg */,
+				4A0F61EE1F2FB7F600BD358D /* humaniTree.jpg */,
+				4A0F61EF1F2FB7F700BD358D /* mellowMushroom.jpg */,
+				4A0F61F01F2FB7F700BD358D /* metro.jpg */,
+				4A0F61F11F2FB7F700BD358D /* modInk.jpg */,
+				4A0F61F21F2FB7F700BD358D /* newMoon.jpg */,
+				4A0F61F31F2FB7F700BD358D /* pizzaJoint.jpg */,
+				4A0F61F41F2FB7F700BD358D /* stillWater.jpg */,
+				4AC1FF301F2E295300613334 /* lighthouse-2.png */,
+				4AC1FF321F2E295F00613334 /* map.png */,
+				4AC1FF2E1F2E294500613334 /* footprint.png */,
+				4AC1FF241F2E292A00613334 /* fooddeliveryservice.png */,
+				4AC1FF251F2E292A00613334 /* foodtruck.png */,
+				4AC1FF261F2E292A00613334 /* icecream.png */,
+				4AC1FF271F2E292A00613334 /* sandwich-2.png */,
+				4AC1FF281F2E292A00613334 /* takeaway.png */,
+				4AC1FF341F2E29C100613334 /* jewishquarter.png */,
+				4AC1FF201F2E28F300613334 /* citysquare.png */,
+				4AC1FF221F2E290D00613334 /* clock.png */,
+				4AC1FF361F2E29E100613334 /* treasure_chest.png */,
+				4AC1FF381F2E29F100613334 /* smallcity.png */,
+				4AC1FF1E1F2E28E300613334 /* bigcity.png */,
+			);
+			name = photos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +209,14 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = XXXAJJ4LC9;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -127,9 +243,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC1FF2B1F2E292A00613334 /* icecream.png in Resources */,
+				4AC1FF351F2E29C100613334 /* jewishquarter.png in Resources */,
+				4AC1FF2A1F2E292A00613334 /* foodtruck.png in Resources */,
+				4AC1FF2F1F2E294500613334 /* footprint.png in Resources */,
+				4A0F61FA1F2FB7F700BD358D /* newMoon.jpg in Resources */,
 				4AC1FF061F2BB58200613334 /* LaunchScreen.storyboard in Resources */,
+				4A0F61FB1F2FB7F700BD358D /* pizzaJoint.jpg in Resources */,
+				4AC1FF371F2E29E100613334 /* treasure_chest.png in Resources */,
+				4A0F61F61F2FB7F700BD358D /* humaniTree.jpg in Resources */,
+				4AC1FF211F2E28F300613334 /* citysquare.png in Resources */,
+				4AC1FF2D1F2E292A00613334 /* takeaway.png in Resources */,
+				4AC1FF311F2E295300613334 /* lighthouse-2.png in Resources */,
+				4AC1FF331F2E295F00613334 /* map.png in Resources */,
+				4A0F62021F30EB6600BD358D /* craftVine.jpg in Resources */,
 				4AC1FF031F2BB58200613334 /* Assets.xcassets in Resources */,
 				4AC1FEFE1F2BB58100613334 /* Main.storyboard in Resources */,
+				4AC1FF1F1F2E28E400613334 /* bigcity.png in Resources */,
+				4A0F61F91F2FB7F700BD358D /* modInk.jpg in Resources */,
+				4A0F61F81F2FB7F700BD358D /* metro.jpg in Resources */,
+				4AC1FF291F2E292A00613334 /* fooddeliveryservice.png in Resources */,
+				4AC1FF231F2E290D00613334 /* clock.png in Resources */,
+				4AC1FF391F2E29F100613334 /* smallcity.png in Resources */,
+				4A0F61FC1F2FB7F700BD358D /* stillWater.jpg in Resources */,
+				4AC1FF2C1F2E292A00613334 /* sandwich-2.png in Resources */,
+				4A0F61F71F2FB7F700BD358D /* mellowMushroom.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +280,13 @@
 			files = (
 				4AC1FEFB1F2BB58100613334 /* ViewController.swift in Sources */,
 				4AC1FEF91F2BB58100613334 /* AppDelegate.swift in Sources */,
+				4A0F62001F30DB3E00BD358D /* DetailsViewController.swift in Sources */,
+				4AC1FF3E1F2F909700613334 /* AugustaCell.swift in Sources */,
+				4AC1FF131F2BBB0600613334 /* Utilities.swift in Sources */,
 				4AC1FF011F2BB58100613334 /* MoreWithMaps.xcdatamodeld in Sources */,
+				4A0F61FE1F2FD5DC00BD358D /* AnnotationView.swift in Sources */,
+				4AC1FF3B1F2E3E8E00613334 /* CustomAnnotat.swift in Sources */,
+				4AC1FF401F2F91D800613334 /* RefTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +452,7 @@
 				4AC1FF0C1F2BB58200613334 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
