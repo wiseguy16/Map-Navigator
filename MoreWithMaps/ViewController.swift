@@ -77,18 +77,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let destVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         destVC.thedetails = beacon.title
         destVC.anAnnot = beacon
-        destVC.navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.pushViewController(destVC, animated: true)
+        present(destVC, animated: true, completion: nil)
+       // destVC.navigationController?.navigationBar.tintColor = UIColor.white
+       // navigationController?.pushViewController(destVC, animated: true)
        // destVC.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.white
-
     }
     
     
     @IBAction func showTapped(_ sender: UIButton) {
         if isTableHidden {
+            var adjuster = custAnnots.count
+            if adjuster > 3 {
+                adjuster = 3
+            } else if adjuster > 0 {
+                adjuster = custAnnots.count
+            } else {
+                adjuster = 1
+            }
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
-                self.tableViewHeight.constant = 180.0
+                self.tableViewHeight.constant = CGFloat(73 * adjuster) //180.0
                 sender.setImage(self.upArrow!, for: .normal)
                 //sender.setTitle("Hide", for: .normal)
                 self.view.layoutIfNeeded()
@@ -121,6 +129,28 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBAction func filterTapped(_ sender: UIButton) {
         
         let checker = sender.tag
+        displaySelectedPoints(with: checker)
+    }
+    
+    func filterAnnotRemove(with category: String, annots: [CustomAnnotat]) {
+        custAnnots = custAnnots.filter { $0.category != category }
+        augTableView.reloadData()
+        myMapView.removeAnnotations(annots)
+    }
+    
+    func filterAnnotAdd(with category: String, annots: [CustomAnnotat]) {
+        custAnnots.append(contentsOf: annots)
+        augTableView.reloadData()
+        myMapView.addAnnotations(annots)
+    }
+    
+    func setupInitialPoints() {
+        for i in 1...4 {
+            displaySelectedPoints(with: i)
+        }
+    }
+    
+    func displaySelectedPoints(with checker: Int) {
         switch checker {
         case 1:
             if showingHistoric {
@@ -133,7 +163,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             if showingBusiness {
                 filterAnnotRemove(with: "Business", annots: businessAnnots)
             } else {
-               filterAnnotAdd(with: "Business", annots: businessAnnots)
+                filterAnnotAdd(with: "Business", annots: businessAnnots)
             }
             showingBusiness = !showingBusiness
         case 3:
@@ -149,22 +179,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             } else {
                 filterAnnotAdd(with: "Utility", annots: utilityAnnots)
             }
-            showingUtility = !showingUtility            
+            showingUtility = !showingUtility
         default:
             print("not a valid button")
         }
-    }
-    
-    func filterAnnotRemove(with category: String, annots: [CustomAnnotat]) {
-        custAnnots = custAnnots.filter { $0.category != category }
-        augTableView.reloadData()
-        myMapView.removeAnnotations(annots)
-    }
-    
-    func filterAnnotAdd(with category: String, annots: [CustomAnnotat]) {
-        custAnnots.append(contentsOf: annots)
-        augTableView.reloadData()
-        myMapView.addAnnotations(annots)
+
     }
 
     
@@ -238,6 +257,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 print("not a valid category")
             }
         }
+        setupInitialPoints()
     }
     
     

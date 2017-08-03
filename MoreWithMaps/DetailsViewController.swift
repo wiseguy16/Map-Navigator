@@ -14,6 +14,11 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var detailsImage: UIImageView!
     
     @IBOutlet weak var detailsLabel: UILabel!
+    
+    @IBOutlet weak var companyTitleLabel: UILabel!
+    
+    @IBOutlet weak var websiteLabel: UILabel!
+    
     var thedetails: String?
     var anAnnot: CustomAnnotat?
     
@@ -24,7 +29,7 @@ class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+      //  self.navigationController?.navigationBar.tintColor = UIColor.white
         callButton.layer.cornerRadius = 4
         callButton.layer.masksToBounds = true
         directionsButton.layer.cornerRadius = 4
@@ -43,25 +48,29 @@ class DetailsViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.detailsImage.image = UIImage(data: data)
                     }
-
-
                 } catch {
-                    
-                    print("\(url)")
-                    
+                    print("\(url!)")
                 }
-//                DispatchQueue.main.async {
-//                    self.detailsImage.image = UIImage(data: data!)
-//                }
-            }
-            
+            }            
+        }
+        if let company = thisAnnot.companyName {
+            companyTitleLabel.text = company
+        }
+        if let details = thisAnnot.category {
+            print("\(details)")
+
+            detailsLabel.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+        }
+        if let website = thisAnnot.imageName {
+            websiteLabel.text = "www." + website
         }
 
 
         guard let words = thedetails else {
             return
         }
-        detailsLabel.text = words
+        print("\(words)")
+        
 
         // Do any additional setup after loading the view.
     }
@@ -70,6 +79,12 @@ class DetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func closeTapped(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     // CALLING A PHONE NUMBER...
     //UIApplication.shared.openURL(NSURL(string: "telprompt://9809088798")! as URL)
