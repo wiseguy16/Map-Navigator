@@ -10,10 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var myMapView: MKMapView!
     let locationManager = CLLocationManager()
+    var currentCoord: CLLocationCoordinate2D?
+    var steps = [MKRouteStep]()
     var custAnnots: [CustomAnnotat] = []
     var businessAnnots: [CustomAnnotat] = []
     var utilityAnnots: [CustomAnnotat] = []
@@ -46,8 +48,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // LOCATION MANAGER SETUP
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.stopUpdatingLocation()
+        
         self.myMapView.delegate = self
         myMapView.showsUserLocation = true
         myMapView.isRotateEnabled = true
@@ -224,7 +230,42 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 }
             }
         }
+    }
+    
+// STEP by STEP DIRECTIONS WITH GEOFENCES TO TELL WHEN TO MOVE
+    func getDirections(to destination: MKMapItem) {
+        guard let curntCoord = currentCoord else { return }
+        let sourcePlacemark = MKPlacemark(coordinate: curntCoord)
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
         
+        let directionsRequest = MKDirectionsRequest()
+        directionsRequest.source = sourceMapItem
+        directionsRequest.destination = destination
+        directionsRequest.transportType = .automobile
+        
+        let directions = MKDirections(request: directionsRequest)
+        directions.calculate { (response, error) in
+            if error != nil {
+                print("You didn't have any results and the error is: \(error!.localizedDescription)")
+            }
+            guard let response = response else { return }
+            guard let primaryRoute = response.routes.first else { return }
+            
+            self.myMapView.add(primaryRoute.polyline)
+            
+            self.locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
+            
+            self.steps = primaryRoute.steps
+            for i in 0..<primaryRoute.steps.count {
+                let step = primaryRoute.steps[i]
+                print(step.instructions)
+                print(step.distance)
+                let region = CLCircularRegion(center: step.polyline.coordinate, radius: 20, identifier: "\(i)")
+                self.locationManager.startMonitoring(for: region)
+                let circle = MKCircle(center: region.center, radius: region.radius)
+                self.myMapView.add(circle)
+            }
+        }
     }
     
 
@@ -234,7 +275,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let annot = CustomAnnotat(dictionary: annotDict)
             
     // CREATE ONLY ARRAY OF 1 OBJECT HERE. PROBABLY EXTEND -> class CustomPointAnnotation: MKPointAnnotation TO HAVE ALL THE PROPERTIES 
-    // THAT ARE IN CustomAnnotat   !!!!!!!
+    // THAT ARE IN CustomAnnotat
+    // DONE!!!
             guard let latd = annot.locatCoordLat, let longd = annot.locatCoordLong, let name = annot.companyName, let theCat = annot.category else { return }
             
             let custCoord = CLLocationCoordinate2DMake(latd, longd)
@@ -297,12 +339,30 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         destination = MKMapItem(placemark: placeMark)
     }
     
-    // DRAWING THE DIRECTIONS ON MAP.....
+// DRAWING THE DIRECTIONS ON MAP.....
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        // PROBABLY BOTH THESE WORK??
+        
         let routeLine = MKPolylineRenderer(overlay: overlay)
         routeLine.strokeColor = UIColor.purple
-        routeLine.lineWidth = 3.0
+        routeLine.lineWidth = 6.0
+
+        if overlay is MKPolyline {
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = .blue
+            renderer.lineWidth = 10
+            return renderer
+        } 
+
+        if overlay is MKCircle {
+            let renderer = MKCircleRenderer(overlay: overlay)
+            renderer.strokeColor = .red
+            renderer.fillColor = .red
+            renderer.alpha = 0.5
+            return renderer
+        } else {
         return routeLine
+        }
     }
     
     
@@ -359,9 +419,37 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let annot = custAnnots[indexPath.row]
         myMapView.selectAnnotation(annot, animated: true)
     }
+}
+
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+        guard let currentLocation = locations.first else { return }
+        currentCoord = currentLocation.coordinate
+        myMapView.userTrackingMode = .followWithHeading
+    }
     
+}
 
-
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        let localSearchRequest = MKLocalSearchRequest()
+        localSearchRequest.naturalLanguageQuery = searchBar.text
+        guard let curntCord = currentCoord else { return }
+        let region = MKCoordinateRegion(center: curntCord, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        localSearchRequest.region = region
+        let localSearch = MKLocalSearch(request: localSearchRequest)
+        localSearch.start { (response, error) in
+            if error != nil {
+                print("You didn't have any results and the error is: \(error!.localizedDescription)")
+            }
+            guard let response = response else { return }
+            print(response.mapItems)
+            guard let firstItem = response.mapItems.first else { return }
+            self.getDirections(to: firstItem)
+        }
+    }
 }
 
 
