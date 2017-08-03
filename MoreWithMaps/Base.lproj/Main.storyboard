@@ -179,6 +179,12 @@
                                     <action selector="giveDirectionsTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VO1-71-51D"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kc8-Mr-RM1">
+                                <rect key="frame" x="0.0" y="64" width="375" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -190,12 +196,15 @@
                             <constraint firstItem="zkI-ZQ-Imw" firstAttribute="top" secondItem="VN2-ck-qZL" secondAttribute="bottom" constant="8" id="Efh-Sg-uiM"/>
                             <constraint firstItem="yn2-TE-U8e" firstAttribute="centerY" secondItem="Vta-0N-qFo" secondAttribute="centerY" id="I7Y-Dv-2ak"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="X64-84-lVY" secondAttribute="bottom" constant="8" id="IFm-dO-YHd"/>
+                            <constraint firstItem="kc8-Mr-RM1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MQx-Q6-kvl"/>
                             <constraint firstItem="heP-9F-Pfe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="Nwo-xi-WXV"/>
+                            <constraint firstAttribute="trailing" secondItem="kc8-Mr-RM1" secondAttribute="trailing" id="SCE-h8-YmB"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="vP8-uk-Mc2" secondAttribute="bottom" id="T2g-gq-cVX"/>
                             <constraint firstItem="vP8-uk-Mc2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TSs-Sl-bWI"/>
                             <constraint firstItem="yn2-TE-U8e" firstAttribute="centerX" secondItem="Vta-0N-qFo" secondAttribute="centerX" id="To2-xT-X4q"/>
                             <constraint firstItem="vP8-uk-Mc2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="U7V-lD-De4"/>
                             <constraint firstAttribute="trailing" secondItem="vP8-uk-Mc2" secondAttribute="trailing" id="VKy-5D-t9I"/>
+                            <constraint firstItem="kc8-Mr-RM1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ywq-EK-z9f"/>
                             <constraint firstAttribute="trailing" secondItem="VN2-ck-qZL" secondAttribute="trailing" constant="12" id="ca1-Ua-EfZ"/>
                             <constraint firstItem="zkI-ZQ-Imw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="cwS-CW-eQr"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="heP-9F-Pfe" secondAttribute="bottom" constant="8" id="enj-Ox-d8h"/>
@@ -219,6 +228,7 @@
                     <connections>
                         <outlet property="augTableView" destination="rM3-vd-hg3" id="49b-qz-IRd"/>
                         <outlet property="directionsGoButton" destination="VN2-ck-qZL" id="oHn-Ol-BJt"/>
+                        <outlet property="directionsLabel" destination="kc8-Mr-RM1" id="VU7-w9-VwF"/>
                         <outlet property="moveTableViewConstraint" destination="T2g-gq-cVX" id="JRv-5T-T1D"/>
                         <outlet property="myMapView" destination="vP8-uk-Mc2" id="upa-ux-Tz4"/>
                         <outlet property="tableViewHeight" destination="t6h-fI-Edj" id="CU8-tE-YZL"/>
@@ -242,7 +252,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzD-xH-ZVH">
                                 <rect key="frame" x="20" y="389" width="335" height="90"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

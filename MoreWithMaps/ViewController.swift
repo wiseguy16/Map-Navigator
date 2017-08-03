@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import AVFoundation
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
@@ -16,6 +17,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     let locationManager = CLLocationManager()
     var currentCoord: CLLocationCoordinate2D?
     var steps = [MKRouteStep]()
+    var stepCounter = 0
     var custAnnots: [CustomAnnotat] = []
     var businessAnnots: [CustomAnnotat] = []
     var utilityAnnots: [CustomAnnotat] = []
@@ -30,10 +32,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
     let upArrow = UIImage(named: "dropUpIcon")
     let downArrow = UIImage(named: "dropDownIcon")
     
+    let speechSynthesizer = AVSpeechSynthesizer()
+    
     // Var for giving directions
     @IBOutlet weak var directionsGoButton: UIButton!
     
-    var destination = MKMapItem()
+    var destinationMapItem = MKMapItem()
+    
+    
+    @IBOutlet weak var directionsLabel: UILabel!
     
     @IBOutlet weak var augTableView: UITableView!
     
@@ -48,31 +55,32 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // LOCATION MANAGER SETUP
+// LOCATION MANAGER SETUP...
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager.stopUpdatingLocation()
+        locationManager.startUpdatingLocation()
         
         self.myMapView.delegate = self
         myMapView.showsUserLocation = true
         myMapView.isRotateEnabled = true
         directionsGoButton.layer.cornerRadius = 10
         directionsGoButton.layer.masksToBounds = true
+        
+// HIDE THE TABLEVIEW INITIALLY
         hideTable()
+        
         //myMapView.zoomToUserLocation()
         
-        // LOAD THE ANNOTATIONS!!!!!!
+// LOAD THE ANNOTATIONS!!!!!!
         zoomToAugusta()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    
+//MODAL PRESENTATION FOR THE SPONSORED COMPANY...
     @IBAction func moreTapped(_ sender: UIButton) {
         guard let cell = sender.superview?.superview as? AugustaCell else {
             return // or fatalError() or whatever
@@ -89,7 +97,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
        // destVC.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.white
     }
     
-    
+//BRINGS UP THE TABLEVIEW...
     @IBAction func showTapped(_ sender: UIButton) {
         if isTableHidden {
             var adjuster = custAnnots.count
@@ -138,6 +146,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         displaySelectedPoints(with: checker)
     }
     
+// HELPER FUNCTIONS FOR ADDING/ REMOVING COMPANIES
     func filterAnnotRemove(with category: String, annots: [CustomAnnotat]) {
         custAnnots = custAnnots.filter { $0.category != category }
         augTableView.reloadData()
@@ -156,6 +165,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+//THIS DETERMINES WHICH CATEGORIES TO SHOW...
     func displaySelectedPoints(with checker: Int) {
         switch checker {
         case 1:
@@ -192,7 +202,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     }
 
-    
+//ACTION FOR FIND MY GPS BUTTON...
     @IBAction func goToUserLocationTapped(_ sender: UIBarButtonItem) {
         myMapView.zoomToUserLocation(with: myMapView)
     }
@@ -201,12 +211,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBAction func zoomTapped(_ sender: UIButton) {
        // myMapView.zoomToUserLocation()
     }
-    
-    @IBAction func giveDirectionsTapped(_ sender: UIButton) {
+
+//FIRST SUCCESFUL DIRECTIONS FUNCTION WITH OVERLAY ON MAP AND STEPS LOGGED TO CONSOLE...
+    func firstDayDirections() {
         let request = MKDirectionsRequest()
-       // request.setSource(MKMapItem.forCurrentLocation())
+        // request.setSource(MKMapItem.forCurrentLocation())
         request.source = MKMapItem.forCurrentLocation()
-        request.destination = destination
+        request.destination = destinationMapItem
         request.requestsAlternateRoutes = false
         
         let directions = MKDirections(request: request)
@@ -230,6 +241,50 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 }
             }
         }
+
+    }
+    
+    func secondDayDirections() {
+        getDirections(to: destinationMapItem)
+    }
+    
+    @IBAction func giveDirectionsTapped(_ sender: UIButton) {
+        //firstDayDirections()
+        secondDayDirections()
+        
+      /*
+        let request = MKDirectionsRequest()
+       // request.setSource(MKMapItem.forCurrentLocation())
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = destinationMapItem
+        request.requestsAlternateRoutes = false
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { (response: MKDirectionsResponse!, error: Error!) in
+            if error != nil {
+                print("got an errror: \(error.localizedDescription)")
+            } else {
+                // NO ERROR, SO HERE ARE YOUR DIRECTIONS:.....
+                
+                // MAYBE DONT REMOVE OVERLAYS HERE?? SOMEHOW RETAIN THE ONE YOU'RE GOING TO?
+                let overlays = self.myMapView.overlays
+                self.myMapView.removeOverlays(overlays)
+                
+                
+//                self.getDirections(to: firstItem)
+
+                
+                for route in response.routes {
+                    self.myMapView.add(route.polyline, level: .aboveRoads)
+                    var stepNumber = 0
+                    for next in route.steps {
+                        print("Step \(stepNumber): \(next.instructions)")
+                        stepNumber = stepNumber + 1
+                    }
+                }
+            }
+        }
+        */
     }
     
 // STEP by STEP DIRECTIONS WITH GEOFENCES TO TELL WHEN TO MOVE
@@ -265,11 +320,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 let circle = MKCircle(center: region.center, radius: region.radius)
                 self.myMapView.add(circle)
             }
+//SPEECH FOR DIRECTIONS!!!...
+            let initialMessage = "In \(self.steps[0].distance) meters, \(self.steps[0].instructions). Then in \(self.steps[1].distance) meters, \(self.steps[1].instructions)."
+            self.directionsLabel.text = initialMessage
+            let speechUtterance = AVSpeechUtterance(string: initialMessage)
+            self.speechSynthesizer.speak(speechUtterance)
+            self.stepCounter += 1
         }
     }
     
 
-    
+// INITIALIZING ANNOTS FROM HARD CODED DICTIONARY...
     func createCustomAnnots() {
         for annotDict in annotArry {
             let annot = CustomAnnotat(dictionary: annotDict)
@@ -302,7 +363,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         setupInitialPoints()
     }
     
-    
+//DEFINING APPEARANCE FOR THE ANNOTATIONS...THESE ARE DELEGATE METHODS
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if !(annotation is MKPointAnnotation) {
@@ -336,7 +397,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // create a placemark and a map item
         let placeMark = MKPlacemark(coordinate: coord)
         // This is needed when we need to get directions
-        destination = MKMapItem(placemark: placeMark)
+        destinationMapItem = MKMapItem(placemark: placeMark)
     }
     
 // DRAWING THE DIRECTIONS ON MAP.....
@@ -350,7 +411,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if overlay is MKPolyline {
             let renderer = MKPolylineRenderer(overlay: overlay)
             renderer.strokeColor = .blue
-            renderer.lineWidth = 10
+            renderer.lineWidth = 5.0
             return renderer
         } 
 
@@ -365,7 +426,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    
+//FIRST INITIAL CONFIG FOR THE MAP AND ZOOM AND CAMERA APPEARANCE
     func zoomToAugusta() {
         let coordinate = CLLocationCoordinate2DMake(33.473244, -81.967437)
         
@@ -385,7 +446,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
+// USUAL TABLEVIEW STUFF...
     func numberOfSections(in tableView: UITableView) -> Int {
         // 
         return 1
@@ -429,6 +490,24 @@ extension ViewController: CLLocationManagerDelegate {
         myMapView.userTrackingMode = .followWithHeading
     }
     
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        stepCounter += 1
+        if stepCounter < steps.count {
+            let currentStep = steps[stepCounter]
+            let message = "In \(currentStep.distance) meters, \(currentStep.instructions)."
+            directionsLabel.text = message
+            let speechUtterance = AVSpeechUtterance(string: message)
+            speechSynthesizer.speak(speechUtterance)
+        } else {
+            let message = "Arrived at destination."
+            directionsLabel.text = message
+            let speechUtterance = AVSpeechUtterance(string: message)
+            speechSynthesizer.speak(speechUtterance)
+            stepCounter = 0
+            locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
+        }
+    }
+    
 }
 
 extension ViewController: UISearchBarDelegate {
@@ -452,7 +531,7 @@ extension ViewController: UISearchBarDelegate {
     }
 }
 
-
+// HARD CODED BEACON/ANNOTS DICTIONARY...
     let annotArry: [[String: AnyObject]] = [
         ["title": "Craft & Vine" as AnyObject,
          "imageName": "craftVine.jpg" as AnyObject,
