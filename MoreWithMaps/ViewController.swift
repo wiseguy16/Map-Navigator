@@ -73,7 +73,8 @@ class ViewController: UIViewController {
         //myMapView.zoomToUserLocation()
         
 // LOAD THE ANNOTATIONS!!!!!!
-        zoomToAugusta()
+       // zoomToAugusta()
+        zoomToMaitland()
     }
 
     override func didReceiveMemoryWarning() {
@@ -246,9 +247,23 @@ class ViewController: UIViewController {
     func secondDayDirections() {
         getDirections(to: destinationMapItem)
     }
-    
+
+// ACTUAL BUTTON FOR STARTING TURN BY TURN DIRECTIONS...
     @IBAction func giveDirectionsTapped(_ sender: UIButton) {
         //firstDayDirections()
+        //let region = CLCircularRegion(center: step.polyline.coordinate, radius: 50, identifier: "\(i)")
+        //self.locationManager.startMonitoring(for: region)
+        let linesAndCircles = myMapView.overlays
+        for lineOrCircle in linesAndCircles {
+            if lineOrCircle is MKCircle {
+                myMapView.remove(lineOrCircle)
+                locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
+            }
+            if lineOrCircle is MKPolyline {
+                myMapView.remove(lineOrCircle)
+            }
+        }
+
         secondDayDirections()
         
     }
@@ -282,7 +297,7 @@ class ViewController: UIViewController {
                 let step = primaryRoute.steps[i]
                 print(step.instructions)
                 print(step.distance)
-                let region = CLCircularRegion(center: step.polyline.coordinate, radius: 20, identifier: "\(i)")
+                let region = CLCircularRegion(center: step.polyline.coordinate, radius: 50, identifier: "\(i)")
                 self.locationManager.startMonitoring(for: region)
                 let circle = MKCircle(center: region.center, radius: region.radius)
                 self.myMapView.add(circle)
@@ -346,6 +361,22 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func zoomToMaitland() {
+        let coordinate = CLLocationCoordinate2DMake(28.632765, -81.434503)
+        
+        // let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 4100, pitch: 0, heading: 23)
+        let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 5900, pitch: 0, heading: 0)
+        
+        UIView.animate(withDuration: 2.0, animations: {
+            self.myMapView.setCamera(camera, animated: true)
+        }) { (true) in
+            UIView.animate(withDuration: 2.0) {
+                self.createCustomAnnots()
+            }
+        }
+    }
+
     
 }
 
@@ -507,60 +538,120 @@ extension ViewController: UISearchBarDelegate {
         ["title": "Craft & Vine" as AnyObject,
          "imageName": "craftVine.jpg" as AnyObject,
          "beaconName": "sandwich-2.png" as AnyObject,
-         "locatCoordLat": 33.474223 as AnyObject,
-         "locatCoordLong": -81.966396 as AnyObject,
+         "locatCoordLat": 28.626671 as AnyObject,
+         "locatCoordLong":  -81.435410 as AnyObject,
          "category": "Food" as AnyObject,
          "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2014/06/Craft-and-Vine2-660x390.jpg" as AnyObject],
         ["title": "Humanitree House" as AnyObject,
          "imageName": "humaniTree.jpg" as AnyObject,
          "beaconName": "citysquare.png" as AnyObject,
-         "locatCoordLat": 33.475723 as AnyObject,
-         "locatCoordLong": -81.967896 as AnyObject,
+         "locatCoordLat": 28.632066 as AnyObject,
+         "locatCoordLong":  -81.431256 as AnyObject,
          "category": "Historic" as AnyObject,
          "web": "http://augustalocallygrown.org/wp-content/uploads/xHumanitree_1-1024x768.jpg.pagespeed.ic.UmRq1dFKDX.jpg" as AnyObject],
         ["title": "Metro Coffee House" as AnyObject,
          "imageName": "metro.jpg" as AnyObject,
          "beaconName": "lighthouse-2.png" as AnyObject,
-         "locatCoordLat": 33.476423 as AnyObject,
-         "locatCoordLong": -81.969396 as AnyObject,
+         "locatCoordLat": 28.635230 as AnyObject,
+         "locatCoordLong": -81.436105 as AnyObject,
          "category": "Utility" as AnyObject,
          "web": "http://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/10891433_10155074380045414_8644919409126086956_n.jpg?oh=aa8dc9887385fb7594335f6741af935a&oe=5A026827" as AnyObject],
         ["title": "MOD Ink" as AnyObject,
          "imageName": "modInk.jpg" as AnyObject,
          "beaconName": "treasure_chest.png" as AnyObject,
-         "locatCoordLat": 33.475723 as AnyObject,
-         "locatCoordLong": -81.965796 as AnyObject,
+         "locatCoordLat": 28.638891 as AnyObject,
+         "locatCoordLong":  -81.440309 as AnyObject,
          "category": "Business" as AnyObject,
          "web": "http://static1.squarespace.com/static/58a8d93ecd0f68a08214dd2a/58a90f99e58c62fa406bfd1c/58aa7228579fb32b000236fa/1487902510435/MODFRONT.jpg?format=1500w" as AnyObject],
         ["title": "The New Moon Cafe" as AnyObject,
          "imageName": "newMoon.jpg" as AnyObject,
          "beaconName": "sandwich-2.png" as AnyObject,
-         "locatCoordLat": 33.474 as AnyObject,
-         "locatCoordLong": -81.971 as AnyObject,
+         "locatCoordLat": 28.635477 as AnyObject,
+         "locatCoordLong": -81.432074 as AnyObject,
          "category": "Food" as AnyObject,
          "web": "http://newmoondowntown.homestead.com/files/QuickSiteImages/Menus_01.gif" as AnyObject],
         ["title": "Mellow Mushroom Pizza" as AnyObject,
          "imageName": "mellowMushroom.jpg" as AnyObject,
          "beaconName": "citysquare.png" as AnyObject,
-         "locatCoordLat": 33.477 as AnyObject,
-         "locatCoordLong": -81.964 as AnyObject,
+         "locatCoordLat": 28.635213 as AnyObject,
+         "locatCoordLong": -81.442073 as AnyObject,
          "category": "Historic" as AnyObject,
          "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2014/06/Mellow_Mushroom1-1-DT.jpg" as AnyObject],
         ["title": "The Pizza Joint" as AnyObject,
          "imageName": "pizzaJoint.jpg" as AnyObject,
          "beaconName": "lighthouse-2.png" as AnyObject,
-         "locatCoordLat": 33.473 as AnyObject,
-         "locatCoordLong": -81.966 as AnyObject,
+         "locatCoordLat": 28.634987 as AnyObject,
+         "locatCoordLong": -81.434219 as AnyObject,
          "category": "Utility" as AnyObject,
          "web": "http://www.myherocard.com/wp-content/uploads/2016/07/Slider-1-913x240.jpg" as AnyObject],
         ["title": "Stillwater Tap Room" as AnyObject,
          "imageName": "stillWater.jpg" as AnyObject,
          "beaconName": "treasure_chest.png" as AnyObject,
-         "locatCoordLat": 33.472 as AnyObject,
-         "locatCoordLong": -81.968 as AnyObject,
+         "locatCoordLat": 28.635627 as AnyObject,
+         "locatCoordLong": -81.427567 as AnyObject,
          "category": "Business" as AnyObject,
          "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/stillwater-1.jpg" as AnyObject]
 ]
+
+let annotArry2: [[String: AnyObject]] = [
+    ["title": "Craft & Vine" as AnyObject,
+     "imageName": "craftVine.jpg" as AnyObject,
+     "beaconName": "sandwich-2.png" as AnyObject,
+     "locatCoordLat": 33.474223 as AnyObject,
+     "locatCoordLong": -81.966396 as AnyObject,
+     "category": "Food" as AnyObject,
+     "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2014/06/Craft-and-Vine2-660x390.jpg" as AnyObject],
+    ["title": "Humanitree House" as AnyObject,
+     "imageName": "humaniTree.jpg" as AnyObject,
+     "beaconName": "citysquare.png" as AnyObject,
+     "locatCoordLat": 33.475723 as AnyObject,
+     "locatCoordLong": -81.967896 as AnyObject,
+     "category": "Historic" as AnyObject,
+     "web": "http://augustalocallygrown.org/wp-content/uploads/xHumanitree_1-1024x768.jpg.pagespeed.ic.UmRq1dFKDX.jpg" as AnyObject],
+    ["title": "Metro Coffee House" as AnyObject,
+     "imageName": "metro.jpg" as AnyObject,
+     "beaconName": "lighthouse-2.png" as AnyObject,
+     "locatCoordLat": 33.476423 as AnyObject,
+     "locatCoordLong": -81.969396 as AnyObject,
+     "category": "Utility" as AnyObject,
+     "web": "http://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/10891433_10155074380045414_8644919409126086956_n.jpg?oh=aa8dc9887385fb7594335f6741af935a&oe=5A026827" as AnyObject],
+    ["title": "MOD Ink" as AnyObject,
+     "imageName": "modInk.jpg" as AnyObject,
+     "beaconName": "treasure_chest.png" as AnyObject,
+     "locatCoordLat": 33.475723 as AnyObject,
+     "locatCoordLong": -81.965796 as AnyObject,
+     "category": "Business" as AnyObject,
+     "web": "http://static1.squarespace.com/static/58a8d93ecd0f68a08214dd2a/58a90f99e58c62fa406bfd1c/58aa7228579fb32b000236fa/1487902510435/MODFRONT.jpg?format=1500w" as AnyObject],
+    ["title": "The New Moon Cafe" as AnyObject,
+     "imageName": "newMoon.jpg" as AnyObject,
+     "beaconName": "sandwich-2.png" as AnyObject,
+     "locatCoordLat": 33.474 as AnyObject,
+     "locatCoordLong": -81.971 as AnyObject,
+     "category": "Food" as AnyObject,
+     "web": "http://newmoondowntown.homestead.com/files/QuickSiteImages/Menus_01.gif" as AnyObject],
+    ["title": "Mellow Mushroom Pizza" as AnyObject,
+     "imageName": "mellowMushroom.jpg" as AnyObject,
+     "beaconName": "citysquare.png" as AnyObject,
+     "locatCoordLat": 33.477 as AnyObject,
+     "locatCoordLong": -81.964 as AnyObject,
+     "category": "Historic" as AnyObject,
+     "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2014/06/Mellow_Mushroom1-1-DT.jpg" as AnyObject],
+    ["title": "The Pizza Joint" as AnyObject,
+     "imageName": "pizzaJoint.jpg" as AnyObject,
+     "beaconName": "lighthouse-2.png" as AnyObject,
+     "locatCoordLat": 33.473 as AnyObject,
+     "locatCoordLong": -81.966 as AnyObject,
+     "category": "Utility" as AnyObject,
+     "web": "http://www.myherocard.com/wp-content/uploads/2016/07/Slider-1-913x240.jpg" as AnyObject],
+    ["title": "Stillwater Tap Room" as AnyObject,
+     "imageName": "stillWater.jpg" as AnyObject,
+     "beaconName": "treasure_chest.png" as AnyObject,
+     "locatCoordLat": 33.472 as AnyObject,
+     "locatCoordLong": -81.968 as AnyObject,
+     "category": "Business" as AnyObject,
+     "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/stillwater-1.jpg" as AnyObject]
+]
+
 
 /*
  @IBAction func zoomToAugustaTapped(_ sender: UIButton) {
