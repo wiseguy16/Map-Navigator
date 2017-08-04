@@ -32,7 +32,27 @@ class ViewController: UIViewController {
     let upArrow = UIImage(named: "dropUpIcon")
     let downArrow = UIImage(named: "dropDownIcon")
     
+    
+    // Karen
+    let karen = "com.apple.ttsbundle.Karen-compact"
+    // en-AU
+    // Daniel
+     let daniel = "com.apple.ttsbundle.Daniel-compact"
+    // en-GB
+    // Moira
+     let moira = "com.apple.ttsbundle.Moira-compact"
+    // en-IE
+    // Samantha
+     let samantha = "com.apple.ttsbundle.Samantha-compact"
+    // en-US
+    // Tessa
+     let tessa = "com.apple.ttsbundle.Tessa-compact"
+    // en-ZA
+     
+    
+    
     let speechSynthesizer = AVSpeechSynthesizer()
+    let uniqueVoice = AVSpeechSynthesisVoice()
     
     // Var for giving directions
     @IBOutlet weak var directionsGoButton: UIButton!
@@ -67,14 +87,45 @@ class ViewController: UIViewController {
         directionsGoButton.layer.cornerRadius = 10
         directionsGoButton.layer.masksToBounds = true
         
+        speechSynthesizer.delegate = self
+        
 // HIDE THE TABLEVIEW INITIALLY
         hideTable()
         
         //myMapView.zoomToUserLocation()
         
 // LOAD THE ANNOTATIONS!!!!!!
-       // zoomToAugusta()
-        zoomToMaitland()
+        zoomToAugusta()
+       // zoomToMaitland()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let vcs = AVSpeechSynthesisVoice.speechVoices()
+       // var newVoice = AVSpeechSynthesisVoice().quality.rawValue
+        
+        let myVoice = AVSpeechSynthesisVoice(identifier: daniel)
+        let phrase = "Hello friend! How are you doing today? My name is Daniel. Today we go over how to get turn by turn directions with MapKit, Core Location, and AVFoundation using Swift 4. This is a step by step tutorial that will explain what is happening in each line of code so you can grasp the full concept of how to get the user’s current location and allow them to search for a point of interest and get directions to that location."
+        let speechUtterance = AVSpeechUtterance(string: phrase)
+        //myVoice!.quality = .enhanced
+        speechUtterance.voice = myVoice
+       // speechUtterance.rate = 0.5
+        speechUtterance.pitchMultiplier = 2.0
+        
+        
+  //      speechSynthesizer.speak(speechUtterance)
+
+        for voyce in vcs {
+//            speechUtterance.postUtteranceDelay = 3.0
+//            speechSynthesizer.speak(speechUtterance)
+//            //            let voice = AVSpeechUtterance().voice
+//            //            let talker = AVSpeechSynthesisVoice()
+            print(voyce.name)
+            print(voyce.identifier)
+            print(voyce.language)
+//            //Daniel  Karen Melina
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -270,13 +321,13 @@ class ViewController: UIViewController {
     
 // STEP by STEP DIRECTIONS WITH GEOFENCES TO TELL WHEN TO MOVE
     func getDirections(to destination: MKMapItem) {
-//        guard let curntCoord = currentCoord else { return }
-//        let sourcePlacemark = MKPlacemark(coordinate: curntCoord)
-//        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+        guard let curntCoord = currentCoord else { return }
+        let sourcePlacemark = MKPlacemark(coordinate: curntCoord)
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
         
         let directionsRequest = MKDirectionsRequest()
-        directionsRequest.source = MKMapItem.forCurrentLocation()
-        //directionsRequest.source = sourceMapItem
+        //directionsRequest.source = MKMapItem.forCurrentLocation()
+        directionsRequest.source = sourceMapItem
         directionsRequest.destination = destination
         directionsRequest.transportType = .automobile
         
@@ -297,7 +348,7 @@ class ViewController: UIViewController {
                 let step = primaryRoute.steps[i]
                 print(step.instructions)
                 print(step.distance)
-                let region = CLCircularRegion(center: step.polyline.coordinate, radius: 50, identifier: "\(i)")
+                let region = CLCircularRegion(center: step.polyline.coordinate, radius: 35, identifier: "\(i)")
                 self.locationManager.startMonitoring(for: region)
                 let circle = MKCircle(center: region.center, radius: region.radius)
                 self.myMapView.add(circle)
@@ -306,6 +357,11 @@ class ViewController: UIViewController {
             let initialMessage = "In \(self.steps[0].distance) meters, \(self.steps[0].instructions). Then in \(self.steps[1].distance) meters, \(self.steps[1].instructions)."
             self.directionsLabel.text = initialMessage
             let speechUtterance = AVSpeechUtterance(string: initialMessage)
+            let voice = AVSpeechUtterance().voice
+            
+            let talker = AVSpeechSynthesisVoice()
+           // let talkers = speechVoices()
+            
             self.speechSynthesizer.speak(speechUtterance)
             self.stepCounter += 1
         }
@@ -380,6 +436,16 @@ class ViewController: UIViewController {
     
 }
 
+extension ViewController: AVSpeechSynthesizerDelegate {
+    
+    class func speechVoices() {
+        
+    }
+//    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+//        
+//    }
+}
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
 // USUAL TABLEVIEW STUFF...
@@ -419,12 +485,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ViewController: CLLocationManagerDelegate {
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        manager.stopUpdatingLocation()
-//        guard let currentLocation = locations.first else { return }
-//        currentCoord = currentLocation.coordinate
-//        //myMapView.userTrackingMode = .followWithHeading
-//    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+        guard let currentLocation = locations.first else { return }
+        currentCoord = currentLocation.coordinate
+        //myMapView.userTrackingMode = .followWithHeading
+    }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         stepCounter += 1
@@ -534,7 +600,7 @@ extension ViewController: UISearchBarDelegate {
 }
 
 // HARD CODED BEACON/ANNOTS DICTIONARY...
-    let annotArry: [[String: AnyObject]] = [
+    let annotArry3: [[String: AnyObject]] = [
         ["title": "Craft & Vine" as AnyObject,
          "imageName": "craftVine.jpg" as AnyObject,
          "beaconName": "sandwich-2.png" as AnyObject,
@@ -593,7 +659,7 @@ extension ViewController: UISearchBarDelegate {
          "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/stillwater-1.jpg" as AnyObject]
 ]
 
-let annotArry2: [[String: AnyObject]] = [
+let annotArry: [[String: AnyObject]] = [
     ["title": "Craft & Vine" as AnyObject,
      "imageName": "craftVine.jpg" as AnyObject,
      "beaconName": "sandwich-2.png" as AnyObject,
