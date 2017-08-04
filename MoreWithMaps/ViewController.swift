@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import AVFoundation
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var myMapView: MKMapView!
     let locationManager = CLLocationManager()
@@ -215,7 +215,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
 //FIRST SUCCESFUL DIRECTIONS FUNCTION WITH OVERLAY ON MAP AND STEPS LOGGED TO CONSOLE...
     func firstDayDirections() {
         let request = MKDirectionsRequest()
-        // request.setSource(MKMapItem.forCurrentLocation())
         request.source = MKMapItem.forCurrentLocation()
         request.destination = destinationMapItem
         request.requestsAlternateRoutes = false
@@ -252,49 +251,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
         //firstDayDirections()
         secondDayDirections()
         
-      /*
-        let request = MKDirectionsRequest()
-       // request.setSource(MKMapItem.forCurrentLocation())
-        request.source = MKMapItem.forCurrentLocation()
-        request.destination = destinationMapItem
-        request.requestsAlternateRoutes = false
-        
-        let directions = MKDirections(request: request)
-        directions.calculate { (response: MKDirectionsResponse!, error: Error!) in
-            if error != nil {
-                print("got an errror: \(error.localizedDescription)")
-            } else {
-                // NO ERROR, SO HERE ARE YOUR DIRECTIONS:.....
-                
-                // MAYBE DONT REMOVE OVERLAYS HERE?? SOMEHOW RETAIN THE ONE YOU'RE GOING TO?
-                let overlays = self.myMapView.overlays
-                self.myMapView.removeOverlays(overlays)
-                
-                
-//                self.getDirections(to: firstItem)
-
-                
-                for route in response.routes {
-                    self.myMapView.add(route.polyline, level: .aboveRoads)
-                    var stepNumber = 0
-                    for next in route.steps {
-                        print("Step \(stepNumber): \(next.instructions)")
-                        stepNumber = stepNumber + 1
-                    }
-                }
-            }
-        }
-        */
     }
     
 // STEP by STEP DIRECTIONS WITH GEOFENCES TO TELL WHEN TO MOVE
     func getDirections(to destination: MKMapItem) {
-        guard let curntCoord = currentCoord else { return }
-        let sourcePlacemark = MKPlacemark(coordinate: curntCoord)
-        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+//        guard let curntCoord = currentCoord else { return }
+//        let sourcePlacemark = MKPlacemark(coordinate: curntCoord)
+//        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
         
         let directionsRequest = MKDirectionsRequest()
-        directionsRequest.source = sourceMapItem
+        directionsRequest.source = MKMapItem.forCurrentLocation()
+        //directionsRequest.source = sourceMapItem
         directionsRequest.destination = destination
         directionsRequest.transportType = .automobile
         
@@ -320,7 +287,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 let circle = MKCircle(center: region.center, radius: region.radius)
                 self.myMapView.add(circle)
             }
-//SPEECH FOR DIRECTIONS!!!...
+            //SPEECH FOR DIRECTIONS!!!...
             let initialMessage = "In \(self.steps[0].distance) meters, \(self.steps[0].instructions). Then in \(self.steps[1].distance) meters, \(self.steps[1].instructions)."
             self.directionsLabel.text = initialMessage
             let speechUtterance = AVSpeechUtterance(string: initialMessage)
@@ -363,68 +330,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         setupInitialPoints()
     }
     
-//DEFINING APPEARANCE FOR THE ANNOTATIONS...THESE ARE DELEGATE METHODS
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        if !(annotation is MKPointAnnotation) {
-            print("NOT REGISTERED AS MKPOINTANNOTATION")
-            return nil
-        }
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "customAnnot")
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "customAnnot")
-            annotationView!.canShowCallout = true
-        } else {
-            annotationView!.annotation = annotation
-        }
-        
-        //let cpa = annotation as! CustomPointAnnotation
-        let cpa = annotation as! CustomAnnotat
-        if let beaconName = cpa.beaconName {
-            annotationView!.image = UIImage(named: beaconName)
-        }
-        
-        //Added to git
-        // annotationView!.image = UIImage(named: cpa.imageName)
-        
-        return annotationView
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-       // print("I selected a placemark")
-        guard let coord = view.annotation?.coordinate else { return }
-        print("placemark is: \(coord.latitude) \(coord.longitude)")
-        // create a placemark and a map item
-        let placeMark = MKPlacemark(coordinate: coord)
-        // This is needed when we need to get directions
-        destinationMapItem = MKMapItem(placemark: placeMark)
-    }
-    
-// DRAWING THE DIRECTIONS ON MAP.....
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        // PROBABLY BOTH THESE WORK??
-        
-        let routeLine = MKPolylineRenderer(overlay: overlay)
-        routeLine.strokeColor = UIColor.purple
-        routeLine.lineWidth = 6.0
-
-        if overlay is MKPolyline {
-            let renderer = MKPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = .blue
-            renderer.lineWidth = 5.0
-            return renderer
-        } 
-
-        if overlay is MKCircle {
-            let renderer = MKCircleRenderer(overlay: overlay)
-            renderer.strokeColor = .red
-            renderer.fillColor = .red
-            renderer.alpha = 0.5
-            return renderer
-        } else {
-        return routeLine
-        }
-    }
     
 //FIRST INITIAL CONFIG FOR THE MAP AND ZOOM AND CAMERA APPEARANCE
     func zoomToAugusta() {
@@ -483,12 +388,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.stopUpdatingLocation()
-        guard let currentLocation = locations.first else { return }
-        currentCoord = currentLocation.coordinate
-        myMapView.userTrackingMode = .followWithHeading
-    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        manager.stopUpdatingLocation()
+//        guard let currentLocation = locations.first else { return }
+//        currentCoord = currentLocation.coordinate
+//        //myMapView.userTrackingMode = .followWithHeading
+//    }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         stepCounter += 1
@@ -508,6 +413,72 @@ extension ViewController: CLLocationManagerDelegate {
         }
     }
     
+}
+
+extension ViewController: MKMapViewDelegate {
+    //DEFINING APPEARANCE FOR THE ANNOTATIONS...THESE ARE DELEGATE METHODS
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if !(annotation is MKPointAnnotation) {
+            print("NOT REGISTERED AS MKPOINTANNOTATION")
+            return nil
+        }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "customAnnot")
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "customAnnot")
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        //let cpa = annotation as! CustomPointAnnotation
+        let cpa = annotation as! CustomAnnotat
+        if let beaconName = cpa.beaconName {
+            annotationView!.image = UIImage(named: beaconName)
+        }
+        
+        //Added to git
+        // annotationView!.image = UIImage(named: cpa.imageName)
+        
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // print("I selected a placemark")
+        guard let coord = view.annotation?.coordinate else { return }
+        print("placemark is: \(coord.latitude) \(coord.longitude)")
+        // create a placemark and a map item
+        let placeMark = MKPlacemark(coordinate: coord)
+        // This is needed when we need to get directions
+        destinationMapItem = MKMapItem(placemark: placeMark)
+    }
+    
+    // DRAWING THE DIRECTIONS ON MAP.....
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        // PROBABLY BOTH THESE WORK??
+        
+        let routeLine = MKPolylineRenderer(overlay: overlay)
+        routeLine.strokeColor = UIColor.purple
+        routeLine.lineWidth = 6.0
+        
+        if overlay is MKPolyline {
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = .blue
+            renderer.lineWidth = 5.0
+            return renderer
+        }
+        
+        if overlay is MKCircle {
+            let renderer = MKCircleRenderer(overlay: overlay)
+            renderer.strokeColor = .red
+            renderer.fillColor = .red
+            renderer.alpha = 0.5
+            return renderer
+        } else {
+            return routeLine
+        }
+    }
+
 }
 
 extension ViewController: UISearchBarDelegate {
