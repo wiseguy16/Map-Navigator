@@ -104,16 +104,16 @@ class ViewController: UIViewController {
         let vcs = AVSpeechSynthesisVoice.speechVoices()
        // var newVoice = AVSpeechSynthesisVoice().quality.rawValue
         
-        let myVoice = AVSpeechSynthesisVoice(identifier: daniel)
+        let myVoice = AVSpeechSynthesisVoice(identifier: karen)
         let phrase = "Hello friend! How are you doing today? My name is Daniel. Today we go over how to get turn by turn directions with MapKit, Core Location, and AVFoundation using Swift 4. This is a step by step tutorial that will explain what is happening in each line of code so you can grasp the full concept of how to get the user’s current location and allow them to search for a point of interest and get directions to that location."
         let speechUtterance = AVSpeechUtterance(string: phrase)
         //myVoice!.quality = .enhanced
         speechUtterance.voice = myVoice
        // speechUtterance.rate = 0.5
-        speechUtterance.pitchMultiplier = 2.0
+        speechUtterance.pitchMultiplier = 1.0
         
         
-  //      speechSynthesizer.speak(speechUtterance)
+        speechSynthesizer.speak(speechUtterance)
 
         for voyce in vcs {
 //            speechUtterance.postUtteranceDelay = 3.0
