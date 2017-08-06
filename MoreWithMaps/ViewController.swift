@@ -95,8 +95,8 @@ class ViewController: UIViewController {
         //myMapView.zoomToUserLocation()
         
 // LOAD THE ANNOTATIONS!!!!!!
-        zoomToAugusta()
-       // zoomToMaitland()
+       // zoomToAugusta()
+        zoomToMaitland()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         let vcs = AVSpeechSynthesisVoice.speechVoices()
        // var newVoice = AVSpeechSynthesisVoice().quality.rawValue
         
-        let myVoice = AVSpeechSynthesisVoice(identifier: karen)
+        let myVoice = AVSpeechSynthesisVoice(identifier: daniel)
         let phrase = "Hello friend! How are you doing today? My name is Daniel. Today we go over how to get turn by turn directions with MapKit, Core Location, and AVFoundation using Swift 4. This is a step by step tutorial that will explain what is happening in each line of code so you can grasp the full concept of how to get the user’s current location and allow them to search for a point of interest and get directions to that location."
         let speechUtterance = AVSpeechUtterance(string: phrase)
         //myVoice!.quality = .enhanced
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
         speechUtterance.pitchMultiplier = 1.0
         
         
-        speechSynthesizer.speak(speechUtterance)
+      //  speechSynthesizer.speak(speechUtterance)
 
         for voyce in vcs {
 //            speechUtterance.postUtteranceDelay = 3.0
@@ -339,27 +339,29 @@ class ViewController: UIViewController {
             guard let response = response else { return }
             guard let primaryRoute = response.routes.first else { return }
             
-            self.myMapView.add(primaryRoute.polyline)
+            self.myMapView.add(primaryRoute.polyline, level: .aboveRoads)
             
             self.locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
             
             self.steps = primaryRoute.steps
             for i in 0..<primaryRoute.steps.count {
                 let step = primaryRoute.steps[i]
-                print(step.instructions)
-                print(step.distance)
+                print("This is step \(i) :\(step.instructions)")
+                print("This is how may meters: \(step.distance)")
                 let region = CLCircularRegion(center: step.polyline.coordinate, radius: 35, identifier: "\(i)")
                 self.locationManager.startMonitoring(for: region)
                 let circle = MKCircle(center: region.center, radius: region.radius)
                 self.myMapView.add(circle)
             }
+            
+            
             //SPEECH FOR DIRECTIONS!!!...
             let initialMessage = "In \(self.steps[0].distance) meters, \(self.steps[0].instructions). Then in \(self.steps[1].distance) meters, \(self.steps[1].instructions)."
             self.directionsLabel.text = initialMessage
             let speechUtterance = AVSpeechUtterance(string: initialMessage)
-            let voice = AVSpeechUtterance().voice
+           // let voice = AVSpeechUtterance().voice
             
-            let talker = AVSpeechSynthesisVoice()
+           // let talker = AVSpeechSynthesisVoice()
            // let talkers = speechVoices()
             
             self.speechSynthesizer.speak(speechUtterance)
@@ -493,6 +495,13 @@ extension ViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            if region.identifier == "0" {
+                
+            }
+            handleEvent(forRegion: region)
+        }
+
         stepCounter += 1
         if stepCounter < steps.count {
             let currentStep = steps[stepCounter]
@@ -508,6 +517,15 @@ extension ViewController: CLLocationManagerDelegate {
             stepCounter = 0
             locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
         }
+    }
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            handleEvent(forRegion: region)
+        }
+
+    }
+    func handleEvent(forRegion region: CLRegion!) {
+        
     }
     
 }
@@ -600,7 +618,7 @@ extension ViewController: UISearchBarDelegate {
 }
 
 // HARD CODED BEACON/ANNOTS DICTIONARY...
-    let annotArry3: [[String: AnyObject]] = [
+    let annotArry: [[String: AnyObject]] = [
         ["title": "Craft & Vine" as AnyObject,
          "imageName": "craftVine.jpg" as AnyObject,
          "beaconName": "sandwich-2.png" as AnyObject,
@@ -659,7 +677,7 @@ extension ViewController: UISearchBarDelegate {
          "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/stillwater-1.jpg" as AnyObject]
 ]
 
-let annotArry: [[String: AnyObject]] = [
+let annotArry2: [[String: AnyObject]] = [
     ["title": "Craft & Vine" as AnyObject,
      "imageName": "craftVine.jpg" as AnyObject,
      "beaconName": "sandwich-2.png" as AnyObject,
