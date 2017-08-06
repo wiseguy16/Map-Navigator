@@ -179,17 +179,6 @@ class ViewController: UIViewController {
         isTableHidden = !isTableHidden
     }
     
-    func hideTable() {
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.3) {
-            self.tableViewHeight.constant = 0.0
-            //sender.setImage(self.downArrow!, for: .normal)
-            // sender.setTitle("Show", for: .normal)
-            self.view.layoutIfNeeded()
-        }
-        isTableHidden = !isTableHidden
-
-    }
     
     
     @IBAction func filterTapped(_ sender: UIButton) {
@@ -198,18 +187,6 @@ class ViewController: UIViewController {
         displaySelectedPoints(with: checker)
     }
     
-// HELPER FUNCTIONS FOR ADDING/ REMOVING COMPANIES
-    func filterAnnotRemove(with category: String, annots: [CustomAnnotat]) {
-        custAnnots = custAnnots.filter { $0.category != category }
-        augTableView.reloadData()
-        myMapView.removeAnnotations(annots)
-    }
-    
-    func filterAnnotAdd(with category: String, annots: [CustomAnnotat]) {
-        custAnnots.append(contentsOf: annots)
-        augTableView.reloadData()
-        myMapView.addAnnotations(annots)
-    }
     
     func setupInitialPoints() {
         for i in 1...4 {
