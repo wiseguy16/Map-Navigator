@@ -341,7 +341,7 @@ class ViewController: UIViewController {
             
             self.myMapView.add(primaryRoute.polyline, level: .aboveRoads)
             
-            self.locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
+           // self.locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
             
             self.steps = primaryRoute.steps
             for i in 0..<primaryRoute.steps.count {
@@ -440,9 +440,6 @@ class ViewController: UIViewController {
 
 extension ViewController: AVSpeechSynthesizerDelegate {
     
-    class func speechVoices() {
-        
-    }
 //    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
 //        
 //    }
@@ -497,9 +494,9 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
             if region.identifier == "0" {
-                
+                handleEvent(forRegion: "Entered")
             }
-            handleEvent(forRegion: region)
+            
         }
 
         stepCounter += 1
@@ -520,12 +517,15 @@ extension ViewController: CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if region is CLCircularRegion {
-            handleEvent(forRegion: region)
+            handleEvent(forRegion: "Exited")
+            locationManager.stopMonitoring(for: region)
         }
 
     }
-    func handleEvent(forRegion region: CLRegion!) {
-        
+    func handleEvent(forRegion regionPhrase: String) {
+        let speechUtterance = AVSpeechUtterance(string: "You have \(regionPhrase) the region")
+        speechSynthesizer.speak(speechUtterance)
+
     }
     
 }
