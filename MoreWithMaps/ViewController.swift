@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     let upArrow = UIImage(named: "dropUpIcon")
     let downArrow = UIImage(named: "dropDownIcon")
     
-    
     // Karen
     let karen = "com.apple.ttsbundle.Karen-compact"
     // en-AU
@@ -77,7 +76,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 // LOCATION MANAGER SETUP...
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.startUpdatingLocation()
         
@@ -120,9 +120,9 @@ class ViewController: UIViewController {
 //            speechSynthesizer.speak(speechUtterance)
 //            //            let voice = AVSpeechUtterance().voice
 //            //            let talker = AVSpeechSynthesisVoice()
-            print(voyce.name)
-            print(voyce.identifier)
-            print(voyce.language)
+//            print(voyce.name)
+//            print(voyce.identifier)
+//            print(voyce.language)
 //            //Daniel  Karen Melina
         }
 
@@ -278,6 +278,7 @@ class ViewController: UIViewController {
 
 // ACTUAL BUTTON FOR STARTING TURN BY TURN DIRECTIONS...
     @IBAction func giveDirectionsTapped(_ sender: UIButton) {
+        showAlert(withTitle: "Alert!", message: "You Pressed Go Button")
         //firstDayDirections()
         //let region = CLCircularRegion(center: step.polyline.coordinate, radius: 50, identifier: "\(i)")
         //self.locationManager.startMonitoring(for: region)
@@ -285,7 +286,7 @@ class ViewController: UIViewController {
         for lineOrCircle in linesAndCircles {
             if lineOrCircle is MKCircle {
                 myMapView.remove(lineOrCircle)
-                locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
+               // locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
             }
             if lineOrCircle is MKPolyline {
                 myMapView.remove(lineOrCircle)
@@ -306,7 +307,10 @@ class ViewController: UIViewController {
         //directionsRequest.source = MKMapItem.forCurrentLocation()
         directionsRequest.source = sourceMapItem
         directionsRequest.destination = destination
-        directionsRequest.transportType = .automobile
+        //directionsRequest.transportType = .automobile
+        directionsRequest.transportType = .walking
+
+        directionsRequest.requestsAlternateRoutes = false
         
         let directions = MKDirections(request: directionsRequest)
         directions.calculate { (response, error) in
@@ -318,15 +322,17 @@ class ViewController: UIViewController {
             
             self.myMapView.add(primaryRoute.polyline, level: .aboveRoads)
             
-           // self.locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
+            self.locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
             
             self.steps = primaryRoute.steps
             for i in 0..<primaryRoute.steps.count {
                 let step = primaryRoute.steps[i]
                 print("This is step \(i) :\(step.instructions)")
                 print("This is how may meters: \(step.distance)")
-                let region = CLCircularRegion(center: step.polyline.coordinate, radius: 35, identifier: "\(i)")
+                let region = CLCircularRegion(center: step.polyline.coordinate, radius: 40, identifier: "\(i)")
                 self.locationManager.startMonitoring(for: region)
+                region.notifyOnEntry = true
+                
                 let circle = MKCircle(center: region.center, radius: region.radius)
                 self.myMapView.add(circle)
             }
@@ -343,6 +349,12 @@ class ViewController: UIViewController {
             
             self.speechSynthesizer.speak(speechUtterance)
             self.stepCounter += 1
+        }
+        for mntrRegion in locationManager.monitoredRegions {
+            print(mntrRegion.identifier)
+            print(mntrRegion.notifyOnEntry)
+            print(mntrRegion.notifyOnExit)
+            
         }
     }
     
@@ -398,10 +410,10 @@ class ViewController: UIViewController {
     }
     
     func zoomToMaitland() {
-        let coordinate = CLLocationCoordinate2DMake(28.632765, -81.434503)
+        let coordinate = CLLocationCoordinate2DMake(28.540765, -81.384503)
         
         // let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 4100, pitch: 0, heading: 23)
-        let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 5900, pitch: 0, heading: 0)
+        let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 7500, pitch: 0, heading: 0)
         
         UIView.animate(withDuration: 2.0, animations: {
             self.myMapView.setCamera(camera, animated: true)
@@ -462,19 +474,40 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.stopUpdatingLocation()
-        guard let currentLocation = locations.first else { return }
+        locationManager.stopUpdatingLocation()
+        myMapView.showsUserLocation = true
+        guard let currentLocation = locations.last else { return }
         currentCoord = currentLocation.coordinate
         //myMapView.userTrackingMode = .followWithHeading
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        showAlert(withTitle: "LocMngr Alert!", message: "You Entered a Region")
+
+        print("Entered CLCircular region \(region.identifier)")
+        
         if region is CLCircularRegion {
-            if region.identifier == "0" {
-                handleEvent(forRegion: "Entered")
-            }
-            
+            handleEvent(forRegion: "Entered \(region.identifier)")
+            locationManager.stopMonitoring(for: region)
         }
+
+//        if region is CLCircularRegion {
+//            if region.identifier == "0" {
+//                handleEvent(forRegion: "Entered \(region.identifier)")
+//            }
+//        }
+//        if region is CLCircularRegion {
+//            if region.identifier == "1" {
+//                handleEvent(forRegion: "Entered \(region.identifier)")
+//            }
+//        }
+//        if region is CLCircularRegion {
+//            if region.identifier == "2" {
+//                handleEvent(forRegion: "Entered \(region.identifier)")
+//            }
+//        }
+
+
 
         stepCounter += 1
         if stepCounter < steps.count {
@@ -493,8 +526,10 @@ extension ViewController: CLLocationManagerDelegate {
         }
     }
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        showAlert(withTitle: "LocMngr Alert!", message: "You Exited a Region")
+
         if region is CLCircularRegion {
-            handleEvent(forRegion: "Exited")
+            handleEvent(forRegion: "Exited \(region.identifier)")
             locationManager.stopMonitoring(for: region)
         }
 
@@ -648,8 +683,8 @@ extension ViewController: UISearchBarDelegate {
         ["title": "Stillwater Tap Room" as AnyObject,
          "imageName": "stillWater.jpg" as AnyObject,
          "beaconName": "treasure_chest.png" as AnyObject,
-         "locatCoordLat": 28.635627 as AnyObject,
-         "locatCoordLong": -81.427567 as AnyObject,
+         "locatCoordLat": 28.5455 as AnyObject,
+         "locatCoordLong": -81.3756 as AnyObject,
          "category": "Business" as AnyObject,
          "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/stillwater-1.jpg" as AnyObject]
 ]

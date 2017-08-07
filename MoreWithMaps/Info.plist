@@ -40,7 +40,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We need your location to show you cool things!</string>
 	<key>UIBackgroundModes</key>
 	<array>
