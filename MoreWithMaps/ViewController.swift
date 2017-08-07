@@ -512,7 +512,10 @@ extension ViewController: CLLocationManagerDelegate {
         stepCounter += 1
         if stepCounter < steps.count {
             let currentStep = steps[stepCounter]
-            let message = "In \(currentStep.distance) meters, \(currentStep.instructions)."
+            //let miles = Int(currentStep.distance * 0.0006214)
+            let miles = useMilesAndFeet(with: currentStep.distance)
+
+            let message = "In \(miles), \(currentStep.instructions)."
             directionsLabel.text = message
             let speechUtterance = AVSpeechUtterance(string: message)
             speechSynthesizer.speak(speechUtterance)

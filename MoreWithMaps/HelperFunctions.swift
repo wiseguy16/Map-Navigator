@@ -36,6 +36,19 @@ extension ViewController {
         augTableView.reloadData()
         myMapView.addAnnotations(annots)
     }
+    
+    func useMilesAndFeet(with distance: Double) -> String {
+        var output = ""
+       // output = String(format: "%.1f miles", myDouble)
+        let miles = (distance * 0.0006214)
+        if miles >= 0.25 {
+            output = String(format: "%.1f miles", miles)
+        } else {
+            let feet = (5280 * miles)
+            output = String(format: "%.0f feet", feet)
+        }
+        return output
+    }
 
 
     
