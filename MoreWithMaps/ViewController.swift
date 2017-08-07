@@ -278,7 +278,6 @@ class ViewController: UIViewController {
 
 // ACTUAL BUTTON FOR STARTING TURN BY TURN DIRECTIONS...
     @IBAction func giveDirectionsTapped(_ sender: UIButton) {
-        showAlert(withTitle: "Alert!", message: "You Pressed Go Button")
         //firstDayDirections()
         //let region = CLCircularRegion(center: step.polyline.coordinate, radius: 50, identifier: "\(i)")
         //self.locationManager.startMonitoring(for: region)
@@ -307,8 +306,8 @@ class ViewController: UIViewController {
         //directionsRequest.source = MKMapItem.forCurrentLocation()
         directionsRequest.source = sourceMapItem
         directionsRequest.destination = destination
-        //directionsRequest.transportType = .automobile
-        directionsRequest.transportType = .walking
+        directionsRequest.transportType = .automobile
+        //directionsRequest.transportType = .walking
 
         directionsRequest.requestsAlternateRoutes = false
         
@@ -488,7 +487,8 @@ extension ViewController: CLLocationManagerDelegate {
         
         if region is CLCircularRegion {
             handleEvent(forRegion: "Entered \(region.identifier)")
-            locationManager.stopMonitoring(for: region)
+           // myMapView.remove(region.identifier as! MKOverlay)
+           // locationManager.stopMonitoring(for: region)
         }
 
 //        if region is CLCircularRegion {
@@ -530,7 +530,7 @@ extension ViewController: CLLocationManagerDelegate {
 
         if region is CLCircularRegion {
             handleEvent(forRegion: "Exited \(region.identifier)")
-            locationManager.stopMonitoring(for: region)
+            //locationManager.stopMonitoring(for: region)
         }
 
     }
@@ -662,22 +662,22 @@ extension ViewController: UISearchBarDelegate {
         ["title": "The New Moon Cafe" as AnyObject,
          "imageName": "newMoon.jpg" as AnyObject,
          "beaconName": "sandwich-2.png" as AnyObject,
-         "locatCoordLat": 28.635477 as AnyObject,
-         "locatCoordLong": -81.432074 as AnyObject,
+         "locatCoordLat": 28.5704 as AnyObject,
+         "locatCoordLong": -81.3440 as AnyObject,
          "category": "Food" as AnyObject,
          "web": "http://newmoondowntown.homestead.com/files/QuickSiteImages/Menus_01.gif" as AnyObject],
         ["title": "Mellow Mushroom Pizza" as AnyObject,
          "imageName": "mellowMushroom.jpg" as AnyObject,
          "beaconName": "citysquare.png" as AnyObject,
-         "locatCoordLat": 28.635213 as AnyObject,
-         "locatCoordLong": -81.442073 as AnyObject,
+         "locatCoordLat": 28.5563 as AnyObject,
+         "locatCoordLong": -81.3545 as AnyObject,
          "category": "Historic" as AnyObject,
          "web": "http://2kdda41a533r27gnow20hp6whvn.wpengine.netdna-cdn.com/wp-content/uploads/2014/06/Mellow_Mushroom1-1-DT.jpg" as AnyObject],
         ["title": "The Pizza Joint" as AnyObject,
          "imageName": "pizzaJoint.jpg" as AnyObject,
          "beaconName": "lighthouse-2.png" as AnyObject,
-         "locatCoordLat": 28.634987 as AnyObject,
-         "locatCoordLong": -81.434219 as AnyObject,
+         "locatCoordLat": 28.5412 as AnyObject,
+         "locatCoordLong": -81.3853 as AnyObject,
          "category": "Utility" as AnyObject,
          "web": "http://www.myherocard.com/wp-content/uploads/2016/07/Slider-1-913x240.jpg" as AnyObject],
         ["title": "Stillwater Tap Room" as AnyObject,
