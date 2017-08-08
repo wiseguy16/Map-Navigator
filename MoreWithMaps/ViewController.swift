@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     
     let speechSynthesizer = AVSpeechSynthesizer()
-    let uniqueVoice = AVSpeechSynthesisVoice()
+    var uniqueVoice = AVSpeechSynthesisVoice()
     
     // Var for giving directions
     @IBOutlet weak var directionsGoButton: UIButton!
@@ -88,6 +88,7 @@ class ViewController: UIViewController {
         directionsGoButton.layer.masksToBounds = true
         
         speechSynthesizer.delegate = self
+        uniqueVoice = AVSpeechSynthesisVoice(identifier: daniel)!
         
 // HIDE THE TABLEVIEW INITIALLY
         hideTable()
@@ -336,15 +337,25 @@ class ViewController: UIViewController {
                 self.myMapView.add(circle)
             }
             
-            
+            var initialMessage = ""
             //SPEECH FOR DIRECTIONS!!!...
             let dist1 = self.useMilesAndFeet(with: self.steps[0].distance)
             let dist2 = self.useMilesAndFeet(with: self.steps[1].distance)
-            let initialMessage = "In \(dist1), \(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
-            self.directionsLabel.text = initialMessage
-            let speechUtterance = AVSpeechUtterance(string: initialMessage)
-           // let voice = AVSpeechUtterance().voice
+            let instr1 = (self.steps[0].instructions).stringByDecodingXMLEntities()
+            let instr2 = (self.steps[1].instructions).stringByDecodingXMLEntities()
+            if self.steps[0].distance < 0.01 {
+                 initialMessage = "\(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
+               // initialMessage = "\(instr1). Then in \(dist2), \(instr2)."
+
+            } else {
+                 initialMessage = "In \(dist1), \(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
+              //  initialMessage = "In \(dist1), \(instr1). Then in \(dist2), \(instr2)."
+            }
             
+            self.directionsLabel.text = initialMessage
+
+            let speechUtterance = AVSpeechUtterance(string: "Starting route. " + initialMessage)
+            speechUtterance.voice = self.uniqueVoice
            // let talker = AVSpeechSynthesisVoice()
            // let talkers = speechVoices()
             
@@ -520,11 +531,13 @@ extension ViewController: CLLocationManagerDelegate {
             let message = "In \(miles), \(currentStep.instructions)."
             directionsLabel.text = message
             let speechUtterance = AVSpeechUtterance(string: message)
+            speechUtterance.voice = self.uniqueVoice
             speechSynthesizer.speak(speechUtterance)
         } else {
             let message = "Arrived at destination."
             directionsLabel.text = message
             let speechUtterance = AVSpeechUtterance(string: message)
+            speechUtterance.voice = self.uniqueVoice
             speechSynthesizer.speak(speechUtterance)
             stepCounter = 0
             locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
@@ -541,7 +554,7 @@ extension ViewController: CLLocationManagerDelegate {
     }
     func handleEvent(forRegion regionPhrase: String) {
         let speechUtterance = AVSpeechUtterance(string: "You have \(regionPhrase) the region")
-        speechSynthesizer.speak(speechUtterance)
+        //speechSynthesizer.speak(speechUtterance)
 
     }
     
