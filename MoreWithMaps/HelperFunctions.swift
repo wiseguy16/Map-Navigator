@@ -41,14 +41,37 @@ extension ViewController {
         var output = ""
        // output = String(format: "%.1f miles", myDouble)
         let miles = (distance * 0.0006214)
-        if miles >= 0.25 {
+        if miles >= 0.2843 {
             output = String(format: "%.1f miles", miles)
         } else {
             let feet = (5280 * miles)
-            output = String(format: "%.0f feet", feet)
+            if feet > 100.0 {
+                var newFeet = feet
+                newFeet = (newFeet / 100) //* 100
+                var tempFeet = Int(newFeet)
+                tempFeet = tempFeet * 100
+                newFeet = Double(tempFeet)
+                output = String(format: "%.0f feet", newFeet)
+            } else {
+                output = String(format: "%.0f feet", feet)
+            }
         }
         return output
     }
+    /*
+     This is step 0 :Proceed to Delaney Ave
+     This is how may meters: 0.0
+     This is step 1 :Turn left onto E Gore St
+     This is how may meters: 144.0
+     This is step 2 :Turn right onto S Orange Ave
+     This is how may meters: 163.0
+     This is step 3 :Continue onto S Rosalind Ave
+     This is how may meters: 271.0
+     This is step 4 :Turn right onto E Robinson St
+     This is how may meters: 1378.0
+     This is step 5 :The destination is on your right
+     This is how may meters: 29.0
+     */
 
 
     

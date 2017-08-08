@@ -338,7 +338,9 @@ class ViewController: UIViewController {
             
             
             //SPEECH FOR DIRECTIONS!!!...
-            let initialMessage = "In \(self.steps[0].distance) meters, \(self.steps[0].instructions). Then in \(self.steps[1].distance) meters, \(self.steps[1].instructions)."
+            let dist1 = self.useMilesAndFeet(with: self.steps[0].distance)
+            let dist2 = self.useMilesAndFeet(with: self.steps[1].distance)
+            let initialMessage = "In \(dist1), \(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
             self.directionsLabel.text = initialMessage
             let speechUtterance = AVSpeechUtterance(string: initialMessage)
            // let voice = AVSpeechUtterance().voice
