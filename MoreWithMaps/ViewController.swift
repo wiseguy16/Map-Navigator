@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     //Firebase stuff...
     var ref: DatabaseReference?
+    var handle: DatabaseHandle?
+    var myList: [String] = []
     
     @IBOutlet weak var myMapView: MKMapView!
     @IBOutlet weak var myTextField: UITextField!
@@ -82,6 +84,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+        handle = ref?.child("list").observe(.childAdded, with: { (snapshot) in
+            if let item = snapshot.value as? String {
+                self.myList.append(item)
+                for listItem in self.myList {
+                    print(listItem)
+                }
+
+            }
+        })
+
 // LOCATION MANAGER SETUP...
         locationManager.delegate = self
         //locationManager.requestWhenInUseAuthorization()
@@ -142,7 +155,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func uploadTapped(_ sender: UIButton) {
-        ref = Database.database().reference()
         if myTextField.text != "" {
             ref?.child("list").childByAutoId().setValue(myTextField.text)
             myTextField.text = ""
