@@ -9,6 +9,47 @@
 import Foundation
 import UIKit
 
+let mappingsDict: [String: String] = [
+    "E": "east" ,
+    "N": "north" ,
+    "NE": "northeast" ,
+    "NW": "northwest" ,
+    "S": "south" ,
+    "SE": "southeast" ,
+    "SW": "southwest" ,
+    "W": "west",
+    "Aly" : "alley",
+    "Ave": "avenue",
+    "Blvd": "boulevard",
+    "Br": "bridge",
+    "Byp": "bypass",
+    "Cir": "circle",
+    "Ct": "court",
+    "Cv": "cove",
+    "Cres": "crescent",
+    "Dr": "drive",
+    "Expy": "expressway",
+    "Fwy": "freeway",
+    "Ftwy": "footway",
+    "Hwy": "highway" ,
+    "Ln": "lane" ,
+    "Mwy": "motorway" ,
+    "Pky": "parkway" ,
+    "Plz": "plaza" ,
+    "Pk": "pike" ,
+    "Pt": "point" ,
+    "Pl": "place",
+    "Rd": "road" ,
+    "Sq": "square" ,
+    "St": "street" ,
+    "Ter": "terrace" ,
+    "Tpk": "turnpike" ,
+    "Wk": "walk" ,
+    "Wky": "walkway"
+    
+]
+
+
 let Abbreviations = [
     "apartments": "Apts",
     "center": "Ctr",

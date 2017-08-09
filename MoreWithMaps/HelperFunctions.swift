@@ -58,6 +58,23 @@ extension ViewController {
         }
         return output
     }
+    
+    
+    func readableStrings(with phrase: String) -> String {
+        var mutablePhrase = phrase
+        let wordsArray = mutablePhrase.components(separatedBy: " ")
+        mutablePhrase = ""
+        for word in wordsArray {
+            if let val = mappingsDict[word] {
+                mutablePhrase = mutablePhrase + " " + val
+                // now val is not nil and the Optional has been unwrapped, so use it
+            } else {
+                mutablePhrase = mutablePhrase + " " + word
+            }
+        }
+        return mutablePhrase
+    }
+
     /*
      This is step 0 :Proceed to Delaney Ave
      This is how may meters: 0.0

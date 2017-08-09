@@ -337,24 +337,25 @@ class ViewController: UIViewController {
                 self.myMapView.add(circle)
             }
             
-            var initialMessage = ""
+            var speakableMessage = ""
+            var printableMessage = ""
             //SPEECH FOR DIRECTIONS!!!...
             let dist1 = self.useMilesAndFeet(with: self.steps[0].distance)
             let dist2 = self.useMilesAndFeet(with: self.steps[1].distance)
-            let instr1 = (self.steps[0].instructions).stringByDecodingXMLEntities()
-            let instr2 = (self.steps[1].instructions).stringByDecodingXMLEntities()
-            if self.steps[0].distance < 0.01 {
-                 initialMessage = "\(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
-               // initialMessage = "\(instr1). Then in \(dist2), \(instr2)."
+            let instr1 = self.readableStrings(with: self.steps[0].instructions)
+            let instr2 = self.readableStrings(with: self.steps[1].instructions)
+                      if self.steps[0].distance < 0.01 {
+                 printableMessage = "\(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
+                speakableMessage = "\(instr1). Then in \(dist2), \(instr2)."
 
             } else {
-                 initialMessage = "In \(dist1), \(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
-              //  initialMessage = "In \(dist1), \(instr1). Then in \(dist2), \(instr2)."
+                 printableMessage = "In \(dist1), \(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
+                speakableMessage = "In \(dist1), \(instr1). Then in \(dist2), \(instr2)."
             }
             
-            self.directionsLabel.text = initialMessage
+            self.directionsLabel.text = printableMessage
 
-            let speechUtterance = AVSpeechUtterance(string: "Starting route. " + initialMessage)
+            let speechUtterance = AVSpeechUtterance(string: "Starting route. " + speakableMessage)
             speechUtterance.voice = self.uniqueVoice
            // let talker = AVSpeechSynthesisVoice()
            // let talkers = speechVoices()
@@ -369,6 +370,7 @@ class ViewController: UIViewController {
             
         }
     }
+    
     
 
 // INITIALIZING ANNOTS FROM HARD CODED DICTIONARY...
@@ -492,8 +494,10 @@ extension ViewController: CLLocationManagerDelegate {
             //let miles = Int(currentStep.distance * 0.0006214)
             let miles = useMilesAndFeet(with: currentStep.distance)
 
-            let message = "In \(miles), \(currentStep.instructions)."
-            directionsLabel.text = message
+            let printableMessage = "In \(miles), \(currentStep.instructions)."
+            let readableMessage = readableStrings(with: currentStep.instructions)
+            let message = "In \(miles), \(readableMessage)"
+            directionsLabel.text = printableMessage
             let speechUtterance = AVSpeechUtterance(string: message)
             speechUtterance.voice = self.uniqueVoice
             speechSynthesizer.speak(speechUtterance)
