@@ -10,10 +10,18 @@ import UIKit
 import MapKit
 import CoreLocation
 import AVFoundation
+import FirebaseDatabase
+
 
 class ViewController: UIViewController {
     
+    //Firebase stuff...
+    var ref: DatabaseReference?
+    
     @IBOutlet weak var myMapView: MKMapView!
+    @IBOutlet weak var myTextField: UITextField!
+    
+    
     let locationManager = CLLocationManager()
     var currentCoord: CLLocationCoordinate2D?
     var steps = [MKRouteStep]()
@@ -132,6 +140,15 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func uploadTapped(_ sender: UIButton) {
+        ref = Database.database().reference()
+        if myTextField.text != "" {
+            ref?.child("list").childByAutoId().setValue(myTextField.text)
+            myTextField.text = ""
+        }
+    }
+    
     
 //MODAL PRESENTATION FOR THE SPONSORED COMPANY...
     @IBAction func moreTapped(_ sender: UIButton) {

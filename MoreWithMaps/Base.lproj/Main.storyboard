@@ -38,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Q9-Jc-0gT" id="kFl-hZ-jam">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="s79-vG-JMf">
@@ -185,14 +185,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aBE-rl-dtM">
+                                <rect key="frame" x="8" y="119" width="359" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3s-WF-DIu">
+                                <rect key="frame" x="145" y="169" width="85" height="30"/>
+                                <state key="normal" title="Data Upload"/>
+                                <connections>
+                                    <action selector="uploadTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b04-2H-gdo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aBE-rl-dtM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="8ZR-ac-uSL"/>
                             <constraint firstItem="Vta-0N-qFo" firstAttribute="centerY" secondItem="1Mr-h0-gV2" secondAttribute="centerY" id="9eX-oc-jv7"/>
                             <constraint firstItem="1Mr-h0-gV2" firstAttribute="leading" secondItem="TIk-3q-QkC" secondAttribute="trailing" constant="15" id="9py-sz-YU1"/>
                             <constraint firstItem="Vta-0N-qFo" firstAttribute="leading" secondItem="1Mr-h0-gV2" secondAttribute="trailing" constant="15" id="AdG-Ea-7On"/>
+                            <constraint firstItem="aBE-rl-dtM" firstAttribute="top" secondItem="kc8-Mr-RM1" secondAttribute="bottom" constant="26.5" id="C5g-Mh-vai"/>
                             <constraint firstItem="X64-84-lVY" firstAttribute="leading" secondItem="heP-9F-Pfe" secondAttribute="trailing" constant="15" id="DyW-Ga-SHh"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="1Mr-h0-gV2" secondAttribute="bottom" constant="8" id="Dyo-8Z-oPd"/>
+                            <constraint firstItem="m3s-WF-DIu" firstAttribute="top" secondItem="aBE-rl-dtM" secondAttribute="bottom" constant="20" id="EAE-mH-45L"/>
                             <constraint firstItem="zkI-ZQ-Imw" firstAttribute="top" secondItem="VN2-ck-qZL" secondAttribute="bottom" constant="8" id="Efh-Sg-uiM"/>
                             <constraint firstItem="yn2-TE-U8e" firstAttribute="centerY" secondItem="Vta-0N-qFo" secondAttribute="centerY" id="I7Y-Dv-2ak"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="X64-84-lVY" secondAttribute="bottom" constant="8" id="IFm-dO-YHd"/>
@@ -205,8 +221,10 @@
                             <constraint firstItem="vP8-uk-Mc2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="U7V-lD-De4"/>
                             <constraint firstAttribute="trailing" secondItem="vP8-uk-Mc2" secondAttribute="trailing" id="VKy-5D-t9I"/>
                             <constraint firstItem="kc8-Mr-RM1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Ywq-EK-z9f"/>
+                            <constraint firstItem="m3s-WF-DIu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bRE-BG-Yvh"/>
                             <constraint firstAttribute="trailing" secondItem="VN2-ck-qZL" secondAttribute="trailing" constant="12" id="ca1-Ua-EfZ"/>
                             <constraint firstItem="zkI-ZQ-Imw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="cwS-CW-eQr"/>
+                            <constraint firstAttribute="trailing" secondItem="aBE-rl-dtM" secondAttribute="trailing" constant="8" id="dQo-2L-kri"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="heP-9F-Pfe" secondAttribute="bottom" constant="8" id="enj-Ox-d8h"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="zkI-ZQ-Imw" secondAttribute="bottom" constant="2" id="hNY-15-SxR"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="TIk-3q-QkC" secondAttribute="bottom" constant="8" id="hQN-PC-nrw"/>
@@ -231,6 +249,7 @@
                         <outlet property="directionsLabel" destination="kc8-Mr-RM1" id="VU7-w9-VwF"/>
                         <outlet property="moveTableViewConstraint" destination="T2g-gq-cVX" id="JRv-5T-T1D"/>
                         <outlet property="myMapView" destination="vP8-uk-Mc2" id="upa-ux-Tz4"/>
+                        <outlet property="myTextField" destination="aBE-rl-dtM" id="LCC-n9-oUI"/>
                         <outlet property="tableViewHeight" destination="t6h-fI-Edj" id="CU8-tE-YZL"/>
                     </connections>
                 </viewController>
