@@ -446,43 +446,6 @@ extension ViewController: AVSpeechSynthesizerDelegate {
 //    }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
-// USUAL TABLEVIEW STUFF...
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // 
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return custAnnots.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AugustaCell", for: indexPath) as! AugustaCell
-        let beacon = custAnnots[indexPath.row]
-        cell.markerTitle.text = beacon.title
-        if let image = beacon.imageName {
-            let ary = image.components(separatedBy: ".")
-            cell.markerDescription.text = ary[0] + ".com"
-            let theImage = UIImage(named: image)
-            cell.imageView?.image = theImage
-            cell.imageView?.clipsToBounds = true
-        }
-        
-        // Configure the cell...
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // tableView.deselectRow(at: indexPath, animated: true)
-        let annot = custAnnots[indexPath.row]
-        myMapView.selectAnnotation(annot, animated: true)
-    }
-}
 
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -627,26 +590,6 @@ extension ViewController: MKMapViewDelegate {
 
 }
 
-extension ViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
-        let localSearchRequest = MKLocalSearchRequest()
-        localSearchRequest.naturalLanguageQuery = searchBar.text
-        guard let curntCord = currentCoord else { return }
-        let region = MKCoordinateRegion(center: curntCord, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-        localSearchRequest.region = region
-        let localSearch = MKLocalSearch(request: localSearchRequest)
-        localSearch.start { (response, error) in
-            if error != nil {
-                print("You didn't have any results and the error is: \(error!.localizedDescription)")
-            }
-            guard let response = response else { return }
-            print(response.mapItems)
-            guard let firstItem = response.mapItems.first else { return }
-            self.getDirections(to: firstItem)
-        }
-    }
-}
 
 // HARD CODED BEACON/ANNOTS DICTIONARY...
     let annotArry: [[String: AnyObject]] = [
