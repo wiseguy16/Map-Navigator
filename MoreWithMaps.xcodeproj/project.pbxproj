@@ -26,6 +26,7 @@
 		4A6FE8CC1F3A4C0B0012CA50 /* AbbreviationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6FE8CB1F3A4C0B0012CA50 /* AbbreviationsHelper.swift */; };
 		4A6FE8CE1F3B687A0012CA50 /* SearchBarFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6FE8CD1F3B687A0012CA50 /* SearchBarFunctions.swift */; };
 		4A6FE8D01F3B68F80012CA50 /* TableViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6FE8CF1F3B68F80012CA50 /* TableViewFunctions.swift */; };
+		4A6FE8D21F3B8AB10012CA50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A6FE8D11F3B8AB10012CA50 /* GoogleService-Info.plist */; };
 		4AC1FEF91F2BB58100613334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FEF81F2BB58100613334 /* AppDelegate.swift */; };
 		4AC1FEFB1F2BB58100613334 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FEFA1F2BB58100613334 /* ViewController.swift */; };
 		4AC1FEFE1F2BB58100613334 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1FEFC1F2BB58100613334 /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		4A6FE8CB1F3A4C0B0012CA50 /* AbbreviationsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbbreviationsHelper.swift; sourceTree = "<group>"; };
 		4A6FE8CD1F3B687A0012CA50 /* SearchBarFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarFunctions.swift; sourceTree = "<group>"; };
 		4A6FE8CF1F3B68F80012CA50 /* TableViewFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFunctions.swift; sourceTree = "<group>"; };
+		4A6FE8D11F3B8AB10012CA50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4AC1FEF51F2BB58100613334 /* MoreWithMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoreWithMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AC1FEF81F2BB58100613334 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AC1FEFA1F2BB58100613334 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				4A4BD09D1F38C95B0049B0C7 /* TestLocations.gpx */,
 				4A4BD0A31F38F1F30049B0C7 /* Location3.gpx */,
 				4AC1FF071F2BB58200613334 /* Info.plist */,
+				4A6FE8D11F3B8AB10012CA50 /* GoogleService-Info.plist */,
 				4AC1FF3C1F2F8DB600613334 /* photos */,
 				4AC1FEFF1F2BB58100613334 /* MoreWithMaps.xcdatamodeld */,
 			);
@@ -285,6 +288,7 @@
 				4AC1FF311F2E295300613334 /* lighthouse-2.png in Resources */,
 				4AC1FF331F2E295F00613334 /* map.png in Resources */,
 				4A0F62121F3381D200BD358D /* metro.jpg in Resources */,
+				4A6FE8D21F3B8AB10012CA50 /* GoogleService-Info.plist in Resources */,
 				4A0F62111F3381D200BD358D /* mellowMushroom.jpg in Resources */,
 				4AC1FF031F2BB58200613334 /* Assets.xcassets in Resources */,
 				4AC1FEFE1F2BB58100613334 /* Main.storyboard in Resources */,
