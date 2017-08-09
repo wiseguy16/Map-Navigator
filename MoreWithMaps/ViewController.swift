@@ -304,8 +304,8 @@ class ViewController: UIViewController {
         let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
         
         let directionsRequest = MKDirectionsRequest()
-        //directionsRequest.source = MKMapItem.forCurrentLocation()
-        directionsRequest.source = sourceMapItem
+        directionsRequest.source = MKMapItem.forCurrentLocation()
+        //directionsRequest.source = sourceMapItem
         directionsRequest.destination = destination
         directionsRequest.transportType = .automobile
         //directionsRequest.transportType = .walking
@@ -490,6 +490,7 @@ extension ViewController: CLLocationManagerDelegate {
         myMapView.showsUserLocation = true
         guard let currentLocation = locations.last else { return }
         currentCoord = currentLocation.coordinate
+        print("\(currentCoord)")
         //myMapView.userTrackingMode = .followWithHeading
     }
     
