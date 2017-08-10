@@ -85,7 +85,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        handle = ref?.child("list").observe(.childAdded, with: { (snapshot) in
+        handle = ref?.child("list").observe(.value, with: { (snapshot) in
             if let item = snapshot.value as? String {
                 self.myList.append(item)
                 for listItem in self.myList {
@@ -156,11 +156,31 @@ class ViewController: UIViewController {
     
     @IBAction func uploadTapped(_ sender: UIButton) {
         if myTextField.text != "" {
-            ref?.child("list").childByAutoId().setValue(myTextField.text)
+            for dict in annotArry {
+                ref?.child("Orlando").setValue(dict["title"])
+                ref?.child("Orlando").child("title").setValue(dict["title"])
+                ref?.child("Orlando").child("imageName").setValue(dict["imageName"])
+                ref?.child("Orlando").child("beaconName").setValue(dict["beaconName"])
+                ref?.child("Orlando").child("locatCoordLat").setValue(dict["locatCoordLat"])
+                ref?.child("Orlando").child("locatCoordLong").setValue(dict["locatCoordLong"])
+                ref?.child("Orlando").child("category").setValue(dict["category"])
+                ref?.child("Orlando").child("web").setValue(dict["web"])
+
+            }
+            //ref?.child("GeoPoint").child(myTextField.text!).setValue(myTextField.text)
+           // ref?.child("list").childByAutoId().setValue(myTextField.text)
             myTextField.text = ""
         }
     }
-    
+/*
+    "title": "Craft & Vine" as AnyObject,
+    "imageName": "craftVine.jpg" as AnyObject,
+    "beaconName": "sandwich-2.png" as AnyObject,
+    "locatCoordLat": 28.626671 as AnyObject,
+    "locatCoordLong":  -81.435410 as AnyObject,
+    "category": "Food" as AnyObject,
+    "web": "http://2kdda41a533r27gnow20hp6whvn.wpengi
+*/
     
 //MODAL PRESENTATION FOR THE SPONSORED COMPANY...
     @IBAction func moreTapped(_ sender: UIButton) {
