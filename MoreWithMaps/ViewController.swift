@@ -86,15 +86,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        handle = ref?.child("list").observe(.childAdded, with: { (snapshot) in
-            if let item = snapshot.value as? String {
-                self.myList.append(item)
-
-            }
-            for listItem in self.myList {
-                print(listItem)
-            }
-
+//        handle = ref?.child("list").observe(.childAdded, with: { (snapshot) in
+//            if let item = snapshot.value as? String {
+//                self.myList.append(item)
+//
+//            }
+//            for listItem in self.myList {
+//                print(listItem)
+//            }
+//
+//        })
+        
+        handle = ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
+            let cty = snapshot.children as? [[String: AnyObject]]
+//            if let ctyArray = snapshot. as? [[String: AnyObject]] {
+//                print("There is data here")
+//                for dict in ctyArray {
+//                    self.cityArray.append(dict)
+//                    print(dict)
+//                }
+//                self.cityArray.append(contentsOf: ctyArray)
+//                print("\(self.cityArray)")
+//            }
         })
 
 
