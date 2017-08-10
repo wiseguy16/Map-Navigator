@@ -157,14 +157,14 @@ class ViewController: UIViewController {
     @IBAction func uploadTapped(_ sender: UIButton) {
         if myTextField.text != "" {
             for dict in annotArry {
-                ref?.child("Orlando").setValue(dict["title"])
-                ref?.child("Orlando").child("title").setValue(dict["title"])
-                ref?.child("Orlando").child("imageName").setValue(dict["imageName"])
-                ref?.child("Orlando").child("beaconName").setValue(dict["beaconName"])
-                ref?.child("Orlando").child("locatCoordLat").setValue(dict["locatCoordLat"])
-                ref?.child("Orlando").child("locatCoordLong").setValue(dict["locatCoordLong"])
-                ref?.child("Orlando").child("category").setValue(dict["category"])
-                ref?.child("Orlando").child("web").setValue(dict["web"])
+                //ref?.child("Orlando").child(dict["title"]).
+                ref?.child("Orlando").child(dict["title"] as! String).child("title").setValue(dict["title"])
+                ref?.child("Orlando").child(dict["title"] as! String).child("imageName").setValue(dict["imageName"])
+                ref?.child("Orlando").child(dict["title"] as! String).child("beaconName").setValue(dict["beaconName"])
+                ref?.child("Orlando").child(dict["title"] as! String).child("locatCoordLat").setValue(dict["locatCoordLat"])
+                ref?.child("Orlando").child(dict["title"] as! String).child("locatCoordLong").setValue(dict["locatCoordLong"])
+                ref?.child("Orlando").child(dict["title"] as! String).child("category").setValue(dict["category"])
+                ref?.child("Orlando").child(dict["title"] as! String).child("web").setValue(dict["web"])
 
             }
             //ref?.child("GeoPoint").child(myTextField.text!).setValue(myTextField.text)
