@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var ref: DatabaseReference?
     var handle: DatabaseHandle?
     var myList: [String] = []
+    var cityArray: [[String: AnyObject]] = []
     
     @IBOutlet weak var myMapView: MKMapView!
     @IBOutlet weak var myTextField: UITextField!
@@ -85,15 +86,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        handle = ref?.child("list").observe(.value, with: { (snapshot) in
+        handle = ref?.child("list").observe(.childAdded, with: { (snapshot) in
             if let item = snapshot.value as? String {
                 self.myList.append(item)
-                for listItem in self.myList {
-                    print(listItem)
-                }
 
             }
+            for listItem in self.myList {
+                print(listItem)
+            }
+
         })
+
 
 // LOCATION MANAGER SETUP...
         locationManager.delegate = self
@@ -123,6 +126,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("List item count is \(myList.count)")
         let vcs = AVSpeechSynthesisVoice.speechVoices()
        // var newVoice = AVSpeechSynthesisVoice().quality.rawValue
         
