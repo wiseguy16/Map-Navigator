@@ -97,8 +97,8 @@ class ViewController: UIViewController {
 //
 //        })
         
-        handle = ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
-            let cty = snapshot.children as? [[String: AnyObject]]
+//        handle = ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
+//            let cty = snapshot.value as? [[String: AnyObject]]
 //            if let ctyArray = snapshot. as? [[String: AnyObject]] {
 //                print("There is data here")
 //                for dict in ctyArray {
@@ -108,7 +108,14 @@ class ViewController: UIViewController {
 //                self.cityArray.append(contentsOf: ctyArray)
 //                print("\(self.cityArray)")
 //            }
+//        })
+        handle = ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
+            if let item = snapshot.value as? AnyObject {
+                print(item)
+                print("You have object")
+            }
         })
+
 
 
 // LOCATION MANAGER SETUP...
