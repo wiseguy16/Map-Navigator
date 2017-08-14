@@ -90,6 +90,7 @@ class ViewController: UIViewController {
         ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
             if let dict = snapshot.value as? [String: AnyObject] {
                 self.createACustomAnnot(from: dict)
+                self.setupInitialPoints()
                 print("inside if statement\(dict["title"])")
                 
                 //, finished: {
@@ -547,10 +548,10 @@ class ViewController: UIViewController {
         // let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 4100, pitch: 0, heading: 23)
         let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 7500, pitch: 0, heading: 0)
         
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 4.0, animations: {
             self.myMapView.setCamera(camera, animated: true)
         }) { (true) in
-            UIView.animate(withDuration: 2.0) {
+            UIView.animate(withDuration: 4.0) {
                // self.createCustomAnnots()
             }
         }
