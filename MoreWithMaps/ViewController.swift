@@ -91,10 +91,6 @@ class ViewController: UIViewController {
 //                self.myList.append(item)
 //
 //            }
-//            for listItem in self.myList {
-//                print(listItem)
-//            }
-//
 //        })
         
 //        handle = ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
@@ -110,19 +106,17 @@ class ViewController: UIViewController {
 //            }
 //        })
         
-        handle = ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
-            let snapshotValue = snapshot.value as! [String: Any]
-            for items in snapshot.children {
-                print("\(items) ")
+        ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
+            if let dict = snapshot.value as? [String: AnyObject] {
+                self.createACustomAnnot(from: dict)
+                
+               // print("\(dict["title"])")
+                
             }
-//                if let copyItems = items as? [[String: AnyObject]] {
-//                    for item in copyItems {
-//                        print("\(item)")
-//                    }
-// 
-//                }
-            
+            self.setupInitialPoints()
         })
+        
+        
         
 //        handle = ref?.child("Orlando").observe(.value, with: { (snapshot) in
 //            if let items = snapshot.value as? [[String: AnyObject]] {
@@ -196,7 +190,8 @@ class ViewController: UIViewController {
         
 // LOAD THE ANNOTATIONS!!!!!!
        // zoomToAugusta()
-        zoomToMaitland()
+       // zoomToMaitland()
+        zoomToOrlando()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -520,34 +515,67 @@ class ViewController: UIViewController {
 // INITIALIZING ANNOTS FROM HARD CODED DICTIONARY...
     func createCustomAnnots() {
         for annotDict in annotArry {
-            let annot = CustomAnnotat(dictionary: annotDict)
-            
-    // CREATE ONLY ARRAY OF 1 OBJECT HERE. PROBABLY EXTEND -> class CustomPointAnnotation: MKPointAnnotation TO HAVE ALL THE PROPERTIES 
-    // THAT ARE IN CustomAnnotat
-    // DONE!!!
-            guard let latd = annot.locatCoordLat, let longd = annot.locatCoordLong, let name = annot.companyName, let theCat = annot.category else { return }
-            
-            let custCoord = CLLocationCoordinate2DMake(latd, longd)
-            annot.coordinate = custCoord
-            let rnd = drand48()
-            let num = Int(1246 * rnd)
-            annot.subtitle = "\(num) Broad Street"
-            annot.title = name
-            
-            switch theCat {
-            case "Food":
-                foodAnnots.append(annot)
-            case "Business":
-                businessAnnots.append(annot)
-            case "Utility":
-                utilityAnnots.append(annot)
-            case "Historic":
-                historicAnnots.append(annot)
-            default:
-                print("not a valid category")
-            }
+            createACustomAnnot(from: annotDict)
+//            let annot = CustomAnnotat(dictionary: annotDict)
+//            
+//    // CREATE ONLY ARRAY OF 1 OBJECT HERE. PROBABLY EXTEND -> class CustomPointAnnotation: MKPointAnnotation TO HAVE ALL THE PROPERTIES 
+//    // THAT ARE IN CustomAnnotat
+//    // DONE!!!
+//            guard let latd = annot.locatCoordLat, let longd = annot.locatCoordLong, let name = annot.companyName, let theCat = annot.category else { return }
+//            
+//            let custCoord = CLLocationCoordinate2DMake(latd, longd)
+//            annot.coordinate = custCoord
+//            let rnd = drand48()
+//            let num = Int(1246 * rnd)
+//            annot.subtitle = "\(num) Broad Street"
+//            annot.title = name
+//            
+//            switch theCat {
+//            case "Food":
+//                foodAnnots.append(annot)
+//            case "Business":
+//                businessAnnots.append(annot)
+//            case "Utility":
+//                utilityAnnots.append(annot)
+//            case "Historic":
+//                historicAnnots.append(annot)
+//            default:
+//                print("not a valid category")
+//            }
         }
         setupInitialPoints()
+    }
+    
+//TAKE A DICTIONARY AND CREATE A CUSTOM ANNOT
+    func createACustomAnnot(from dict: [String: AnyObject]) {
+        let annot = CustomAnnotat(dictionary: dict)
+        
+        // CREATE ONLY ARRAY OF 1 OBJECT HERE. PROBABLY EXTEND -> class CustomPointAnnotation: MKPointAnnotation TO HAVE ALL THE PROPERTIES
+        // THAT ARE IN CustomAnnotat
+        // DONE!!!
+        guard let latd = annot.locatCoordLat, let longd = annot.locatCoordLong, let name = annot.companyName, let theCat = annot.category else { return }
+        
+        let custCoord = CLLocationCoordinate2DMake(latd, longd)
+        annot.coordinate = custCoord
+        let rnd = drand48()
+        let num = Int(1246 * rnd)
+        annot.subtitle = "\(num) Broad Street"
+        annot.title = name
+        
+        switch theCat {
+        case "Food":
+            foodAnnots.append(annot)
+        case "Business":
+            businessAnnots.append(annot)
+        case "Utility":
+            utilityAnnots.append(annot)
+        case "Historic":
+            historicAnnots.append(annot)
+        default:
+            print("not a valid category")
+        }
+
+        
     }
     
     
@@ -578,6 +606,21 @@ class ViewController: UIViewController {
         }) { (true) in
             UIView.animate(withDuration: 2.0) {
                 self.createCustomAnnots()
+            }
+        }
+    }
+    
+    func zoomToOrlando() {
+        let coordinate = CLLocationCoordinate2DMake(28.540765, -81.384503)
+        
+        // let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 4100, pitch: 0, heading: 23)
+        let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 7500, pitch: 0, heading: 0)
+        
+        UIView.animate(withDuration: 2.0, animations: {
+            self.myMapView.setCamera(camera, animated: true)
+        }) { (true) in
+            UIView.animate(withDuration: 2.0) {
+               // self.createCustomAnnots()
             }
         }
     }
