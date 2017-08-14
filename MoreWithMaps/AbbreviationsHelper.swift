@@ -44,6 +44,7 @@ let mappingsDict: [String: String] = [
     "St": "street" ,
     "Ter": "terrace" ,
     "Tpk": "turnpike" ,
+    "Trl": "trail",
     "Wk": "walk" ,
     "Wky": "walkway"
     

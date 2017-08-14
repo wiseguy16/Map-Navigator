@@ -132,6 +132,28 @@ class OldCodeForReviewViewController: UIViewController {
         }
     }
 
+    //ref?.child("Orlando").child(dict["title"]).
+    //                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("title").setValue(dict["title"])
+    //                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("imageName").setValue(dict["imageName"])
+    //                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("beaconName").setValue(dict["beaconName"])
+    //                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("locatCoordLat").setValue(dict["locatCoordLat"])
+    //                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("locatCoordLong").setValue(dict["locatCoordLong"])
+    //                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("category").setValue(dict["category"])
+    //                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("web").setValue(dict["web"])
+    //
+
+    
+    
+    //                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("title").setValue(dict["title"])
+    //                ref?.child("Orlando").childByAutoId().child("imageName").setValue(dict["imageName"])
+    //                ref?.child("Orlando").childByAutoId().child("beaconName").setValue(dict["beaconName"])
+    //                ref?.child("Orlando").childByAutoId().child("locatCoordLat").setValue(dict["locatCoordLat"])
+    //                ref?.child("Orlando").childByAutoId().child("locatCoordLong").setValue(dict["locatCoordLong"])
+    //                ref?.child("Orlando").childByAutoId().child("category").setValue(dict["category"])
+    //                ref?.child("Orlando").childByAutoId().child("web").setValue(dict["web"])
+    
+    
+
     
     
     
