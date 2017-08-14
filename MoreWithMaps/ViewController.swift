@@ -109,12 +109,67 @@ class ViewController: UIViewController {
 //                print("\(self.cityArray)")
 //            }
 //        })
+        
         handle = ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
-            if let item = snapshot.value as? AnyObject {
-                print(item)
-                print("You have object")
+            let snapshotValue = snapshot.value as! [String: Any]
+            for items in snapshot.children {
+                print("\(items) ")
             }
+//                if let copyItems = items as? [[String: AnyObject]] {
+//                    for item in copyItems {
+//                        print("\(item)")
+//                    }
+// 
+//                }
+            
         })
+        
+//        handle = ref?.child("Orlando").observe(.value, with: { (snapshot) in
+//            if let items = snapshot.value as? [[String: AnyObject]] {
+//                for item in items {
+//                     print(item)
+//                }
+//               
+//               // print("You have object")
+//            }
+//        })
+        
+        /*
+         Create question model to get questions and contents of the questions in to an array. Cast your snapshot to Dictionary then get the values;
+         
+         class QuestionModel: NSObject {
+         var CorrectAnswer: String!
+         var Question: String!
+         var optionA: String!
+         var optionB: String!
+         var optionC: String!
+         
+         init(snapshot: FIRDataSnapshot) {
+         if let snapshotDict = snapshot.value as? Dictionary<String, Any> {
+         CorrectAnswer = snapshotDict["CorrectAnswer"] as? String
+         Question = snapshotDict["Question"] as? String
+         optionA = snapshotDict["optionA"] as? String
+         optionB = snapshotDict["optionB"] as? String
+         optionC = snapshotDict["optionC"] as? String
+         }
+         }
+         }
+         in your callback;
+         
+         var questionModels : [QuestionModel] = []
+         FIRDatabase.database().reference().child("English").observe(.value, with: {
+         snapshot in
+         
+         for child in snapshot.children {
+         let user = QuestionModel.init(snapshot: (child as? FIRDataSnapshot)!)
+         self.questionModels.append(user)
+         }
+         
+         
+         })
+         You must send requests as many as nodes count like FIRDatabase.database().reference().child("English"), FIRDatabase.database().reference().child("AnotherSubject"). And you don't need to var answer = [["Answer","a1","b1","c1"], ["Answer2","a2","b2","c2"],[...]]. The question array you have will do the same thing. You can do questionModels[0].CorrectAnswer or whatever you want
+         
+         */
 
 
 
@@ -182,13 +237,29 @@ class ViewController: UIViewController {
         if myTextField.text != "" {
             for dict in annotArry {
                 //ref?.child("Orlando").child(dict["title"]).
-                ref?.child("Orlando").child(dict["title"] as! String).child("title").setValue(dict["title"])
-                ref?.child("Orlando").child(dict["title"] as! String).child("imageName").setValue(dict["imageName"])
-                ref?.child("Orlando").child(dict["title"] as! String).child("beaconName").setValue(dict["beaconName"])
-                ref?.child("Orlando").child(dict["title"] as! String).child("locatCoordLat").setValue(dict["locatCoordLat"])
-                ref?.child("Orlando").child(dict["title"] as! String).child("locatCoordLong").setValue(dict["locatCoordLong"])
-                ref?.child("Orlando").child(dict["title"] as! String).child("category").setValue(dict["category"])
-                ref?.child("Orlando").child(dict["title"] as! String).child("web").setValue(dict["web"])
+//                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("title").setValue(dict["title"])
+//                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("imageName").setValue(dict["imageName"])
+//                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("beaconName").setValue(dict["beaconName"])
+//                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("locatCoordLat").setValue(dict["locatCoordLat"])
+//                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("locatCoordLong").setValue(dict["locatCoordLong"])
+//                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("category").setValue(dict["category"])
+//                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("web").setValue(dict["web"])
+//
+                
+                ref?.child("Orlando").childByAutoId().updateChildValues(dict, withCompletionBlock: { (error, snapshot) in
+                    print("Added dictionaries")
+                })
+   
+                
+//                ref?.child("Orlando").childByAutoId().child(dict["title"] as! String).child("title").setValue(dict["title"])
+//                ref?.child("Orlando").childByAutoId().child("imageName").setValue(dict["imageName"])
+//                ref?.child("Orlando").childByAutoId().child("beaconName").setValue(dict["beaconName"])
+//                ref?.child("Orlando").childByAutoId().child("locatCoordLat").setValue(dict["locatCoordLat"])
+//                ref?.child("Orlando").childByAutoId().child("locatCoordLong").setValue(dict["locatCoordLong"])
+//                ref?.child("Orlando").childByAutoId().child("category").setValue(dict["category"])
+//                ref?.child("Orlando").childByAutoId().child("web").setValue(dict["web"])
+
+
 
             }
             //ref?.child("GeoPoint").child(myTextField.text!).setValue(myTextField.text)
