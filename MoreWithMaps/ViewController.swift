@@ -91,13 +91,8 @@ class ViewController: UIViewController {
             if let dict = snapshot.value as? [String: AnyObject] {
                 self.createACustomAnnot(from: dict)
                 self.setupInitialPoints()
-                print("inside if statement\(dict["title"])")
-                
-                //, finished: {
-                    //self.setupInitialPoints()
-               // })
+                self.augTableView.reloadData()
             }
-            print("Outside of if statement annotCount: \(self.custAnnots.count)")
         })
         
         
