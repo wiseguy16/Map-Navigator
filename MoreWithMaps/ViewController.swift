@@ -86,36 +86,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-//        handle = ref?.child("list").observe(.childAdded, with: { (snapshot) in
-//            if let item = snapshot.value as? String {
-//                self.myList.append(item)
-//
-//            }
-//        })
-        
-//        handle = ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
-//            let cty = snapshot.value as? [[String: AnyObject]]
-//            if let ctyArray = snapshot. as? [[String: AnyObject]] {
-//                print("There is data here")
-//                for dict in ctyArray {
-//                    self.cityArray.append(dict)
-//                    print(dict)
-//                }
-//                self.cityArray.append(contentsOf: ctyArray)
-//                print("\(self.cityArray)")
-//            }
-//        })
         
         ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
             if let dict = snapshot.value as? [String: AnyObject] {
                 self.createACustomAnnot(from: dict)
+                print("inside if statement\(dict["title"])")
                 
-               // print("\(dict["title"])")
-                
+                //, finished: {
+                    //self.setupInitialPoints()
+               // })
             }
-            self.setupInitialPoints()
+            print("Outside of if statement annotCount: \(self.custAnnots.count)")
         })
         
+        
+
         
         
 //        handle = ref?.child("Orlando").observe(.value, with: { (snapshot) in
@@ -128,42 +113,6 @@ class ViewController: UIViewController {
 //            }
 //        })
         
-        /*
-         Create question model to get questions and contents of the questions in to an array. Cast your snapshot to Dictionary then get the values;
-         
-         class QuestionModel: NSObject {
-         var CorrectAnswer: String!
-         var Question: String!
-         var optionA: String!
-         var optionB: String!
-         var optionC: String!
-         
-         init(snapshot: FIRDataSnapshot) {
-         if let snapshotDict = snapshot.value as? Dictionary<String, Any> {
-         CorrectAnswer = snapshotDict["CorrectAnswer"] as? String
-         Question = snapshotDict["Question"] as? String
-         optionA = snapshotDict["optionA"] as? String
-         optionB = snapshotDict["optionB"] as? String
-         optionC = snapshotDict["optionC"] as? String
-         }
-         }
-         }
-         in your callback;
-         
-         var questionModels : [QuestionModel] = []
-         FIRDatabase.database().reference().child("English").observe(.value, with: {
-         snapshot in
-         
-         for child in snapshot.children {
-         let user = QuestionModel.init(snapshot: (child as? FIRDataSnapshot)!)
-         self.questionModels.append(user)
-         }
-         
-         
-         })
-         You must send requests as many as nodes count like FIRDatabase.database().reference().child("English"), FIRDatabase.database().reference().child("AnotherSubject"). And you don't need to var answer = [["Answer","a1","b1","c1"], ["Answer2","a2","b2","c2"],[...]]. The question array you have will do the same thing. You can do questionModels[0].CorrectAnswer or whatever you want
-         
-         */
 
 
 
@@ -194,38 +143,18 @@ class ViewController: UIViewController {
         zoomToOrlando()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("List item count is \(myList.count)")
-        let vcs = AVSpeechSynthesisVoice.speechVoices()
-       // var newVoice = AVSpeechSynthesisVoice().quality.rawValue
-        
-        let myVoice = AVSpeechSynthesisVoice(identifier: daniel)
-        let phrase = "Hello friend! How are you doing today? My name is Daniel. Today we go over how to get turn by turn directions with MapKit, Core Location, and AVFoundation using Swift 4. This is a step by step tutorial that will explain what is happening in each line of code so you can grasp the full concept of how to get the user’s current location and allow them to search for a point of interest and get directions to that location."
-        let speechUtterance = AVSpeechUtterance(string: phrase)
-        //myVoice!.quality = .enhanced
-        speechUtterance.voice = myVoice
-       // speechUtterance.rate = 0.5
-        speechUtterance.pitchMultiplier = 1.0
-        
-        
-      //  speechSynthesizer.speak(speechUtterance)
-
-        for voyce in vcs {
-//            speechUtterance.postUtteranceDelay = 3.0
-//            speechSynthesizer.speak(speechUtterance)
-//            //            let voice = AVSpeechUtterance().voice
-//            //            let talker = AVSpeechSynthesisVoice()
-//            print(voyce.name)
-//            print(voyce.identifier)
-//            print(voyce.language)
-//            //Daniel  Karen Melina
-        }
-
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Before setup annotCount: \(self.custAnnots.count)")
+
+        setupInitialPoints()
+        print("After setup annotCount: \(self.custAnnots.count)")
+
     }
     
     @IBAction func uploadTapped(_ sender: UIButton) {
@@ -284,9 +213,6 @@ class ViewController: UIViewController {
         destVC.thedetails = beacon.title
         destVC.anAnnot = beacon
         present(destVC, animated: true, completion: nil)
-       // destVC.navigationController?.navigationBar.tintColor = UIColor.white
-       // navigationController?.pushViewController(destVC, animated: true)
-       // destVC.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.white
     }
     
 //BRINGS UP THE TABLEVIEW...
@@ -326,6 +252,7 @@ class ViewController: UIViewController {
         let checker = sender.tag
         displaySelectedPoints(with: checker)
     }
+    
     
     
     func setupInitialPoints() {
@@ -515,7 +442,10 @@ class ViewController: UIViewController {
 // INITIALIZING ANNOTS FROM HARD CODED DICTIONARY...
     func createCustomAnnots() {
         for annotDict in annotArry {
-            createACustomAnnot(from: annotDict)
+            createACustomAnnot(from: annotDict) //, finished: {
+            //    setupInitialPoints()
+            //})
+        
 //            let annot = CustomAnnotat(dictionary: annotDict)
 //            
 //    // CREATE ONLY ARRAY OF 1 OBJECT HERE. PROBABLY EXTEND -> class CustomPointAnnotation: MKPointAnnotation TO HAVE ALL THE PROPERTIES 
@@ -543,11 +473,13 @@ class ViewController: UIViewController {
 //                print("not a valid category")
 //            }
         }
-        setupInitialPoints()
+    //    setupInitialPoints()
     }
     
 //TAKE A DICTIONARY AND CREATE A CUSTOM ANNOT
+    //func createACustomAnnot(from dict: [String: AnyObject], finished: () -> Void) {
     func createACustomAnnot(from dict: [String: AnyObject]) {
+
         let annot = CustomAnnotat(dictionary: dict)
         
         // CREATE ONLY ARRAY OF 1 OBJECT HERE. PROBABLY EXTEND -> class CustomPointAnnotation: MKPointAnnotation TO HAVE ALL THE PROPERTIES
@@ -574,8 +506,7 @@ class ViewController: UIViewController {
         default:
             print("not a valid category")
         }
-
-        
+       // finished()
     }
     
     
