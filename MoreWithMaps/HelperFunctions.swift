@@ -28,13 +28,21 @@ extension ViewController {
     func filterAnnotRemove(with category: String, annots: [CustomAnnotat]) {
         custAnnots = custAnnots.filter { $0.category != category }
         augTableView.reloadData()
-        myMapView.removeAnnotations(annots)
+        UIView.animate(withDuration: 2.0) {
+            self.myMapView.removeAnnotations(annots)
+        }
+        // self.myMapView.showAnnotations(self.custAnnots, animated: true)
+
+       // myMapView.removeAnnotations(annots)
     }
     
     func filterAnnotAdd(with category: String, annots: [CustomAnnotat]) {
         custAnnots.append(contentsOf: annots)
         augTableView.reloadData()
-        myMapView.addAnnotations(annots)
+        UIView.animate(withDuration: 2.0) {
+            self.myMapView.addAnnotations(annots)
+        }
+        //myMapView.addAnnotations(annots)
     }
     
     func useMilesAndFeet(with distance: Double) -> String {

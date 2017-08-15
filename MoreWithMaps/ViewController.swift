@@ -87,17 +87,43 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         ref = Database.database().reference()
         
+        
         ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
             if let dict = snapshot.value as? [String: AnyObject] {
-                self.createACustomAnnot(from: dict)
-                self.setupInitialPoints()
-               // DispatchQueue.async(execute: DispatchQueue.main)
+                     //   self.createACustomAnnot(from: dict)
+                        DispatchQueue.global().async {
+                            DispatchQueue.main.async {
+                                self.createACustomAnnot(from: dict)
+                            }
+
+                            DispatchQueue.main.async {
+                                self.setupInitialPoints()
+                            }
+                            DispatchQueue.main.async {
+                                self.augTableView.reloadData()
+                            }
+                        }
+                        
+                
+            
                 
                 
-                DispatchQueue.main.async(execute: {
-                    // FIX THIS!!!!!
-                })
-                self.augTableView.reloadData()
+                
+                
+                
+//                self.createACustomAnnot(from: dict)
+//               // DispatchQueue.async(execute: DispatchQueue.main)
+//                DispatchQueue.global().async {
+//                    DispatchQueue.main.async {
+//                        self.setupInitialPoints()
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.augTableView.reloadData()
+//                    }
+//                }
+//                DispatchQueue.main.async(execute: {
+//                    // FIX THIS!!!!!
+//                })
             }
         })
         
@@ -527,12 +553,13 @@ class ViewController: UIViewController {
         
         // let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 4100, pitch: 0, heading: 23)
         let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 7500, pitch: 0, heading: 0)
-        
         UIView.animate(withDuration: 4.0, animations: {
             self.myMapView.setCamera(camera, animated: true)
         }) { (true) in
             UIView.animate(withDuration: 4.0) {
                // self.createCustomAnnots()
+               // self.myMapView.showAnnotations(self.custAnnots, animated: true)
+
             }
         }
     }
