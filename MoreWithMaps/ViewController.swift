@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     var handle: DatabaseHandle?
     var myList: [String] = []
     var cityArray: [[String: AnyObject]] = []
-    
+    var firArray: [[String: AnyObject]] = []
     @IBOutlet weak var myMapView: MKMapView!
     @IBOutlet weak var myTextField: UITextField!
     
@@ -79,6 +79,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var moveTableViewConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    var stringArray: [String] = []
+    var keyArray: [String] = []
     
 // artwork courtesy of:  h ttps://mapicons.mapsmarker.com/category/markers/tourism/place-to-see/?custom_color=b4b83f&style=
     
@@ -90,8 +92,20 @@ class ViewController: UIViewController {
         
         
         ref?.child("Orlando").observe(.value, with: { (snapshot) in
-            print(snapshot.value)
+           // print(snapshot.value)
             if let dict1 = snapshot.value as? [String: AnyObject] {
+                
+                self.firArray.append(dict1)
+                
+                
+                 self.keyArray = self.firArray.map({ $0.keys.first! })
+                self.stringArray.append(contentsOf: self.keyArray)
+                print(self.stringArray)
+               // roomNames = rooms.map({ $0.keys.first!})
+//                for item in self.firArray {
+//                    print(self.firArray[0].keys)
+//                }
+                print(self.firArray)
                 let dict = dict1["The New Moon Cafe"] as! [String: AnyObject]
                      //   self.createACustomAnnot(from: dict)
                         DispatchQueue.global().async {
