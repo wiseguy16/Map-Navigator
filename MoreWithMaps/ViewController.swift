@@ -88,8 +88,11 @@ class ViewController: UIViewController {
         ref = Database.database().reference()
         
         
-        ref?.child("Orlando").observe(.childAdded, with: { (snapshot) in
-            if let dict = snapshot.value as? [String: AnyObject] {
+        
+        ref?.child("Orlando").observe(.value, with: { (snapshot) in
+            print(snapshot.value)
+            if let dict1 = snapshot.value as? [String: AnyObject] {
+                let dict = dict1["The New Moon Cafe"] as! [String: AnyObject]
                      //   self.createACustomAnnot(from: dict)
                         DispatchQueue.global().async {
                             DispatchQueue.main.async {
@@ -106,40 +109,44 @@ class ViewController: UIViewController {
             }
         })
         
-        ref?.child("Orlando").observe(.childChanged, with: { (snapshot) in
-            if let dict = snapshot.value as? [String: AnyObject] {
-                //   self.createACustomAnnot(from: dict)
-                DispatchQueue.global().async {
+//        ref?.child("Orlando").observe(.childChanged, with: { (snapshot) in
+//            if let dict = snapshot.value as? [String: AnyObject] {
+//                print("\(dict["title"]!)")
+//                //   self.createACustomAnnot(from: dict)
+//                DispatchQueue.global().async {
 //                    DispatchQueue.main.async {
 //                        self.createACustomAnnot(from: dict)
 //                    }
-                    
-                    DispatchQueue.main.async {
-                        self.setupInitialPoints()
-                    }
-                    DispatchQueue.main.async {
-                        self.augTableView.reloadData()
-                    }
-                }
-            }
-        })
-        ref?.child("Orlando").observe(.childRemoved, with: { (snapshot) in
-            if let dict = snapshot.value as? [String: AnyObject] {
+//                    
+//                    DispatchQueue.main.async {
+//                        self.setupInitialPoints()
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.augTableView.reloadData()
+//                    }
+//                }
+//            }
+//        })
+//        ref?.child("Orlando").observe(.childRemoved, with: { (snapshot) in
+//            if let dict = snapshot.value as? [String: AnyObject] {
+//                print("\(dict["imageName"]!)")
+//                self.augTableView.reloadData()
+//
                 //   self.createACustomAnnot(from: dict)
-                DispatchQueue.global().async {
+ //               DispatchQueue.global().async {
 //                    DispatchQueue.main.async {
 //                        self.createACustomAnnot(from: dict)
 //                    }
-                    
-                    DispatchQueue.main.async {
-                        self.setupInitialPoints()
-                    }
-                    DispatchQueue.main.async {
-                        self.augTableView.reloadData()
-                    }
-                }
-            }
-        })
+//                    
+//                    DispatchQueue.main.async {
+//                        self.setupInitialPoints()
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.augTableView.reloadData()
+//                    }
+//                }
+//            }
+//        })
 
 
         
@@ -229,7 +236,7 @@ class ViewController: UIViewController {
         if myTextField.text != "" {
             for dict in annotArry {
                 
-                ref?.child("Orlando").childByAutoId().updateChildValues(dict, withCompletionBlock: { (error, snapshot) in
+                ref?.child("Orlando").child("\(dict["title"]!)").updateChildValues(dict, withCompletionBlock: { (error, snapshot) in
                     print("Added dictionaries")
                 })
             }
