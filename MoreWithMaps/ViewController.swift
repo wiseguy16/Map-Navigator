@@ -103,10 +103,50 @@ class ViewController: UIViewController {
                                 self.augTableView.reloadData()
                             }
                         }
-                        
-                
-            
-                
+            }
+        })
+        
+        ref?.child("Orlando").observe(.childChanged, with: { (snapshot) in
+            if let dict = snapshot.value as? [String: AnyObject] {
+                //   self.createACustomAnnot(from: dict)
+                DispatchQueue.global().async {
+//                    DispatchQueue.main.async {
+//                        self.createACustomAnnot(from: dict)
+//                    }
+                    
+                    DispatchQueue.main.async {
+                        self.setupInitialPoints()
+                    }
+                    DispatchQueue.main.async {
+                        self.augTableView.reloadData()
+                    }
+                }
+            }
+        })
+        ref?.child("Orlando").observe(.childRemoved, with: { (snapshot) in
+            if let dict = snapshot.value as? [String: AnyObject] {
+                //   self.createACustomAnnot(from: dict)
+                DispatchQueue.global().async {
+//                    DispatchQueue.main.async {
+//                        self.createACustomAnnot(from: dict)
+//                    }
+                    
+                    DispatchQueue.main.async {
+                        self.setupInitialPoints()
+                    }
+                    DispatchQueue.main.async {
+                        self.augTableView.reloadData()
+                    }
+                }
+            }
+        })
+
+
+        
+        
+        
+        
+        
                 
                 
                 
@@ -124,8 +164,8 @@ class ViewController: UIViewController {
 //                DispatchQueue.main.async(execute: {
 //                    // FIX THIS!!!!!
 //                })
-            }
-        })
+//            }
+//        })
         
         
 
