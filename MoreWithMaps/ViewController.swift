@@ -81,23 +81,59 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     var stringArray: [String] = []
     var keyArray: [String] = []
+    var myDictionary: [String: AnyObject] = [:]
+
     
 // artwork courtesy of:  h ttps://mapicons.mapsmarker.com/category/markers/tourism/place-to-see/?custom_color=b4b83f&style=
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let enumerator = myDictionary.keys
+//        while let key = enumerator.nextObject() {
+//            print(key)
+//        }
+
+        
         ref = Database.database().reference()
         
         
         
         ref?.child("Orlando").observe(.value, with: { (snapshot) in
-           // print(snapshot.value)
+//            print(snapshot.children.allObjects)
+//            for snap in snapshot.children {
+//                
+//            }
             if let dict1 = snapshot.value as? [String: AnyObject] {
+                for snapKey in dict1.keys {
+                    if let snapDict = dict1[snapKey] as? [String: AnyObject] {
+                        self.createACustomAnnot(from: snapDict)
+                    }
+                    print(snapKey)
+                }
+                DispatchQueue.global().async {
+                    DispatchQueue.main.async {
+                        self.setupInitialPoints()
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.augTableView.reloadData()
+                    }
+                    DispatchQueue.main.async {
+                        self.view.setNeedsDisplay()
+                    }
+                }
+
+              
                 
-                self.firArray.append(dict1)
+//                self.firArray.append(dict1)
+//                for (key, value) in dict1 {
+//                    let snapKey = "\(key)"
+//                    self.keyArray.append(snapKey)
+//                    print("\(key) -> \(value)")
+//                }
                 
-                
+/*
                  self.keyArray = self.firArray.map({ $0.keys.first! })
                 self.stringArray.append(contentsOf: self.keyArray)
                 print(self.stringArray)
@@ -120,6 +156,7 @@ class ViewController: UIViewController {
                                 self.augTableView.reloadData()
                             }
                         }
+         */
             }
         })
         
