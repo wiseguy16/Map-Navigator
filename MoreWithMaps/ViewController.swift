@@ -40,6 +40,7 @@ class ViewController: UIViewController {
     var showingHistoric = false
     var showingBusiness = false
     var showingUtility = false
+    var hasDisplayedAnnotsOnce = false
     let upArrow = UIImage(named: "dropUpIcon")
     let downArrow = UIImage(named: "dropDownIcon")
     
@@ -97,6 +98,7 @@ class ViewController: UIViewController {
         
         ref = Database.database().reference()
         getInitialData()
+  //      hasDisplayedAnnotsOnce = !hasDisplayedAnnotsOnce
         
         
 //        ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -282,21 +284,10 @@ class ViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        checkForChangedData()
+     //   checkForChangedData()
     }
     
     func checkForChangedData() {
-        myMapView.removeAnnotations(custAnnots)
-        custAnnots.removeAll()
-        businessAnnots.removeAll()
-        utilityAnnots.removeAll()
-        foodAnnots.removeAll()
-        historicAnnots.removeAll()
-        showingFood = !showingFood
-         showingHistoric = !showingHistoric
-         showingBusiness = !showingBusiness
-         showingUtility = !showingUtility
-        augTableView.reloadData()
         
         ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
             if let dict1 = snapshot.value as? [String: AnyObject] {
@@ -325,8 +316,43 @@ class ViewController: UIViewController {
         
     }
     
+    func resetMap() {
+        self.myMapView.removeAnnotations(self.custAnnots)
+        self.custAnnots.removeAll()
+        self.businessAnnots.removeAll()
+        self.utilityAnnots.removeAll()
+        self.foodAnnots.removeAll()
+        self.historicAnnots.removeAll()
+        self.showingFood = !self.showingFood
+        self.showingHistoric = !self.showingHistoric
+        self.showingBusiness = !self.showingBusiness
+        self.showingUtility = !self.showingUtility
+        self.augTableView.reloadData()
+
+    }
+    
     func getInitialData() {
-        ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
+//        self.myMapView.removeAnnotations(self.custAnnots)
+//        self.custAnnots.removeAll()
+//        self.businessAnnots.removeAll()
+//        self.utilityAnnots.removeAll()
+//        self.foodAnnots.removeAll()
+//        self.historicAnnots.removeAll()
+//        self.showingFood = !self.showingFood
+//        self.showingHistoric = !self.showingHistoric
+//        self.showingBusiness = !self.showingBusiness
+//        self.showingUtility = !self.showingUtility
+//        self.augTableView.reloadData()
+
+//        ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Orlando").observe(.value, with: { (snapshot) in
+           // if self.hasDisplayedAnnotsOnce {
+
+         //   }
+            self.resetMap()
+
+
+
             if let dict1 = snapshot.value as? [String: AnyObject] {
                 for snapKey in dict1.keys {
                     if let snapDict = dict1[snapKey] as? [String: AnyObject] {
@@ -348,6 +374,7 @@ class ViewController: UIViewController {
                 }
             }
         })
+        resetMap()
 
         
     }
