@@ -96,35 +96,34 @@ class ViewController: UIViewController {
 
         
         ref = Database.database().reference()
+        getInitialData()
         
         
-        
-        ref?.child("Orlando").observe(.value, with: { (snapshot) in
-//            print(snapshot.children.allObjects)
-//            for snap in snapshot.children {
-//                
+//        ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let dict1 = snapshot.value as? [String: AnyObject] {
+//                for snapKey in dict1.keys {
+//                    if let snapDict = dict1[snapKey] as? [String: AnyObject] {
+//                        self.createACustomAnnot(from: snapDict)
+//                    }
+//                    print(snapKey)
+//                }
+//                DispatchQueue.global().async {
+//                    DispatchQueue.main.async {
+//                        self.setupInitialPoints()
+//                    }
+//                    
+//                    DispatchQueue.main.async {
+//                        self.augTableView.reloadData()
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.view.setNeedsDisplay()
+//                    }
+//                }
 //            }
-            if let dict1 = snapshot.value as? [String: AnyObject] {
-                for snapKey in dict1.keys {
-                    if let snapDict = dict1[snapKey] as? [String: AnyObject] {
-                        self.createACustomAnnot(from: snapDict)
-                    }
-                    print(snapKey)
-                }
-                DispatchQueue.global().async {
-                    DispatchQueue.main.async {
-                        self.setupInitialPoints()
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.augTableView.reloadData()
-                    }
-                    DispatchQueue.main.async {
-                        self.view.setNeedsDisplay()
-                    }
-                }
+//        })
+//
 
-              
+        
                 
 //                self.firArray.append(dict1)
 //                for (key, value) in dict1 {
@@ -157,8 +156,8 @@ class ViewController: UIViewController {
                             }
                         }
          */
-            }
-        })
+//            }
+//        })
         
 //        ref?.child("Orlando").observe(.childChanged, with: { (snapshot) in
 //            if let dict = snapshot.value as? [String: AnyObject] {
@@ -276,11 +275,81 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Before setup annotCount: \(self.custAnnots.count)")
+      //  checkForChangedData()
 
-        setupInitialPoints()
-        print("After setup annotCount: \(self.custAnnots.count)")
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        checkForChangedData()
+    }
+    
+    func checkForChangedData() {
+        myMapView.removeAnnotations(custAnnots)
+        custAnnots.removeAll()
+        businessAnnots.removeAll()
+        utilityAnnots.removeAll()
+        foodAnnots.removeAll()
+        historicAnnots.removeAll()
+        showingFood = !showingFood
+         showingHistoric = !showingHistoric
+         showingBusiness = !showingBusiness
+         showingUtility = !showingUtility
+        augTableView.reloadData()
+        
+        ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dict1 = snapshot.value as? [String: AnyObject] {
+                for snapKey in dict1.keys {
+                    if let snapDict = dict1[snapKey] as? [String: AnyObject] {
+                        self.createACustomAnnot(from: snapDict)
+                    }
+                    print(snapKey)
+                }
+                DispatchQueue.global().async {
+                    DispatchQueue.main.async {
+                        self.setupInitialPoints()
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.augTableView.reloadData()
+                    }
+                    DispatchQueue.main.async {
+                        self.view.setNeedsDisplay()
+                    }
+                }
+            }
+        })
+        
+        
+        
+    }
+    
+    func getInitialData() {
+        ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dict1 = snapshot.value as? [String: AnyObject] {
+                for snapKey in dict1.keys {
+                    if let snapDict = dict1[snapKey] as? [String: AnyObject] {
+                        self.createACustomAnnot(from: snapDict)
+                    }
+                    print(snapKey)
+                }
+                DispatchQueue.global().async {
+                    DispatchQueue.main.async {
+                        self.setupInitialPoints()
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.augTableView.reloadData()
+                    }
+                    DispatchQueue.main.async {
+                        self.view.setNeedsDisplay()
+                    }
+                }
+            }
+        })
+
+        
     }
     
     @IBAction func uploadTapped(_ sender: UIButton) {
