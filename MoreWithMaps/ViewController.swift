@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     let downArrow = UIImage(named: "dropDownIcon")
     var areCategoriesHidden = true
     
+    @IBOutlet weak var categoriesButton: UIButton!
     @IBOutlet weak var categoryBackground: UIView!
     // Karen
     let karen = "com.apple.ttsbundle.Karen-compact"
@@ -96,11 +97,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryBackground.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
-        categoryBackground.layer.cornerRadius = 10
-        categoryBackground.layer.masksToBounds = true
-        let thePoint = categoryBackground.center.x
-        //    self.view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+        setUpDisplay()
 
         
         ref = Database.database().reference()
@@ -121,8 +118,6 @@ class ViewController: UIViewController {
         self.myMapView.delegate = self
         myMapView.showsUserLocation = true
         myMapView.isRotateEnabled = true
-        directionsGoButton.layer.cornerRadius = 10
-        directionsGoButton.layer.masksToBounds = true
         
         speechSynthesizer.delegate = self
         uniqueVoice = AVSpeechSynthesisVoice(identifier: daniel)!
@@ -153,6 +148,20 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
      //   checkForChangedData()
+    }
+    
+    func setUpDisplay() {
+        categoryBackground.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
+        categoryBackground.layer.cornerRadius = 10
+        categoryBackground.layer.masksToBounds = true
+        categoriesButton.layer.cornerRadius = 10
+        categoriesButton.layer.masksToBounds = true
+        directionsGoButton.layer.cornerRadius = 10
+        directionsGoButton.layer.masksToBounds = true
+
+        //    self.view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+
+        
     }
     
     func checkForChangedData() {
@@ -269,7 +278,7 @@ class ViewController: UIViewController {
     @IBAction func revealCategoriesTapped(_ sender: UIButton) {
         if areCategoriesHidden {
             self.view.layoutIfNeeded()
-            UIView.animate(withDuration: 1.3, animations: {
+            UIView.animate(withDuration: 0.7, animations: {
                // self.categoryMenuConstraint.constant = 8.0
                 self.categoryMenuVerticalPoint.constant = 0.0
                 
@@ -277,14 +286,12 @@ class ViewController: UIViewController {
             })
             
         } else {
-            UIView.animate(withDuration: 1.3, animations: {
+            UIView.animate(withDuration: 0.7, animations: {
                 self.categoryMenuVerticalPoint.constant = -550.0
 
               //  self.categoryMenuConstraint.constant = 488.0
                 self.view.layoutIfNeeded()
             })
-
-            
         }
         areCategoriesHidden = !areCategoriesHidden
         
