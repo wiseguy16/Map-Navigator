@@ -43,7 +43,9 @@ class ViewController: UIViewController {
     var hasDisplayedAnnotsOnce = false
     let upArrow = UIImage(named: "dropUpIcon")
     let downArrow = UIImage(named: "dropDownIcon")
+    var areCategoriesHidden = true
     
+    @IBOutlet weak var categoryBackground: UIView!
     // Karen
     let karen = "com.apple.ttsbundle.Karen-compact"
     // en-AU
@@ -79,6 +81,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var moveTableViewConstraint: NSLayoutConstraint!
     
+   // @IBOutlet weak var categoryMenuConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var categoryMenuVerticalPoint: NSLayoutConstraint!
+    
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     var stringArray: [String] = []
     var keyArray: [String] = []
@@ -90,155 +96,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let enumerator = myDictionary.keys
-//        while let key = enumerator.nextObject() {
-//            print(key)
-//        }
+        categoryBackground.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
+        categoryBackground.layer.cornerRadius = 10
+        categoryBackground.layer.masksToBounds = true
+        let thePoint = categoryBackground.center.x
+        //    self.view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
 
         
         ref = Database.database().reference()
         getInitialData()
   //      hasDisplayedAnnotsOnce = !hasDisplayedAnnotsOnce
         
-        
-//        ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let dict1 = snapshot.value as? [String: AnyObject] {
-//                for snapKey in dict1.keys {
-//                    if let snapDict = dict1[snapKey] as? [String: AnyObject] {
-//                        self.createACustomAnnot(from: snapDict)
-//                    }
-//                    print(snapKey)
-//                }
-//                DispatchQueue.global().async {
-//                    DispatchQueue.main.async {
-//                        self.setupInitialPoints()
-//                    }
-//                    
-//                    DispatchQueue.main.async {
-//                        self.augTableView.reloadData()
-//                    }
-//                    DispatchQueue.main.async {
-//                        self.view.setNeedsDisplay()
-//                    }
-//                }
-//            }
-//        })
-//
-
-        
-                
-//                self.firArray.append(dict1)
-//                for (key, value) in dict1 {
-//                    let snapKey = "\(key)"
-//                    self.keyArray.append(snapKey)
-//                    print("\(key) -> \(value)")
-//                }
-                
-/*
-                 self.keyArray = self.firArray.map({ $0.keys.first! })
-                self.stringArray.append(contentsOf: self.keyArray)
-                print(self.stringArray)
-               // roomNames = rooms.map({ $0.keys.first!})
-//                for item in self.firArray {
-//                    print(self.firArray[0].keys)
-//                }
-                print(self.firArray)
-                let dict = dict1["The New Moon Cafe"] as! [String: AnyObject]
-                     //   self.createACustomAnnot(from: dict)
-                        DispatchQueue.global().async {
-                            DispatchQueue.main.async {
-                                self.createACustomAnnot(from: dict)
-                            }
-
-                            DispatchQueue.main.async {
-                                self.setupInitialPoints()
-                            }
-                            DispatchQueue.main.async {
-                                self.augTableView.reloadData()
-                            }
-                        }
-         */
-//            }
-//        })
-        
-//        ref?.child("Orlando").observe(.childChanged, with: { (snapshot) in
-//            if let dict = snapshot.value as? [String: AnyObject] {
-//                print("\(dict["title"]!)")
-//                //   self.createACustomAnnot(from: dict)
-//                DispatchQueue.global().async {
-//                    DispatchQueue.main.async {
-//                        self.createACustomAnnot(from: dict)
-//                    }
-//                    
-//                    DispatchQueue.main.async {
-//                        self.setupInitialPoints()
-//                    }
-//                    DispatchQueue.main.async {
-//                        self.augTableView.reloadData()
-//                    }
-//                }
-//            }
-//        })
-//        ref?.child("Orlando").observe(.childRemoved, with: { (snapshot) in
-//            if let dict = snapshot.value as? [String: AnyObject] {
-//                print("\(dict["imageName"]!)")
-//                self.augTableView.reloadData()
-//
-                //   self.createACustomAnnot(from: dict)
- //               DispatchQueue.global().async {
-//                    DispatchQueue.main.async {
-//                        self.createACustomAnnot(from: dict)
-//                    }
-//                    
-//                    DispatchQueue.main.async {
-//                        self.setupInitialPoints()
-//                    }
-//                    DispatchQueue.main.async {
-//                        self.augTableView.reloadData()
-//                    }
-//                }
-//            }
-//        })
-
-
-        
-        
-        
-        
-        
-                
-                
-                
-                
-//                self.createACustomAnnot(from: dict)
-//               // DispatchQueue.async(execute: DispatchQueue.main)
-//                DispatchQueue.global().async {
-//                    DispatchQueue.main.async {
-//                        self.setupInitialPoints()
-//                    }
-//                    DispatchQueue.main.async {
-//                        self.augTableView.reloadData()
-//                    }
-//                }
-//                DispatchQueue.main.async(execute: {
-//                    // FIX THIS!!!!!
-//                })
-//            }
-//        })
-        
-        
-
-        
-        
-//        handle = ref?.child("Orlando").observe(.value, with: { (snapshot) in
-//            if let items = snapshot.value as? [[String: AnyObject]] {
-//                for item in items {
-//                     print(item)
-//                }
-//               
-//               // print("You have object")
-//            }
-//        })
         
 
 
@@ -332,26 +200,8 @@ class ViewController: UIViewController {
     }
     
     func getInitialData() {
-//        self.myMapView.removeAnnotations(self.custAnnots)
-//        self.custAnnots.removeAll()
-//        self.businessAnnots.removeAll()
-//        self.utilityAnnots.removeAll()
-//        self.foodAnnots.removeAll()
-//        self.historicAnnots.removeAll()
-//        self.showingFood = !self.showingFood
-//        self.showingHistoric = !self.showingHistoric
-//        self.showingBusiness = !self.showingBusiness
-//        self.showingUtility = !self.showingUtility
-//        self.augTableView.reloadData()
-
-//        ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
         ref?.child("Orlando").observe(.value, with: { (snapshot) in
-           // if self.hasDisplayedAnnotsOnce {
-
-         //   }
             self.resetMap()
-
-
 
             if let dict1 = snapshot.value as? [String: AnyObject] {
                 for snapKey in dict1.keys {
@@ -416,6 +266,30 @@ class ViewController: UIViewController {
         present(destVC, animated: true, completion: nil)
     }
     
+    @IBAction func revealCategoriesTapped(_ sender: UIButton) {
+        if areCategoriesHidden {
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 1.3, animations: {
+               // self.categoryMenuConstraint.constant = 8.0
+                self.categoryMenuVerticalPoint.constant = -100.0
+                self.view.layoutIfNeeded()
+            })
+            
+        } else {
+            UIView.animate(withDuration: 1.3, animations: {
+                self.categoryMenuVerticalPoint.constant = -550.0
+
+              //  self.categoryMenuConstraint.constant = 488.0
+                self.view.layoutIfNeeded()
+            })
+
+            
+        }
+        areCategoriesHidden = !areCategoriesHidden
+        
+    }
+    
+    
 //BRINGS UP THE TABLEVIEW...
     @IBAction func showTapped(_ sender: UIButton) {
         if isTableHidden {
@@ -429,7 +303,7 @@ class ViewController: UIViewController {
             }
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
-                self.tableViewHeight.constant = CGFloat(73 * adjuster) //180.0
+                self.tableViewHeight.constant = CGFloat(100 * adjuster) //180.0
                 sender.setImage(self.upArrow!, for: .normal)
                 //sender.setTitle("Hide", for: .normal)
                 self.view.layoutIfNeeded()
@@ -891,12 +765,12 @@ extension ViewController: MKMapViewDelegate {
         // PROBABLY BOTH THESE WORK??
         
         let routeLine = MKPolylineRenderer(overlay: overlay)
-        routeLine.strokeColor = UIColor.purple
+        routeLine.strokeColor = .blue
         routeLine.lineWidth = 6.0
         
         if overlay is MKPolyline {
             let renderer = MKPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = .blue
+            renderer.strokeColor = UIColor.purple
             renderer.lineWidth = 5.0
             return renderer
         }
@@ -905,7 +779,7 @@ extension ViewController: MKMapViewDelegate {
             let renderer = MKCircleRenderer(overlay: overlay)
             renderer.strokeColor = .red
             renderer.fillColor = .red
-            renderer.alpha = 0.5
+            renderer.alpha = 0.3
             return renderer
         } else {
             return routeLine

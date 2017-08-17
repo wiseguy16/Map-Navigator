@@ -83,21 +83,6 @@ extension ViewController {
         return mutablePhrase
     }
 
-    /*
-     This is step 0 :Proceed to Delaney Ave
-     This is how may meters: 0.0
-     This is step 1 :Turn left onto E Gore St
-     This is how may meters: 144.0
-     This is step 2 :Turn right onto S Orange Ave
-     This is how may meters: 163.0
-     This is step 3 :Continue onto S Rosalind Ave
-     This is how may meters: 271.0
-     This is step 4 :Turn right onto E Robinson St
-     This is how may meters: 1378.0
-     This is step 5 :The destination is on your right
-     This is how may meters: 29.0
-     */
-
-
+  
     
 }

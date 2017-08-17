@@ -640,3 +640,144 @@ class OldCodeForReviewViewController: UIViewController {
      */
 
 }
+
+//        ref?.child("Orlando").observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let dict1 = snapshot.value as? [String: AnyObject] {
+//                for snapKey in dict1.keys {
+//                    if let snapDict = dict1[snapKey] as? [String: AnyObject] {
+//                        self.createACustomAnnot(from: snapDict)
+//                    }
+//                    print(snapKey)
+//                }
+//                DispatchQueue.global().async {
+//                    DispatchQueue.main.async {
+//                        self.setupInitialPoints()
+//                    }
+//
+//                    DispatchQueue.main.async {
+//                        self.augTableView.reloadData()
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.view.setNeedsDisplay()
+//                    }
+//                }
+//            }
+//        })
+//
+
+
+
+//                self.firArray.append(dict1)
+//                for (key, value) in dict1 {
+//                    let snapKey = "\(key)"
+//                    self.keyArray.append(snapKey)
+//                    print("\(key) -> \(value)")
+//                }
+
+/*
+ self.keyArray = self.firArray.map({ $0.keys.first! })
+ self.stringArray.append(contentsOf: self.keyArray)
+ print(self.stringArray)
+ // roomNames = rooms.map({ $0.keys.first!})
+ //                for item in self.firArray {
+ //                    print(self.firArray[0].keys)
+ //                }
+ print(self.firArray)
+ let dict = dict1["The New Moon Cafe"] as! [String: AnyObject]
+ //   self.createACustomAnnot(from: dict)
+ DispatchQueue.global().async {
+ DispatchQueue.main.async {
+ self.createACustomAnnot(from: dict)
+ }
+ 
+ DispatchQueue.main.async {
+ self.setupInitialPoints()
+ }
+ DispatchQueue.main.async {
+ self.augTableView.reloadData()
+ }
+ }
+ */
+//            }
+//        })
+
+//        ref?.child("Orlando").observe(.childChanged, with: { (snapshot) in
+//            if let dict = snapshot.value as? [String: AnyObject] {
+//                print("\(dict["title"]!)")
+//                //   self.createACustomAnnot(from: dict)
+//                DispatchQueue.global().async {
+//                    DispatchQueue.main.async {
+//                        self.createACustomAnnot(from: dict)
+//                    }
+//
+//                    DispatchQueue.main.async {
+//                        self.setupInitialPoints()
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.augTableView.reloadData()
+//                    }
+//                }
+//            }
+//        })
+//        ref?.child("Orlando").observe(.childRemoved, with: { (snapshot) in
+//            if let dict = snapshot.value as? [String: AnyObject] {
+//                print("\(dict["imageName"]!)")
+//                self.augTableView.reloadData()
+//
+//   self.createACustomAnnot(from: dict)
+//               DispatchQueue.global().async {
+//                    DispatchQueue.main.async {
+//                        self.createACustomAnnot(from: dict)
+//                    }
+//
+//                    DispatchQueue.main.async {
+//                        self.setupInitialPoints()
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.augTableView.reloadData()
+//                    }
+//                }
+//            }
+//        })
+
+
+
+
+
+
+
+
+
+
+
+//                self.createACustomAnnot(from: dict)
+//               // DispatchQueue.async(execute: DispatchQueue.main)
+//                DispatchQueue.global().async {
+//                    DispatchQueue.main.async {
+//                        self.setupInitialPoints()
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.augTableView.reloadData()
+//                    }
+//                }
+//                DispatchQueue.main.async(execute: {
+//                    // FIX THIS!!!!!
+//                })
+//            }
+//        })
+
+
+
+
+
+//        handle = ref?.child("Orlando").observe(.value, with: { (snapshot) in
+//            if let items = snapshot.value as? [[String: AnyObject]] {
+//                for item in items {
+//                     print(item)
+//                }
+//
+//               // print("You have object")
+//            }
+//        })
+
+
