@@ -271,7 +271,8 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 1.3, animations: {
                // self.categoryMenuConstraint.constant = 8.0
-                self.categoryMenuVerticalPoint.constant = -100.0
+                self.categoryMenuVerticalPoint.constant = 0.0
+                
                 self.view.layoutIfNeeded()
             })
             
