@@ -148,24 +148,15 @@
 			isa = PBXGroup;
 			children = (
 				4AC1FEF81F2BB58100613334 /* AppDelegate.swift */,
-				4AC1FF3F1F2F91D800613334 /* RefTableViewController.swift */,
-				4AC1FF3A1F2E3E8E00613334 /* CustomAnnotat.swift */,
-				4A6FE9131F4237CD0012CA50 /* OldCodeForReviewViewController.swift */,
-				4A6FE8CB1F3A4C0B0012CA50 /* AbbreviationsHelper.swift */,
-				4A6FE8CD1F3B687A0012CA50 /* SearchBarFunctions.swift */,
-				4A6FE8CF1F3B68F80012CA50 /* TableViewFunctions.swift */,
-				4A4BD09B1F37B6AD0049B0C7 /* HelperFunctions.swift */,
-				4A0F61FF1F30DB3E00BD358D /* DetailsViewController.swift */,
-				4AC1FF3D1F2F909700613334 /* AugustaCell.swift */,
-				4A0F61FD1F2FD5DC00BD358D /* AnnotationView.swift */,
-				4AC1FEFA1F2BB58100613334 /* ViewController.swift */,
-				4AC1FF121F2BBB0600613334 /* Utilities.swift */,
+				4ADA96051F45EE8500F7F289 /* Reference */,
+				4ADA96071F45EEC500F7F289 /* Models */,
+				4ADA96081F45EEE900F7F289 /* Extensions */,
+				4ADA96091F45EF0000F7F289 /* Controllers */,
+				4ADA96061F45EEA100F7F289 /* Utilites */,
 				4AC1FEFC1F2BB58100613334 /* Main.storyboard */,
 				4AC1FF021F2BB58200613334 /* Assets.xcassets */,
 				4AC1FF041F2BB58200613334 /* LaunchScreen.storyboard */,
-				4A4BD0A51F38F4800049B0C7 /* Location2.gpx */,
-				4A4BD09D1F38C95B0049B0C7 /* TestLocations.gpx */,
-				4A4BD0A31F38F1F30049B0C7 /* Location3.gpx */,
+				4ADA960A1F45EF1A00F7F289 /* GPSsamples */,
 				4AC1FF071F2BB58200613334 /* Info.plist */,
 				4A6FE8D11F3B8AB10012CA50 /* GoogleService-Info.plist */,
 				4AC1FF3C1F2F8DB600613334 /* photos */,
@@ -213,6 +204,63 @@
 				4AC1FF1E1F2E28E300613334 /* bigcity.png */,
 			);
 			name = photos;
+			sourceTree = "<group>";
+		};
+		4ADA96051F45EE8500F7F289 /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				4AC1FF3F1F2F91D800613334 /* RefTableViewController.swift */,
+				4A6FE9131F4237CD0012CA50 /* OldCodeForReviewViewController.swift */,
+			);
+			name = Reference;
+			sourceTree = "<group>";
+		};
+		4ADA96061F45EEA100F7F289 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				4AC1FF121F2BBB0600613334 /* Utilities.swift */,
+			);
+			name = Utilites;
+			sourceTree = "<group>";
+		};
+		4ADA96071F45EEC500F7F289 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4AC1FF3A1F2E3E8E00613334 /* CustomAnnotat.swift */,
+				4A6FE8CB1F3A4C0B0012CA50 /* AbbreviationsHelper.swift */,
+				4A0F61FD1F2FD5DC00BD358D /* AnnotationView.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4ADA96081F45EEE900F7F289 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4A6FE8CD1F3B687A0012CA50 /* SearchBarFunctions.swift */,
+				4A6FE8CF1F3B68F80012CA50 /* TableViewFunctions.swift */,
+				4A4BD09B1F37B6AD0049B0C7 /* HelperFunctions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		4ADA96091F45EF0000F7F289 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A0F61FF1F30DB3E00BD358D /* DetailsViewController.swift */,
+				4AC1FF3D1F2F909700613334 /* AugustaCell.swift */,
+				4AC1FEFA1F2BB58100613334 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4ADA960A1F45EF1A00F7F289 /* GPSsamples */ = {
+			isa = PBXGroup;
+			children = (
+				4A4BD0A51F38F4800049B0C7 /* Location2.gpx */,
+				4A4BD09D1F38C95B0049B0C7 /* TestLocations.gpx */,
+				4A4BD0A31F38F1F30049B0C7 /* Location3.gpx */,
+			);
+			name = GPSsamples;
 			sourceTree = "<group>";
 		};
 		F579C7BB1299104267A79E23 /* Pods */ = {
