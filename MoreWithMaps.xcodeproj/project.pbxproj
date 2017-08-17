@@ -54,6 +54,9 @@
 		4AC1FF3B1F2E3E8E00613334 /* CustomAnnotat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FF3A1F2E3E8E00613334 /* CustomAnnotat.swift */; };
 		4AC1FF3E1F2F909700613334 /* AugustaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FF3D1F2F909700613334 /* AugustaCell.swift */; };
 		4AC1FF401F2F91D800613334 /* RefTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1FF3F1F2F91D800613334 /* RefTableViewController.swift */; };
+		4ADA960D1F4613A600F7F289 /* PharmacyMed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA960B1F4613A600F7F289 /* PharmacyMed.png */; };
+		4ADA960E1F4613A600F7F289 /* PharmacySmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA960C1F4613A600F7F289 /* PharmacySmall.png */; };
+		4ADA96101F4613B100F7F289 /* Pharmacy1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA960F1F4613B100F7F289 /* Pharmacy1.png */; };
 		D590A039E76B315446A70747 /* Pods_MoreWithMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1636CCA99D478CAA1FB4DC /* Pods_MoreWithMaps.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +111,9 @@
 		4AC1FF3A1F2E3E8E00613334 /* CustomAnnotat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotat.swift; sourceTree = "<group>"; };
 		4AC1FF3D1F2F909700613334 /* AugustaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugustaCell.swift; sourceTree = "<group>"; };
 		4AC1FF3F1F2F91D800613334 /* RefTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefTableViewController.swift; sourceTree = "<group>"; };
+		4ADA960B1F4613A600F7F289 /* PharmacyMed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PharmacyMed.png; sourceTree = "<group>"; };
+		4ADA960C1F4613A600F7F289 /* PharmacySmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PharmacySmall.png; sourceTree = "<group>"; };
+		4ADA960F1F4613B100F7F289 /* Pharmacy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pharmacy1.png; sourceTree = "<group>"; };
 		7D1636CCA99D478CAA1FB4DC /* Pods_MoreWithMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoreWithMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC525ADE8D71D62B4758BFE0 /* Pods-MoreWithMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoreWithMaps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoreWithMaps/Pods-MoreWithMaps.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +184,9 @@
 		4AC1FF3C1F2F8DB600613334 /* photos */ = {
 			isa = PBXGroup;
 			children = (
+				4ADA960B1F4613A600F7F289 /* PharmacyMed.png */,
+				4ADA960F1F4613B100F7F289 /* Pharmacy1.png */,
+				4ADA960C1F4613A600F7F289 /* PharmacySmall.png */,
 				4A0F62071F3381D200BD358D /* craftVine.jpg */,
 				4A0F62081F3381D200BD358D /* humaniTree.jpg */,
 				4A0F62091F3381D200BD358D /* mellowMushroom.jpg */,
@@ -345,6 +354,7 @@
 			files = (
 				4AC1FF2B1F2E292A00613334 /* icecream.png in Resources */,
 				4AC1FF351F2E29C100613334 /* jewishquarter.png in Resources */,
+				4ADA96101F4613B100F7F289 /* Pharmacy1.png in Resources */,
 				4AC1FF2A1F2E292A00613334 /* foodtruck.png in Resources */,
 				4A0F62151F3381D200BD358D /* pizzaJoint.jpg in Resources */,
 				4AC1FF2F1F2E294500613334 /* footprint.png in Resources */,
@@ -356,6 +366,7 @@
 				4A0F62101F3381D200BD358D /* humaniTree.jpg in Resources */,
 				4A0F62141F3381D200BD358D /* newMoon.jpg in Resources */,
 				4AC1FF311F2E295300613334 /* lighthouse-2.png in Resources */,
+				4ADA960D1F4613A600F7F289 /* PharmacyMed.png in Resources */,
 				4AC1FF331F2E295F00613334 /* map.png in Resources */,
 				4A0F62121F3381D200BD358D /* metro.jpg in Resources */,
 				4A6FE8D21F3B8AB10012CA50 /* GoogleService-Info.plist in Resources */,
@@ -365,6 +376,7 @@
 				4AC1FF1F1F2E28E400613334 /* bigcity.png in Resources */,
 				4A0F62061F3273D400BD358D /* dropUpIcon.png in Resources */,
 				4AC1FF291F2E292A00613334 /* fooddeliveryservice.png in Resources */,
+				4ADA960E1F4613A600F7F289 /* PharmacySmall.png in Resources */,
 				4AC1FF231F2E290D00613334 /* clock.png in Resources */,
 				4A0F62131F3381D200BD358D /* modInk.jpg in Resources */,
 				4A4BD09E1F38C95C0049B0C7 /* TestLocations.gpx in Resources */,
