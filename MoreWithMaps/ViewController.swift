@@ -82,9 +82,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var moveTableViewConstraint: NSLayoutConstraint!
     
-   // @IBOutlet weak var categoryMenuConstraint: NSLayoutConstraint!
+    @IBOutlet weak var categoryMenuConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var categoryMenuVerticalPoint: NSLayoutConstraint!
+  //  @IBOutlet weak var categoryMenuVerticalPoint: NSLayoutConstraint!
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     var stringArray: [String] = []
@@ -291,17 +291,17 @@ class ViewController: UIViewController {
         if areCategoriesHidden {
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.5, animations: {
-                // self.categoryMenuConstraint.constant = 8.0
-                self.categoryMenuVerticalPoint.constant = -100.0
+                 self.categoryMenuConstraint.constant = 0.0
+                //self.categoryMenuVerticalPoint.constant = -100.0
                 
                 self.view.layoutIfNeeded()
             })
             
         } else {
             UIView.animate(withDuration: 0.5, animations: {
-                self.categoryMenuVerticalPoint.constant = -550.0
+                //self.categoryMenuVerticalPoint.constant = -550.0
                 
-                //  self.categoryMenuConstraint.constant = 488.0
+                  self.categoryMenuConstraint.constant = -550.0
                 self.view.layoutIfNeeded()
             })
         }
