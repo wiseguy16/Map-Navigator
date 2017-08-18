@@ -83,7 +83,6 @@
 		4ADA96401F462AF800F7F289 /* purseBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA963C1F462AF800F7F289 /* purseBig.png */; };
 		4ADA964B1F4776E700F7F289 /* ambulancePant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96411F4776E600F7F289 /* ambulancePant.png */; };
 		4ADA964C1F4776E700F7F289 /* ATMpant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96421F4776E600F7F289 /* ATMpant.png */; };
-		4ADA964D1F4776E700F7F289 /* briefcasePant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96431F4776E600F7F289 /* briefcasePant.png */; };
 		4ADA964E1F4776E700F7F289 /* burgerPant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96441F4776E600F7F289 /* burgerPant.png */; };
 		4ADA964F1F4776E700F7F289 /* businessPant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96451F4776E600F7F289 /* businessPant.png */; };
 		4ADA96501F4776E700F7F289 /* clothesPant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96461F4776E600F7F289 /* clothesPant.png */; };
@@ -91,7 +90,6 @@
 		4ADA96521F4776E700F7F289 /* pharmacyPant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96481F4776E600F7F289 /* pharmacyPant.png */; };
 		4ADA965F1F47772F00F7F289 /* ambulancePantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96551F47772F00F7F289 /* ambulancePantBig.png */; };
 		4ADA96601F47772F00F7F289 /* ATMpantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96561F47772F00F7F289 /* ATMpantBig.png */; };
-		4ADA96611F47772F00F7F289 /* briefcasePantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96571F47772F00F7F289 /* briefcasePantBig.png */; };
 		4ADA96621F47772F00F7F289 /* burgerPantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96581F47772F00F7F289 /* burgerPantBig.png */; };
 		4ADA96631F47772F00F7F289 /* businessPantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96591F47772F00F7F289 /* businessPantBig.png */; };
 		4ADA96641F47772F00F7F289 /* clothesPantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA965A1F47772F00F7F289 /* clothesPantBig.png */; };
@@ -101,6 +99,8 @@
 		4ADA96681F47772F00F7F289 /* trainPantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA965E1F47772F00F7F289 /* trainPantBig.png */; };
 		4ADA966B1F477B0900F7F289 /* pursePant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA96691F477B0900F7F289 /* pursePant.png */; };
 		4ADA966C1F477B0900F7F289 /* trainPant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA966A1F477B0900F7F289 /* trainPant.png */; };
+		4ADA966E1F477C6700F7F289 /* briefcasePantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA966D1F477C6700F7F289 /* briefcasePantBig.png */; };
+		4ADA96701F477C7500F7F289 /* briefcasePant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA966F1F477C7500F7F289 /* briefcasePant.png */; };
 		D590A039E76B315446A70747 /* Pods_MoreWithMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1636CCA99D478CAA1FB4DC /* Pods_MoreWithMaps.framework */; };
 /* End PBXBuildFile section */
 
@@ -184,7 +184,6 @@
 		4ADA963C1F462AF800F7F289 /* purseBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purseBig.png; sourceTree = "<group>"; };
 		4ADA96411F4776E600F7F289 /* ambulancePant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ambulancePant.png; sourceTree = "<group>"; };
 		4ADA96421F4776E600F7F289 /* ATMpant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ATMpant.png; sourceTree = "<group>"; };
-		4ADA96431F4776E600F7F289 /* briefcasePant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcasePant.png; sourceTree = "<group>"; };
 		4ADA96441F4776E600F7F289 /* burgerPant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burgerPant.png; sourceTree = "<group>"; };
 		4ADA96451F4776E600F7F289 /* businessPant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = businessPant.png; sourceTree = "<group>"; };
 		4ADA96461F4776E600F7F289 /* clothesPant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clothesPant.png; sourceTree = "<group>"; };
@@ -192,7 +191,6 @@
 		4ADA96481F4776E600F7F289 /* pharmacyPant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pharmacyPant.png; sourceTree = "<group>"; };
 		4ADA96551F47772F00F7F289 /* ambulancePantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ambulancePantBig.png; sourceTree = "<group>"; };
 		4ADA96561F47772F00F7F289 /* ATMpantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ATMpantBig.png; sourceTree = "<group>"; };
-		4ADA96571F47772F00F7F289 /* briefcasePantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcasePantBig.png; sourceTree = "<group>"; };
 		4ADA96581F47772F00F7F289 /* burgerPantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burgerPantBig.png; sourceTree = "<group>"; };
 		4ADA96591F47772F00F7F289 /* businessPantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = businessPantBig.png; sourceTree = "<group>"; };
 		4ADA965A1F47772F00F7F289 /* clothesPantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clothesPantBig.png; sourceTree = "<group>"; };
@@ -202,6 +200,8 @@
 		4ADA965E1F47772F00F7F289 /* trainPantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainPantBig.png; sourceTree = "<group>"; };
 		4ADA96691F477B0900F7F289 /* pursePant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pursePant.png; sourceTree = "<group>"; };
 		4ADA966A1F477B0900F7F289 /* trainPant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainPant.png; sourceTree = "<group>"; };
+		4ADA966D1F477C6700F7F289 /* briefcasePantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcasePantBig.png; sourceTree = "<group>"; };
+		4ADA966F1F477C7500F7F289 /* briefcasePant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcasePant.png; sourceTree = "<group>"; };
 		7D1636CCA99D478CAA1FB4DC /* Pods_MoreWithMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoreWithMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC525ADE8D71D62B4758BFE0 /* Pods-MoreWithMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoreWithMaps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoreWithMaps/Pods-MoreWithMaps.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,9 +274,9 @@
 			children = (
 				4ADA96551F47772F00F7F289 /* ambulancePantBig.png */,
 				4ADA96561F47772F00F7F289 /* ATMpantBig.png */,
-				4ADA96571F47772F00F7F289 /* briefcasePantBig.png */,
 				4ADA96581F47772F00F7F289 /* burgerPantBig.png */,
 				4ADA96591F47772F00F7F289 /* businessPantBig.png */,
+				4ADA966D1F477C6700F7F289 /* briefcasePantBig.png */,
 				4ADA965A1F47772F00F7F289 /* clothesPantBig.png */,
 				4ADA965B1F47772F00F7F289 /* parkingPantBig.png */,
 				4ADA965C1F47772F00F7F289 /* pharmacyPantBig.png */,
@@ -284,12 +284,12 @@
 				4ADA965E1F47772F00F7F289 /* trainPantBig.png */,
 				4ADA96411F4776E600F7F289 /* ambulancePant.png */,
 				4ADA96421F4776E600F7F289 /* ATMpant.png */,
-				4ADA96431F4776E600F7F289 /* briefcasePant.png */,
 				4ADA96441F4776E600F7F289 /* burgerPant.png */,
 				4ADA96451F4776E600F7F289 /* businessPant.png */,
 				4ADA96691F477B0900F7F289 /* pursePant.png */,
 				4ADA966A1F477B0900F7F289 /* trainPant.png */,
 				4ADA96461F4776E600F7F289 /* clothesPant.png */,
+				4ADA966F1F477C7500F7F289 /* briefcasePant.png */,
 				4ADA96471F4776E600F7F289 /* parkingPant.png */,
 				4ADA96481F4776E600F7F289 /* pharmacyPant.png */,
 				4ADA96391F462AF800F7F289 /* dinnerPlateBig.png */,
@@ -508,10 +508,10 @@
 				4AC1FF211F2E28F300613334 /* citysquare.png in Resources */,
 				4AC1FF2D1F2E292A00613334 /* takeaway.png in Resources */,
 				4ADA96631F47772F00F7F289 /* businessPantBig.png in Resources */,
+				4ADA966E1F477C6700F7F289 /* briefcasePantBig.png in Resources */,
 				4A0F62101F3381D200BD358D /* humaniTree.jpg in Resources */,
 				4ADA96261F4619C100F7F289 /* trainStation.png in Resources */,
 				4ADA96321F4619C100F7F289 /* purse.png in Resources */,
-				4ADA964D1F4776E700F7F289 /* briefcasePant.png in Resources */,
 				4ADA96661F47772F00F7F289 /* pharmacyPantBig.png in Resources */,
 				4ADA96641F47772F00F7F289 /* clothesPantBig.png in Resources */,
 				4A0F62141F3381D200BD358D /* newMoon.jpg in Resources */,
@@ -527,7 +527,6 @@
 				4ADA962C1F4619C100F7F289 /* bank.png in Resources */,
 				4A0F62121F3381D200BD358D /* metro.jpg in Resources */,
 				4A6FE8D21F3B8AB10012CA50 /* GoogleService-Info.plist in Resources */,
-				4ADA96611F47772F00F7F289 /* briefcasePantBig.png in Resources */,
 				4ADA96361F4619C100F7F289 /* doctor.png in Resources */,
 				4A0F62111F3381D200BD358D /* mellowMushroom.jpg in Resources */,
 				4ADA96311F4619C100F7F289 /* pizza.png in Resources */,
@@ -552,6 +551,7 @@
 				4A4BD09E1F38C95C0049B0C7 /* TestLocations.gpx in Resources */,
 				4AC1FF391F2E29F100613334 /* smallcity.png in Resources */,
 				4ADA96601F47772F00F7F289 /* ATMpantBig.png in Resources */,
+				4ADA96701F477C7500F7F289 /* briefcasePant.png in Resources */,
 				4ADA96381F462ADC00F7F289 /* atmBig.png in Resources */,
 				4ADA966C1F477B0900F7F289 /* trainPant.png in Resources */,
 				4A4BD0A41F38F1F30049B0C7 /* Location3.gpx in Resources */,
