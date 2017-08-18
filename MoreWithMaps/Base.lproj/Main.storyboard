@@ -105,7 +105,7 @@
                                             <constraint firstAttribute="width" constant="48" id="CLP-bY-u4O"/>
                                             <constraint firstAttribute="height" constant="68" id="Key-Gh-XQY"/>
                                         </constraints>
-                                        <state key="normal" image="dinnerPlateBig.png"/>
+                                        <state key="normal" image="ATMpantBig.png"/>
                                         <connections>
                                             <action selector="filterTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rpj-VS-W8m"/>
                                         </connections>
@@ -116,7 +116,7 @@
                                             <constraint firstAttribute="width" constant="48" id="2Ix-5X-SGm"/>
                                             <constraint firstAttribute="height" constant="68" id="XUF-Ai-oaT"/>
                                         </constraints>
-                                        <state key="normal" image="purseBig.png"/>
+                                        <state key="normal" image="PharmacyBig.png"/>
                                         <connections>
                                             <action selector="filterTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fGo-2h-GPP"/>
                                         </connections>
@@ -127,7 +127,7 @@
                                             <constraint firstAttribute="height" constant="68" id="0BD-te-at7"/>
                                             <constraint firstAttribute="width" constant="48" id="ntX-sN-z6e"/>
                                         </constraints>
-                                        <state key="normal" image="atmBig.png"/>
+                                        <state key="normal" image="ambulancePantBig.png"/>
                                         <connections>
                                             <action selector="filterTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ri8-YC-2aZ"/>
                                         </connections>
@@ -138,7 +138,7 @@
                                             <constraint firstAttribute="height" constant="68" id="Ydu-Il-uG7"/>
                                             <constraint firstAttribute="width" constant="48" id="eLP-xn-p1v"/>
                                         </constraints>
-                                        <state key="normal" image="PharmacyBig.png"/>
+                                        <state key="normal" image="clothesPantBig.png"/>
                                         <connections>
                                             <action selector="filterTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bmT-ci-5kO"/>
                                         </connections>
@@ -149,7 +149,7 @@
                                             <constraint firstAttribute="width" constant="48" id="4pE-pb-1d4"/>
                                             <constraint firstAttribute="height" constant="68" id="ei2-ts-4P2"/>
                                         </constraints>
-                                        <state key="normal" image="dinnerPlateBig.png"/>
+                                        <state key="normal" image="businessPantBig.png"/>
                                         <connections>
                                             <action selector="filterTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="awP-mx-aT3"/>
                                         </connections>
@@ -160,7 +160,7 @@
                                             <constraint firstAttribute="height" constant="68" id="9cm-gM-vY7"/>
                                             <constraint firstAttribute="width" constant="48" id="h55-DX-5rx"/>
                                         </constraints>
-                                        <state key="normal" image="landmarkBig.png"/>
+                                        <state key="normal" image="burgerPantBig.png"/>
                                         <connections>
                                             <action selector="filterTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="awD-p8-1kd"/>
                                         </connections>
@@ -460,12 +460,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ATMpantBig.png" width="59" height="84"/>
         <image name="CurrentLocation" width="15" height="15"/>
         <image name="PharmacyBig.png" width="59" height="84"/>
-        <image name="atmBig.png" width="59" height="84"/>
-        <image name="dinnerPlateBig.png" width="59" height="84"/>
+        <image name="ambulancePantBig.png" width="59" height="84"/>
+        <image name="burgerPantBig.png" width="59" height="84"/>
+        <image name="businessPantBig.png" width="59" height="84"/>
+        <image name="clothesPantBig.png" width="59" height="84"/>
         <image name="dropDownIcon" width="256" height="256"/>
-        <image name="landmarkBig.png" width="59" height="84"/>
-        <image name="purseBig.png" width="59" height="84"/>
     </resources>
 </document>
