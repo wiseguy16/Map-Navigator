@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     let downArrow = UIImage(named: "dropDownIcon")
     var areCategoriesHidden = true
     
-    @IBOutlet weak var categoriesButton: UIButton!
+   // @IBOutlet weak var categoriesButton: UIButton!
     @IBOutlet weak var categoryBackground: UIView!
     // Karen
     let karen = "com.apple.ttsbundle.Karen-compact"
@@ -151,11 +151,11 @@ class ViewController: UIViewController {
     }
     
     func setUpDisplay() {
-        categoryBackground.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
-        categoryBackground.layer.cornerRadius = 10
-        categoryBackground.layer.masksToBounds = true
-        categoriesButton.layer.cornerRadius = 10
-        categoriesButton.layer.masksToBounds = true
+        categoryBackground.backgroundColor = UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
+      //  categoryBackground.layer.cornerRadius = 10
+      //  categoryBackground.layer.masksToBounds = true
+      //  categoriesButton.layer.cornerRadius = 10
+      //  categoriesButton.layer.masksToBounds = true
         directionsGoButton.layer.cornerRadius = 10
         directionsGoButton.layer.masksToBounds = true
 
@@ -275,26 +275,39 @@ class ViewController: UIViewController {
         present(destVC, animated: true, completion: nil)
     }
     
+    
+    @IBAction func showCategoriesTapped(_ sender: UIBarButtonItem) {
+        
+        bringOutCategoriesMenu()
+    }
+    
+    
+    
     @IBAction func revealCategoriesTapped(_ sender: UIButton) {
+        // Not used anymore!!
+    }
+    
+    func bringOutCategoriesMenu() {
         if areCategoriesHidden {
             self.view.layoutIfNeeded()
-            UIView.animate(withDuration: 0.7, animations: {
-               // self.categoryMenuConstraint.constant = 8.0
-                self.categoryMenuVerticalPoint.constant = 0.0
+            UIView.animate(withDuration: 0.5, animations: {
+                // self.categoryMenuConstraint.constant = 8.0
+                self.categoryMenuVerticalPoint.constant = -100.0
                 
                 self.view.layoutIfNeeded()
             })
             
         } else {
-            UIView.animate(withDuration: 0.7, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.categoryMenuVerticalPoint.constant = -550.0
-
-              //  self.categoryMenuConstraint.constant = 488.0
+                
+                //  self.categoryMenuConstraint.constant = 488.0
                 self.view.layoutIfNeeded()
             })
         }
         areCategoriesHidden = !areCategoriesHidden
         
+
     }
     
     
