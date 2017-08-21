@@ -101,6 +101,7 @@
 		4ADA966C1F477B0900F7F289 /* trainPant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA966A1F477B0900F7F289 /* trainPant.png */; };
 		4ADA966E1F477C6700F7F289 /* briefcasePantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA966D1F477C6700F7F289 /* briefcasePantBig.png */; };
 		4ADA96701F477C7500F7F289 /* briefcasePant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA966F1F477C7500F7F289 /* briefcasePant.png */; };
+		4ADA96721F4B7B7800F7F289 /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADA96711F4B7B7700F7F289 /* DataTypes.swift */; };
 		D590A039E76B315446A70747 /* Pods_MoreWithMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1636CCA99D478CAA1FB4DC /* Pods_MoreWithMaps.framework */; };
 /* End PBXBuildFile section */
 
@@ -202,6 +203,7 @@
 		4ADA966A1F477B0900F7F289 /* trainPant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainPant.png; sourceTree = "<group>"; };
 		4ADA966D1F477C6700F7F289 /* briefcasePantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcasePantBig.png; sourceTree = "<group>"; };
 		4ADA966F1F477C7500F7F289 /* briefcasePant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcasePant.png; sourceTree = "<group>"; };
+		4ADA96711F4B7B7700F7F289 /* DataTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
 		7D1636CCA99D478CAA1FB4DC /* Pods_MoreWithMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoreWithMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC525ADE8D71D62B4758BFE0 /* Pods-MoreWithMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoreWithMaps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoreWithMaps/Pods-MoreWithMaps.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -368,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				4AC1FF3A1F2E3E8E00613334 /* CustomAnnotat.swift */,
+				4ADA96711F4B7B7700F7F289 /* DataTypes.swift */,
 				4A6FE8CB1F3A4C0B0012CA50 /* AbbreviationsHelper.swift */,
 				4A0F61FD1F2FD5DC00BD358D /* AnnotationView.swift */,
 			);
@@ -632,6 +635,7 @@
 				4A0F61FE1F2FD5DC00BD358D /* AnnotationView.swift in Sources */,
 				4AC1FF3B1F2E3E8E00613334 /* CustomAnnotat.swift in Sources */,
 				4AC1FF401F2F91D800613334 /* RefTableViewController.swift in Sources */,
+				4ADA96721F4B7B7800F7F289 /* DataTypes.swift in Sources */,
 				4A6FE8CE1F3B687A0012CA50 /* SearchBarFunctions.swift in Sources */,
 				4A6FE9141F4237CD0012CA50 /* OldCodeForReviewViewController.swift in Sources */,
 			);

@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     let downArrow = UIImage(named: "dropDownIcon")
     var areCategoriesHidden = true
     
+    
    // @IBOutlet weak var categoriesButton: UIButton!
     @IBOutlet weak var categoryBackground: UIView!
     // Karen
@@ -571,6 +572,7 @@ class ViewController: UIViewController {
         }
     //    setupInitialPoints()
     }
+    
     
 //TAKE A DICTIONARY AND CREATE A CUSTOM ANNOT
     //func createACustomAnnot(from dict: [String: AnyObject], finished: () -> Void) {
