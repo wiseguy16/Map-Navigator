@@ -10,13 +10,16 @@ import UIKit
 
 class AugustaCell: UITableViewCell {
     
-    // These are the beacons!!!!
+    // These are the beacons!!!!?
     
     @IBOutlet weak var markerImageView: UIImageView!
     
     @IBOutlet weak var markerTitle: UILabel!
     
     @IBOutlet weak var markerDescription: UILabel!
+    
+    @IBOutlet weak var infoButton: UIButton!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -94,7 +94,7 @@ class DetailsViewController: UIViewController {
         callNumber(phoneNumber: "321-230-4229")
     }
     
-    
+ // FUNCTION TO CALL THIS BUSINESS USING PHONE
     private func callNumber(phoneNumber: String) {
         if let phoneCallURL:URL = URL(string:"tel://\(phoneNumber)") {
             let application = UIApplication.shared
@@ -105,6 +105,7 @@ class DetailsViewController: UIViewController {
         }
     }
     
+    // FUNCTION TO LAUNCH MAPS APP WITH MKMAPITEM AS DESTINATION
     @IBAction func goToDirectionsTapped(_ sender: UIButton) {
         
         guard let lat = anAnnot?.locatCoordLat, let long = anAnnot?.locatCoordLong, let company = anAnnot?.companyName else {
@@ -118,6 +119,7 @@ class DetailsViewController: UIViewController {
         let mapItem = MKMapItem(placemark: placeMark)
         mapItem.name = company
         mapItem.openInMaps(launchOptions: options)
+        
         
     }
     

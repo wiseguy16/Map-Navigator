@@ -85,6 +85,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="infoButton" destination="0Wo-4G-kkF" id="9gs-PM-5OD"/>
                                             <outlet property="markerDescription" destination="TpW-h9-dZZ" id="Xgs-Ca-ocC"/>
                                             <outlet property="markerImageView" destination="s79-vG-JMf" id="Hqa-Jf-Hos"/>
                                             <outlet property="markerTitle" destination="A2e-Ac-nJ0" id="o6D-4P-K6f"/>
@@ -96,18 +97,18 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="bpm-wc-M7k"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vta-0N-qFo">
-                                <rect key="frame" x="299" y="443" width="60" height="24"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vta-0N-qFo">
+                                <rect key="frame" x="297" y="441" width="62" height="26"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="Bnn-gd-8CX"/>
-                                    <constraint firstAttribute="width" constant="60" id="aet-gu-Ld5"/>
+                                    <constraint firstAttribute="height" constant="26" id="Bnn-gd-8CX"/>
+                                    <constraint firstAttribute="width" constant="62" id="aet-gu-Ld5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yn2-TE-U8e">
-                                <rect key="frame" x="306.5" y="455.5" width="46" height="30"/>
+                                <rect key="frame" x="305.5" y="459" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="4rI-Gb-C4F"/>
                                     <constraint firstAttribute="height" constant="30" id="QpM-DY-84G"/>
@@ -119,8 +120,8 @@
                                     <action selector="showTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R20-Vt-gOB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-ck-qZL">
-                                <rect key="frame" x="313" y="395" width="50" height="30"/>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-ck-qZL">
+                                <rect key="frame" x="313" y="393" width="50" height="30"/>
                                 <color key="backgroundColor" red="0.24338630593121241" green="0.88967650907425411" blue="0.25542369497884576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="VuM-h8-cIF"/>
@@ -305,7 +306,7 @@
                             <constraint firstAttribute="trailing" secondItem="kc8-Mr-RM1" secondAttribute="trailing" id="SCE-h8-YmB"/>
                             <constraint firstItem="rM3-vd-hg3" firstAttribute="top" secondItem="vP8-uk-Mc2" secondAttribute="bottom" id="T2g-gq-cVX"/>
                             <constraint firstItem="vP8-uk-Mc2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TSs-Sl-bWI"/>
-                            <constraint firstItem="yn2-TE-U8e" firstAttribute="centerY" secondItem="Vta-0N-qFo" secondAttribute="centerY" constant="15" id="TWc-I0-tjo"/>
+                            <constraint firstItem="yn2-TE-U8e" firstAttribute="centerY" secondItem="Vta-0N-qFo" secondAttribute="centerY" constant="20" id="TWc-I0-tjo"/>
                             <constraint firstItem="vP8-uk-Mc2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="U7V-lD-De4"/>
                             <constraint firstAttribute="trailing" secondItem="vP8-uk-Mc2" secondAttribute="trailing" id="VKy-5D-t9I"/>
                             <constraint firstItem="kc8-Mr-RM1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Ywq-EK-z9f"/>
@@ -346,6 +347,7 @@
                         <outlet property="moveTableViewConstraint" destination="T2g-gq-cVX" id="JRv-5T-T1D"/>
                         <outlet property="myMapView" destination="vP8-uk-Mc2" id="upa-ux-Tz4"/>
                         <outlet property="myTextField" destination="aBE-rl-dtM" id="LCC-n9-oUI"/>
+                        <outlet property="resultsButton" destination="yn2-TE-U8e" id="IQQ-OZ-GlY"/>
                         <outlet property="resultsLabel" destination="Vta-0N-qFo" id="Ux8-bx-7HO"/>
                         <outlet property="tableViewHeight" destination="t6h-fI-Edj" id="CU8-tE-YZL"/>
                     </connections>

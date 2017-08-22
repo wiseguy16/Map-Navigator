@@ -47,6 +47,7 @@ extension ViewController: MKMapViewDelegate {
         let placeMark = MKPlacemark(coordinate: coord)
         // This is needed when we need to get directions
         destinationMapItem = MKMapItem(placemark: placeMark)
+        
     }
     
     // DRAWING THE DIRECTIONS ON MAP.....
@@ -74,5 +75,6 @@ extension ViewController: MKMapViewDelegate {
             return routeLine
         }
     }
+    
     
 }

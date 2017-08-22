@@ -79,6 +79,7 @@ class ViewController: UIViewController {
     
   //  @IBOutlet weak var categoryMenuVerticalPoint: NSLayoutConstraint!
     
+    @IBOutlet weak var resultsButton: UIButton!
     @IBOutlet weak var resultsLabel: UILabel!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     var stringArray: [String] = []
@@ -92,6 +93,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDisplay()
+        
 
         ref = Database.database().reference()
         getInitialData()
@@ -134,6 +136,8 @@ class ViewController: UIViewController {
         directionsGoButton.layer.masksToBounds = true
         resultsLabel.layer.cornerRadius = 5
         resultsLabel.layer.masksToBounds = true
+        let resultsTap = UITapGestureRecognizer(target: self, action: #selector (bringUpResultsView) )
+        resultsLabel.addGestureRecognizer(resultsTap)
 
         //    self.view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
     }
@@ -272,6 +276,10 @@ class ViewController: UIViewController {
     
 //BRINGS UP THE TABLEVIEW...
     @IBAction func showTapped(_ sender: UIButton) {
+        bringUpResultsView()
+    }
+    
+    func bringUpResultsView() {
         if isTableHidden {
             var adjuster = custAnnots.count
             if adjuster > 3 {
@@ -284,7 +292,7 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
                 self.tableViewHeight.constant = CGFloat(100 * adjuster) //180.0
-                sender.setImage(self.upArrow!, for: .normal)
+                self.resultsButton.setImage(self.upArrow!, for: .normal)
                 //sender.setTitle("Hide", for: .normal)
                 self.view.layoutIfNeeded()
             }
@@ -292,12 +300,13 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
                 self.tableViewHeight.constant = 0.0
-                sender.setImage(self.downArrow!, for: .normal)
-               // sender.setTitle("Show", for: .normal)
+                self.resultsButton.setImage(self.downArrow!, for: .normal)
+                // sender.setTitle("Show", for: .normal)
                 self.view.layoutIfNeeded()
             }
         }
         isTableHidden = !isTableHidden
+
     }
     
     
@@ -590,7 +599,7 @@ extension ViewController: AVSpeechSynthesizerDelegate {
 
 
 
-
+//"Food" "Historic" "Utility" "Business"
 
 // HARD CODED BEACON/ANNOTS DICTIONARY...
     let annotArry: [[String: AnyObject]] = [

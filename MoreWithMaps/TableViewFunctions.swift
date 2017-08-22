@@ -29,6 +29,27 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AugustaCell", for: indexPath) as! AugustaCell
         let beacon = custAnnots[indexPath.row]
         cell.markerTitle.text = beacon.title
+        cell.infoButton.tintColor = .white
+        cell.infoButton.backgroundColor = .white
+        cell.infoButton.layer.cornerRadius = 4
+        cell.infoButton.layer.masksToBounds = true
+        var useColor = UIColor.white
+
+        if let catColor = beacon.category {
+            switch catColor {
+            case "Food":
+                useColor = pantOrange
+            case "Business":
+                useColor = pantYellow
+            case "Utility":
+                useColor = pantDarkBlue
+            case "Historic":
+                useColor = pantBeige
+            default:
+                print(catColor)
+            }
+            cell.infoButton.backgroundColor = useColor
+        }
         if let image = beacon.imageName {
             let ary = image.components(separatedBy: ".")
             cell.markerDescription.text = ary[0] + ".com"
