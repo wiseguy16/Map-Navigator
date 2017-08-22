@@ -49,7 +49,7 @@ class DetailsViewController: UIViewController {
                         self.detailsImage.image = UIImage(data: data)
                     }
                 } catch {
-                    print("\(url!)")
+                    print("error with this url: \(url!)")
                 }
             }            
         }

@@ -65,24 +65,16 @@ class ViewController: UIViewController {
     // en-ZA
      
     
-    
     let speechSynthesizer = AVSpeechSynthesizer()
     var uniqueVoice = AVSpeechSynthesisVoice()
     
     // Var for giving directions
     @IBOutlet weak var directionsGoButton: UIButton!
-    
     var destinationMapItem = MKMapItem()
-    
-    
     @IBOutlet weak var directionsLabel: UILabel!
-    
     @IBOutlet weak var augTableView: UITableView!
-    
-    @IBOutlet weak var augSegmentControl: UISegmentedControl!
-    
+  //  @IBOutlet weak var augSegmentControl: UISegmentedControl!
     @IBOutlet weak var moveTableViewConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var categoryMenuConstraint: NSLayoutConstraint!
     
   //  @IBOutlet weak var categoryMenuVerticalPoint: NSLayoutConstraint!
@@ -100,15 +92,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setUpDisplay()
 
-        
         ref = Database.database().reference()
         getInitialData()
   //      hasDisplayedAnnotsOnce = !hasDisplayedAnnotsOnce
         
-        
-
-
-
 // LOCATION MANAGER SETUP...
         locationManager.delegate = self
         //locationManager.requestWhenInUseAuthorization()
@@ -139,30 +126,13 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-      //  checkForChangedData()
-
-
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-     //   checkForChangedData()
-    }
     
     func setUpDisplay() {
         categoryBackground.backgroundColor = UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
-      //  categoryBackground.layer.cornerRadius = 10
-      //  categoryBackground.layer.masksToBounds = true
-      //  categoriesButton.layer.cornerRadius = 10
-      //  categoriesButton.layer.masksToBounds = true
         directionsGoButton.layer.cornerRadius = 10
         directionsGoButton.layer.masksToBounds = true
 
         //    self.view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
-
-        
     }
     
     func checkForChangedData() {
@@ -224,7 +194,6 @@ class ViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.setupInitialPoints()
                     }
-                    
                     DispatchQueue.main.async {
                         self.augTableView.reloadData()
                     }
@@ -252,15 +221,6 @@ class ViewController: UIViewController {
             myTextField.text = ""
         }
     }
-/*
-    "title": "Craft & Vine" as AnyObject,
-    "imageName": "craftVine.jpg" as AnyObject,
-    "beaconName": "sandwich-2.png" as AnyObject,
-    "locatCoordLat": 28.626671 as AnyObject,
-    "locatCoordLong":  -81.435410 as AnyObject,
-    "category": "Food" as AnyObject,
-    "web": "http://2kdda41a533r27gnow20hp6whvn.wpengi
-*/
     
 //MODAL PRESENTATION FOR THE SPONSORED COMPANY...
     @IBAction func moreTapped(_ sender: UIButton) {
@@ -278,7 +238,6 @@ class ViewController: UIViewController {
     
     
     @IBAction func showCategoriesTapped(_ sender: UIBarButtonItem) {
-        
         bringOutCategoriesMenu()
     }
     
@@ -294,10 +253,8 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 0.5, animations: {
                  self.categoryMenuConstraint.constant = 0.0
                 //self.categoryMenuVerticalPoint.constant = -100.0
-                
                 self.view.layoutIfNeeded()
             })
-            
         } else {
             UIView.animate(withDuration: 0.5, animations: {
                 //self.categoryMenuVerticalPoint.constant = -550.0
@@ -307,8 +264,6 @@ class ViewController: UIViewController {
             })
         }
         areCategoriesHidden = !areCategoriesHidden
-        
-
     }
     
     
@@ -455,9 +410,7 @@ class ViewController: UIViewController {
                 myMapView.remove(lineOrCircle)
             }
         }
-
         secondDayDirections()
-        
     }
     
 // STEP by STEP DIRECTIONS WITH GEOFENCES TO TELL WHEN TO MOVE
@@ -522,7 +475,6 @@ class ViewController: UIViewController {
             speechUtterance.voice = self.uniqueVoice
            // let talker = AVSpeechSynthesisVoice()
            // let talkers = speechVoices()
-            
             self.speechSynthesizer.speak(speechUtterance)
             self.stepCounter += 1
         }
@@ -530,7 +482,6 @@ class ViewController: UIViewController {
             print(mntrRegion.identifier)
             print(mntrRegion.notifyOnEntry)
             print(mntrRegion.notifyOnExit)
-            
         }
     }
     
@@ -539,38 +490,8 @@ class ViewController: UIViewController {
 // INITIALIZING ANNOTS FROM HARD CODED DICTIONARY...
     func createCustomAnnots() {
         for annotDict in annotArry {
-            createACustomAnnot(from: annotDict) //, finished: {
-            //    setupInitialPoints()
-            //})
-        
-//            let annot = CustomAnnotat(dictionary: annotDict)
-//            
-//    // CREATE ONLY ARRAY OF 1 OBJECT HERE. PROBABLY EXTEND -> class CustomPointAnnotation: MKPointAnnotation TO HAVE ALL THE PROPERTIES 
-//    // THAT ARE IN CustomAnnotat
-//    // DONE!!!
-//            guard let latd = annot.locatCoordLat, let longd = annot.locatCoordLong, let name = annot.companyName, let theCat = annot.category else { return }
-//            
-//            let custCoord = CLLocationCoordinate2DMake(latd, longd)
-//            annot.coordinate = custCoord
-//            let rnd = drand48()
-//            let num = Int(1246 * rnd)
-//            annot.subtitle = "\(num) Broad Street"
-//            annot.title = name
-//            
-//            switch theCat {
-//            case "Food":
-//                foodAnnots.append(annot)
-//            case "Business":
-//                businessAnnots.append(annot)
-//            case "Utility":
-//                utilityAnnots.append(annot)
-//            case "Historic":
-//                historicAnnots.append(annot)
-//            default:
-//                print("not a valid category")
-//            }
+            createACustomAnnot(from: annotDict)
         }
-    //    setupInitialPoints()
     }
     
     
@@ -650,7 +571,6 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 4.0) {
                // self.createCustomAnnots()
                // self.myMapView.showAnnotations(self.custAnnots, animated: true)
-
             }
         }
     }
@@ -666,150 +586,7 @@ extension ViewController: AVSpeechSynthesizerDelegate {
 }
 
 
-extension ViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.stopUpdatingLocation()
-        myMapView.showsUserLocation = true
-        guard let currentLocation = locations.last else { return }
-        currentCoord = currentLocation.coordinate
-        print("\(currentCoord)")
-        //myMapView.userTrackingMode = .followWithHeading
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        showAlert(withTitle: "LocMngr Alert!", message: "You Entered a Region")
 
-        print("Entered CLCircular region \(region.identifier)")
-        
-        if region is CLCircularRegion {
-            handleEvent(forRegion: "Entered \(region.identifier)")
-           // myMapView.remove(region.identifier as! MKOverlay)
-           // locationManager.stopMonitoring(for: region)
-        }
-
-//        if region is CLCircularRegion {
-//            if region.identifier == "0" {
-//                handleEvent(forRegion: "Entered \(region.identifier)")
-//            }
-//        }
-//        if region is CLCircularRegion {
-//            if region.identifier == "1" {
-//                handleEvent(forRegion: "Entered \(region.identifier)")
-//            }
-//        }
-//        if region is CLCircularRegion {
-//            if region.identifier == "2" {
-//                handleEvent(forRegion: "Entered \(region.identifier)")
-//            }
-//        }
-
-
-
-        stepCounter += 1
-        if stepCounter < steps.count {
-            let currentStep = steps[stepCounter]
-            //let miles = Int(currentStep.distance * 0.0006214)
-            let miles = useMilesAndFeet(with: currentStep.distance)
-
-            let printableMessage = "In \(miles), \(currentStep.instructions)."
-            let readableMessage = readableStrings(with: currentStep.instructions)
-            let message = "In \(miles), \(readableMessage)"
-            directionsLabel.text = printableMessage
-            let speechUtterance = AVSpeechUtterance(string: message)
-            speechUtterance.voice = self.uniqueVoice
-            speechSynthesizer.speak(speechUtterance)
-        } else {
-            let message = "Arrived at destination."
-            directionsLabel.text = message
-            let speechUtterance = AVSpeechUtterance(string: message)
-            speechUtterance.voice = self.uniqueVoice
-            speechSynthesizer.speak(speechUtterance)
-            stepCounter = 0
-            locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
-        }
-    }
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        showAlert(withTitle: "LocMngr Alert!", message: "You Exited a Region")
-
-        if region is CLCircularRegion {
-            handleEvent(forRegion: "Exited \(region.identifier)")
-            //locationManager.stopMonitoring(for: region)
-        }
-
-    }
-    func handleEvent(forRegion regionPhrase: String) {
-        let speechUtterance = AVSpeechUtterance(string: "You have \(regionPhrase) the region")
-        //speechSynthesizer.speak(speechUtterance)
-
-    }
-    
-}
-
-extension ViewController: MKMapViewDelegate {
-    //DEFINING APPEARANCE FOR THE ANNOTATIONS...THESE ARE DELEGATE METHODS
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        if !(annotation is MKPointAnnotation) {
-            print("NOT REGISTERED AS MKPOINTANNOTATION")
-            return nil
-        }
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "customAnnot")
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "customAnnot")
-            annotationView!.canShowCallout = true
-        } else {
-            annotationView!.annotation = annotation
-        }
-        
-        //let cpa = annotation as! CustomPointAnnotation
-        let cpa = annotation as! CustomAnnotat
-        if let beaconName = cpa.beaconName {
-            annotationView!.image = UIImage(named: beaconName)
-        }
-        
-        //Added to git
-        // annotationView!.image = UIImage(named: cpa.imageName)
-        
-        return annotationView
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // print("I selected a placemark")
-        guard let coord = view.annotation?.coordinate else { return }
-        print("placemark is: \(coord.latitude) \(coord.longitude)")
-        // create a placemark and a map item
-        let placeMark = MKPlacemark(coordinate: coord)
-        // This is needed when we need to get directions
-        destinationMapItem = MKMapItem(placemark: placeMark)
-    }
-    
-    // DRAWING THE DIRECTIONS ON MAP.....
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        // PROBABLY BOTH THESE WORK??
-        
-        let routeLine = MKPolylineRenderer(overlay: overlay)
-        routeLine.strokeColor = .blue
-        routeLine.lineWidth = 6.0
-        
-        if overlay is MKPolyline {
-            let renderer = MKPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = UIColor.purple
-            renderer.lineWidth = 5.0
-            return renderer
-        }
-        
-        if overlay is MKCircle {
-            let renderer = MKCircleRenderer(overlay: overlay)
-            renderer.strokeColor = .red
-            renderer.fillColor = .red
-            renderer.alpha = 0.3
-            return renderer
-        } else {
-            return routeLine
-        }
-    }
-
-}
 
 
 // HARD CODED BEACON/ANNOTS DICTIONARY...

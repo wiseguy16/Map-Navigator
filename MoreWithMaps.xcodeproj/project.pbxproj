@@ -102,6 +102,9 @@
 		4ADA966E1F477C6700F7F289 /* briefcasePantBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA966D1F477C6700F7F289 /* briefcasePantBig.png */; };
 		4ADA96701F477C7500F7F289 /* briefcasePant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA966F1F477C7500F7F289 /* briefcasePant.png */; };
 		4ADA96721F4B7B7800F7F289 /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADA96711F4B7B7700F7F289 /* DataTypes.swift */; };
+		4ADA96741F4C99D100F7F289 /* ExtCLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADA96731F4C99D100F7F289 /* ExtCLLocationManager.swift */; };
+		4ADA96761F4C99EB00F7F289 /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADA96751F4C99EB00F7F289 /* ExtViewController.swift */; };
+		4ADA96781F4C9A2300F7F289 /* ExtMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADA96771F4C9A2300F7F289 /* ExtMapView.swift */; };
 		D590A039E76B315446A70747 /* Pods_MoreWithMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1636CCA99D478CAA1FB4DC /* Pods_MoreWithMaps.framework */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +207,9 @@
 		4ADA966D1F477C6700F7F289 /* briefcasePantBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcasePantBig.png; sourceTree = "<group>"; };
 		4ADA966F1F477C7500F7F289 /* briefcasePant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcasePant.png; sourceTree = "<group>"; };
 		4ADA96711F4B7B7700F7F289 /* DataTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
+		4ADA96731F4C99D100F7F289 /* ExtCLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtCLLocationManager.swift; sourceTree = "<group>"; };
+		4ADA96751F4C99EB00F7F289 /* ExtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
+		4ADA96771F4C9A2300F7F289 /* ExtMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtMapView.swift; sourceTree = "<group>"; };
 		7D1636CCA99D478CAA1FB4DC /* Pods_MoreWithMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoreWithMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC525ADE8D71D62B4758BFE0 /* Pods-MoreWithMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoreWithMaps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoreWithMaps/Pods-MoreWithMaps.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -381,6 +387,9 @@
 			isa = PBXGroup;
 			children = (
 				4A6FE8CD1F3B687A0012CA50 /* SearchBarFunctions.swift */,
+				4ADA96751F4C99EB00F7F289 /* ExtViewController.swift */,
+				4ADA96771F4C9A2300F7F289 /* ExtMapView.swift */,
+				4ADA96731F4C99D100F7F289 /* ExtCLLocationManager.swift */,
 				4A6FE8CF1F3B68F80012CA50 /* TableViewFunctions.swift */,
 				4A4BD09B1F37B6AD0049B0C7 /* HelperFunctions.swift */,
 			);
@@ -632,7 +641,10 @@
 				4AC1FF131F2BBB0600613334 /* Utilities.swift in Sources */,
 				4A4BD09C1F37B6AD0049B0C7 /* HelperFunctions.swift in Sources */,
 				4AC1FF011F2BB58100613334 /* MoreWithMaps.xcdatamodeld in Sources */,
+				4ADA96781F4C9A2300F7F289 /* ExtMapView.swift in Sources */,
+				4ADA96741F4C99D100F7F289 /* ExtCLLocationManager.swift in Sources */,
 				4A0F61FE1F2FD5DC00BD358D /* AnnotationView.swift in Sources */,
+				4ADA96761F4C99EB00F7F289 /* ExtViewController.swift in Sources */,
 				4AC1FF3B1F2E3E8E00613334 /* CustomAnnotat.swift in Sources */,
 				4AC1FF401F2F91D800613334 /* RefTableViewController.swift in Sources */,
 				4ADA96721F4B7B7800F7F289 /* DataTypes.swift in Sources */,
