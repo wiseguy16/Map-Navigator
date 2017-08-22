@@ -77,4 +77,30 @@ extension ViewController: MKMapViewDelegate {
     }
     
     
+    
+}
+
+extension MKMapView {
+    
+    // delta is the zoom factor
+    // 2 will zoom out x2
+    // .5 will zoom in by x2
+    
+    func setZoomByDelta(delta: Double, animated: Bool) {
+        var _region = region
+        var _span = region.span
+        _span.latitudeDelta *= delta
+        print(_span.latitudeDelta)
+        _span.longitudeDelta *= delta
+        print(_span.longitudeDelta)
+
+        _region.span = _span
+        print(_region.span)
+
+        if (_span.latitudeDelta) < 80.0 && (_span.longitudeDelta) < 80 {
+            setRegion(_region, animated: animated)
+
+        }
+       // setRegion(_region, animated: animated)
+    }
 }

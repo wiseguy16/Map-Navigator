@@ -215,6 +215,12 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func zoomInTapped(_ sender: UIButton) {
+        
+        myMapView.setZoomByDelta(delta: 2.0, animated: true)
+    }
+    
+    
     @IBAction func uploadTapped(_ sender: UIButton) {
         if myTextField.text != "" {
             for dict in annotArry {
