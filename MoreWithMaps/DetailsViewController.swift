@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailsViewController: UIViewController {
     
@@ -104,15 +105,23 @@ class DetailsViewController: UIViewController {
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func goToDirectionsTapped(_ sender: UIButton) {
+        
+        guard let lat = anAnnot?.locatCoordLat, let long = anAnnot?.locatCoordLong, let company = anAnnot?.companyName else {
+            return
+        }
+        let regionDistance: CLLocationDistance = 1000
+        let coord = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coord, regionDistance, regionDistance)
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+        let placeMark = MKPlacemark(coordinate: coord)
+        let mapItem = MKMapItem(placemark: placeMark)
+        mapItem.name = company
+        mapItem.openInMaps(launchOptions: options)
+        
     }
-    */
+    
+    
+
 
 }

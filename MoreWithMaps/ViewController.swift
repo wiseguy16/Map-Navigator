@@ -79,6 +79,7 @@ class ViewController: UIViewController {
     
   //  @IBOutlet weak var categoryMenuVerticalPoint: NSLayoutConstraint!
     
+    @IBOutlet weak var resultsLabel: UILabel!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     var stringArray: [String] = []
     var keyArray: [String] = []
@@ -131,6 +132,8 @@ class ViewController: UIViewController {
         categoryBackground.backgroundColor = UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
         directionsGoButton.layer.cornerRadius = 10
         directionsGoButton.layer.masksToBounds = true
+        resultsLabel.layer.cornerRadius = 5
+        resultsLabel.layer.masksToBounds = true
 
         //    self.view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
     }

@@ -9,13 +9,14 @@
 import Foundation
 import UIKit
 import MapKit
+import AVFoundation
 import CoreLocation
 
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
         myMapView.showsUserLocation = true
-        guard let currentLocation = locations.last else { return }
+        guard let currentLocation = locations.first else { return }
         currentCoord = currentLocation.coordinate
         print("\(currentCoord)")
         //myMapView.userTrackingMode = .followWithHeading
