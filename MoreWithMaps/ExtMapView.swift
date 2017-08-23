@@ -97,7 +97,7 @@ extension MKMapView {
         _region.span = _span
         print(_region.span)
 
-        if (_span.latitudeDelta) < 80.0 && (_span.longitudeDelta) < 80 {
+        if ((_span.latitudeDelta) < 80.0 && (_span.longitudeDelta) < 80) || ((_span.latitudeDelta) > 0.0006 && (_span.longitudeDelta) > 0.0006) {
             setRegion(_region, animated: animated)
 
         }

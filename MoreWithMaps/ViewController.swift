@@ -105,10 +105,13 @@ class ViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.startUpdatingLocation()
-        
+ // MAPKIT SETUP...
         self.myMapView.delegate = self
         myMapView.showsUserLocation = true
         myMapView.isRotateEnabled = true
+        myMapView.showsPointsOfInterest = false
+        myMapView.showsBuildings = false
+
         
         speechSynthesizer.delegate = self
         uniqueVoice = AVSpeechSynthesisVoice(identifier: daniel)!
@@ -131,6 +134,7 @@ class ViewController: UIViewController {
     
     
     func setUpDisplay() {
+    
         categoryBackground.backgroundColor = UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
         directionsGoButton.layer.cornerRadius = 10
         directionsGoButton.layer.masksToBounds = true
@@ -217,8 +221,14 @@ class ViewController: UIViewController {
     
     @IBAction func zoomInTapped(_ sender: UIButton) {
         
-        myMapView.setZoomByDelta(delta: 2.0, animated: true)
+        myMapView.setZoomByDelta(delta: 0.5, animated: true)
     }
+    
+    @IBAction func zoomOutTapped(_ sender: UIButton) {
+        myMapView.setZoomByDelta(delta: 2.0, animated: true)
+
+    }
+    
     
     
     @IBAction func uploadTapped(_ sender: UIButton) {
@@ -583,8 +593,10 @@ class ViewController: UIViewController {
         
         // let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 4100, pitch: 0, heading: 23)
         let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 7500, pitch: 0, heading: 0)
+        
         UIView.animate(withDuration: 4.0, animations: {
             self.myMapView.setCamera(camera, animated: true)
+            
         }) { (true) in
             UIView.animate(withDuration: 4.0) {
                // self.createCustomAnnots()
