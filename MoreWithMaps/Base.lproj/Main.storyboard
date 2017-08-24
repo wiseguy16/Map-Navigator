@@ -205,7 +205,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select categories to display" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIU-G3-d9o">
                                         <rect key="frame" x="91.5" y="2" width="192.5" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -241,11 +241,11 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vta-0N-qFo">
-                                <rect key="frame" x="156.5" y="441" width="62" height="26"/>
+                                <rect key="frame" x="153.5" y="441" width="68" height="26"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Bnn-gd-8CX"/>
-                                    <constraint firstAttribute="width" constant="62" id="aet-gu-Ld5"/>
+                                    <constraint firstAttribute="width" constant="68" id="aet-gu-Ld5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="highlightedColor"/>
@@ -527,7 +527,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wy5-R3-c4p" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wFM-ec-DOf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wFM-ec-DOf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10490351170301437" green="0.25878679752349854" blue="0.49931627511978149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
