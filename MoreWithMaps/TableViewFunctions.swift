@@ -55,8 +55,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.markerDescription.text = ary[0] + ".com"
             let theImage = UIImage(named: image)
             cell.imageView?.image = theImage
-            cell.imageView?.layer.cornerRadius = 33.25
-            cell.imageView?.layer.borderWidth = 2.0
+            cell.imageView?.layer.cornerRadius = 30
+            cell.imageView?.layer.borderWidth = 1.0
             cell.imageView?.layer.borderColor = useColor.cgColor
             cell.imageView?.clipsToBounds = true
             
