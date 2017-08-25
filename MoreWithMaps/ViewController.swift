@@ -316,6 +316,7 @@ class ViewController: UIViewController {
             }
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
+                self.myCollectionView.reloadData()
                 self.collectionViewHeight.constant = CGFloat(100 * adjuster) //180.0
                 self.resultsButton.setImage(self.upArrow!, for: .normal)
                 //sender.setTitle("Hide", for: .normal)
@@ -324,6 +325,7 @@ class ViewController: UIViewController {
         } else {
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
+                self.myCollectionView.reloadData()
                 self.collectionViewHeight.constant = 0.0
                 self.resultsButton.setImage(self.downArrow!, for: .normal)
                 // sender.setTitle("Show", for: .normal)
