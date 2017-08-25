@@ -64,7 +64,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.markerImageView.image = theImage
             cell.markerImageView.layer.cornerRadius = 30
             cell.markerImageView.layer.borderWidth = 1.0
-            cell.markerImageView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.markerImageView.layer.borderColor = UIColor.darkGray.cgColor
             cell.markerImageView.clipsToBounds = true
             
             

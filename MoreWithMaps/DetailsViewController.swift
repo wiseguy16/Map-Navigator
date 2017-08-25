@@ -48,6 +48,11 @@ class DetailsViewController: UIViewController {
                     let data = try Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     DispatchQueue.main.async {
                         self.detailsImage.image = UIImage(data: data)
+                        self.detailsImage.layer.cornerRadius = 125
+                        self.detailsImage.layer.borderWidth = 1.0
+                        self.detailsImage.layer.borderColor = UIColor.darkGray.cgColor
+
+                        self.detailsImage.layer.masksToBounds = true
                     }
                 } catch {
                     print("error with this url: \(url!)")
@@ -60,7 +65,7 @@ class DetailsViewController: UIViewController {
         if let details = thisAnnot.category {
             print("\(details)")
 
-            detailsLabel.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+            detailsLabel.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
         }
         if let website = thisAnnot.imageName {
             websiteLabel.text = "www." + website
