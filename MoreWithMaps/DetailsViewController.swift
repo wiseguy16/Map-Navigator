@@ -65,7 +65,7 @@ class DetailsViewController: UIViewController {
         if let details = thisAnnot.category {
             print("\(details)")
 
-            detailsLabel.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+            detailsLabel.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. adipisicing pecu, sed do eiusmod."
         }
         if let website = thisAnnot.imageName {
             websiteLabel.text = "www." + website

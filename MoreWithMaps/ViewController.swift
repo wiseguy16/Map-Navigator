@@ -129,7 +129,7 @@ class ViewController: UIViewController {
 // LOAD THE ANNOTATIONS!!!!!!
        // zoomToAugusta()
        // zoomToMaitland()
-        zoomToOrlando()
+        zoomToOrlando(at: 4.0)
     }
     
 
@@ -222,6 +222,10 @@ class ViewController: UIViewController {
         resetMap()
 
         
+    }
+    
+    @IBAction func goBackHomeTapped(_ sender: UIButton) {
+        zoomToOrlando(at: 2.0)
     }
     
     @IBAction func zoomInTapped(_ sender: UIButton) {
@@ -593,13 +597,13 @@ class ViewController: UIViewController {
         }
     }
     
-    func zoomToOrlando() {
+    func zoomToOrlando(at speed: TimeInterval) {
         let coordinate = CLLocationCoordinate2DMake(28.540765, -81.384503)
         
         // let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 4100, pitch: 0, heading: 23)
         let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 7500, pitch: 0, heading: 0)
         
-        UIView.animate(withDuration: 4.0, animations: {
+        UIView.animate(withDuration: speed, animations: {
             self.myMapView.setCamera(camera, animated: true)
             
         }) { (true) in
