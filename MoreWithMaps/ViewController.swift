@@ -73,6 +73,8 @@ class ViewController: UIViewController {
     var destinationMapItem = MKMapItem()
     @IBOutlet weak var directionsLabel: UILabel!
     @IBOutlet weak var augTableView: UITableView!
+    @IBOutlet weak var myCollectionView: UICollectionView!
+    
   //  @IBOutlet weak var augSegmentControl: UISegmentedControl!
     @IBOutlet weak var moveTableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var categoryMenuConstraint: NSLayoutConstraint!
@@ -82,6 +84,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultsButton: UIButton!
     @IBOutlet weak var resultsLabel: UILabel!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    
     var stringArray: [String] = []
     var keyArray: [String] = []
     var myDictionary: [String: AnyObject] = [:]
@@ -162,7 +167,7 @@ class ViewController: UIViewController {
                     }
                     
                     DispatchQueue.main.async {
-                        self.augTableView.reloadData()
+                        self.myCollectionView.reloadData()
                     }
                     DispatchQueue.main.async {
                         self.view.setNeedsDisplay()
@@ -186,7 +191,7 @@ class ViewController: UIViewController {
         self.showingHistoric = !self.showingHistoric
         self.showingBusiness = !self.showingBusiness
         self.showingUtility = !self.showingUtility
-        self.augTableView.reloadData()
+        self.myCollectionView.reloadData()
 
     }
     
@@ -206,7 +211,7 @@ class ViewController: UIViewController {
                         self.setupInitialPoints()
                     }
                     DispatchQueue.main.async {
-                        self.augTableView.reloadData()
+                        self.myCollectionView.reloadData()
                     }
                     DispatchQueue.main.async {
                         self.view.setNeedsDisplay()
@@ -247,11 +252,11 @@ class ViewController: UIViewController {
     
 //MODAL PRESENTATION FOR THE SPONSORED COMPANY...
     @IBAction func moreTapped(_ sender: UIButton) {
-        guard let cell = sender.superview?.superview as? AugustaCell else {
+        guard let cell = sender.superview?.superview as? MyCollectionCell else {
             return // or fatalError() or whatever
         }
         
-        guard let indexPath = augTableView.indexPath(for: cell) else { return }
+        guard let indexPath = myCollectionView.indexPath(for: cell) else { return }
         let beacon = custAnnots[indexPath.row]
         let destVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         destVC.thedetails = beacon.title
@@ -307,7 +312,7 @@ class ViewController: UIViewController {
             }
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
-                self.tableViewHeight.constant = CGFloat(100 * adjuster) //180.0
+                self.collectionViewHeight.constant = CGFloat(100 * adjuster) //180.0
                 self.resultsButton.setImage(self.upArrow!, for: .normal)
                 //sender.setTitle("Hide", for: .normal)
                 self.view.layoutIfNeeded()
@@ -315,7 +320,7 @@ class ViewController: UIViewController {
         } else {
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3) {
-                self.tableViewHeight.constant = 0.0
+                self.collectionViewHeight.constant = 0.0
                 self.resultsButton.setImage(self.downArrow!, for: .normal)
                 // sender.setTitle("Show", for: .normal)
                 self.view.layoutIfNeeded()

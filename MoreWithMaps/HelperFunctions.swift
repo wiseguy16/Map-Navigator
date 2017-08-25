@@ -15,7 +15,7 @@ extension ViewController {
     func hideTable() {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.3) {
-            self.tableViewHeight.constant = 0.0
+            self.collectionViewHeight.constant = 0.0
             //sender.setImage(self.downArrow!, for: .normal)
             // sender.setTitle("Show", for: .normal)
             self.view.layoutIfNeeded()
@@ -27,7 +27,7 @@ extension ViewController {
     // HELPER FUNCTIONS FOR ADDING/ REMOVING COMPANIES
     func filterAnnotRemove(with category: String, annots: [CustomAnnotat]) {
         custAnnots = custAnnots.filter { $0.category != category }
-        augTableView.reloadData()
+        myCollectionView.reloadData()
         UIView.animate(withDuration: 2.0) {
             self.myMapView.removeAnnotations(annots)
         }
@@ -38,7 +38,7 @@ extension ViewController {
     
     func filterAnnotAdd(with category: String, annots: [CustomAnnotat]) {
         custAnnots.append(contentsOf: annots)
-        augTableView.reloadData()
+        myCollectionView.reloadData()
         UIView.animate(withDuration: 2.0) {
             self.myMapView.addAnnotations(annots)
         }
