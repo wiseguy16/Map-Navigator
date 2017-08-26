@@ -140,7 +140,7 @@ class ViewController: UIViewController {
     
     func setUpDisplay() {
     
-        categoryBackground.backgroundColor = UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
+        categoryBackground.backgroundColor = UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.85)
         directionsGoButton.layer.cornerRadius = 10
         directionsGoButton.layer.masksToBounds = true
         resultsLabel.layer.cornerRadius = 5
