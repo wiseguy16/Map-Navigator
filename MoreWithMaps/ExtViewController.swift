@@ -20,7 +20,16 @@ let pantMidBlue = UIColor(colorLiteralRed: 64/255.0, green: 122/255.0, blue: 152
 let pantOrange = UIColor(colorLiteralRed: 233/255.0, green: 78/255.0, blue: 33/255.0, alpha: 1.0)
 let pantPink = UIColor(colorLiteralRed: 203/255.0, green: 48/255.0, blue: 102/255.0, alpha: 1.0)
 
+extension UIViewController {
+    func addBlur(onImage bgView: UIImageView) {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = bgView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        bgView.addSubview(blurEffectView)
+    }
 
+}
 
 
 

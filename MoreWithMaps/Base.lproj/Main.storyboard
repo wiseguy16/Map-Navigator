@@ -257,18 +257,18 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="mLa-uu-yka"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="vQT-NK-nmW">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vQT-NK-nmW">
                                     <size key="itemSize" width="310" height="75"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="2" minY="1" maxX="2" maxY="1"/>
+                                    <inset key="sectionInset" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyCollectionCell" id="htZ-Tw-hOt" customClass="MyCollectionCell" customModule="MoreWithMaps" customModuleProvider="target">
-                                        <rect key="frame" x="32.5" y="1" width="310" height="75"/>
+                                        <rect key="frame" x="32.5" y="0.0" width="310" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="95N-ho-qg9">
@@ -438,6 +438,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0dA-Q5-rXM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzD-xH-ZVH">
                                 <rect key="frame" x="20" y="327.5" width="335" height="105"/>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
@@ -466,18 +469,6 @@
                                     <action selector="goToDirectionsTapped:" destination="btL-06-EyJ" eventType="touchUpInside" id="d95-Ly-Tgo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX4-8z-BPP">
-                                <rect key="frame" x="81.5" y="567" width="27.5" height="19"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXW-C5-b44">
-                                <rect key="frame" x="267" y="567" width="26" height="19"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umX-PF-LK6">
                                 <rect key="frame" x="20" y="590" width="150.5" height="45"/>
                                 <color key="backgroundColor" red="0.17080962202933536" green="0.74726458885941649" blue="0.19010306615120992" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -498,8 +489,8 @@
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="29"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="X">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="closeTapped:" destination="btL-06-EyJ" eventType="touchUpInside" id="4Fg-9y-DQl"/>
@@ -527,21 +518,21 @@
                             <constraint firstItem="zUB-CZ-a6T" firstAttribute="width" secondItem="GYE-27-Hu1" secondAttribute="width" multiplier="0.4" id="5KP-Zr-6ya"/>
                             <constraint firstItem="oOs-n1-XzK" firstAttribute="leading" secondItem="GYE-27-Hu1" secondAttribute="leading" constant="20" id="6B0-fa-P4s"/>
                             <constraint firstItem="zUB-CZ-a6T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="umX-PF-LK6" secondAttribute="trailing" constant="20" id="8th-O2-TfF"/>
-                            <constraint firstItem="umX-PF-LK6" firstAttribute="top" secondItem="KX4-8z-BPP" secondAttribute="bottom" constant="4" id="Aav-iH-4TM"/>
                             <constraint firstItem="XLb-5n-azK" firstAttribute="centerX" secondItem="GYE-27-Hu1" secondAttribute="centerX" id="DEw-pi-uYh"/>
-                            <constraint firstItem="KX4-8z-BPP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oOs-n1-XzK" secondAttribute="bottom" constant="8" id="EC5-3r-iYD"/>
                             <constraint firstAttribute="trailing" secondItem="zUB-CZ-a6T" secondAttribute="trailing" constant="20" id="EXH-4O-lI7"/>
                             <constraint firstItem="wzD-xH-ZVH" firstAttribute="leading" secondItem="GYE-27-Hu1" secondAttribute="leading" constant="20" id="EfC-ET-9Ki"/>
                             <constraint firstItem="1sz-Ul-BpJ" firstAttribute="top" secondItem="t2E-Zm-utL" secondAttribute="bottom" constant="8" id="F5a-ec-yq3"/>
+                            <constraint firstItem="umX-PF-LK6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oOs-n1-XzK" secondAttribute="bottom" constant="4" id="G2c-Tr-e37"/>
                             <constraint firstItem="i41-HA-ZbN" firstAttribute="top" secondItem="XLb-5n-azK" secondAttribute="bottom" constant="24" id="Jg4-E7-kYD"/>
-                            <constraint firstItem="zUB-CZ-a6T" firstAttribute="top" secondItem="xXW-C5-b44" secondAttribute="bottom" constant="4" id="N91-P9-m8L"/>
-                            <constraint firstItem="KX4-8z-BPP" firstAttribute="centerX" secondItem="umX-PF-LK6" secondAttribute="centerX" id="UXv-pz-YQb"/>
+                            <constraint firstItem="0dA-Q5-rXM" firstAttribute="leading" secondItem="GYE-27-Hu1" secondAttribute="leading" id="Kpi-7R-vLp"/>
                             <constraint firstItem="bew-Q2-THd" firstAttribute="top" secondItem="zUB-CZ-a6T" secondAttribute="bottom" constant="32" id="VaZ-ZX-3o2"/>
                             <constraint firstAttribute="trailing" secondItem="oOs-n1-XzK" secondAttribute="trailing" constant="20" id="Ywa-Ap-AtB"/>
                             <constraint firstItem="wzD-xH-ZVH" firstAttribute="centerX" secondItem="GYE-27-Hu1" secondAttribute="centerX" id="ZOG-4D-mXG"/>
                             <constraint firstAttribute="trailing" secondItem="i41-HA-ZbN" secondAttribute="trailing" constant="20" id="i5q-r6-2g6"/>
+                            <constraint firstItem="0dA-Q5-rXM" firstAttribute="top" secondItem="GYE-27-Hu1" secondAttribute="top" id="jsu-0H-p3k"/>
+                            <constraint firstItem="bew-Q2-THd" firstAttribute="top" secondItem="0dA-Q5-rXM" secondAttribute="bottom" id="lPO-ky-Kde"/>
                             <constraint firstItem="oOs-n1-XzK" firstAttribute="top" secondItem="wzD-xH-ZVH" secondAttribute="bottom" constant="4" id="pvd-s5-7xM"/>
-                            <constraint firstItem="xXW-C5-b44" firstAttribute="centerX" secondItem="zUB-CZ-a6T" secondAttribute="centerX" id="v7y-UP-srY"/>
+                            <constraint firstAttribute="trailing" secondItem="0dA-Q5-rXM" secondAttribute="trailing" id="qIX-q2-Xch"/>
                             <constraint firstItem="XLb-5n-azK" firstAttribute="top" secondItem="GYE-27-Hu1" secondAttribute="top" constant="30" id="vKw-RS-J5n"/>
                             <constraint firstItem="1sz-Ul-BpJ" firstAttribute="trailing" secondItem="GYE-27-Hu1" secondAttribute="trailingMargin" id="yMu-f7-IoQ"/>
                             <constraint firstItem="umX-PF-LK6" firstAttribute="leading" secondItem="GYE-27-Hu1" secondAttribute="leading" constant="20" id="yTO-85-f87"/>
@@ -550,6 +541,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backDropImageView" destination="0dA-Q5-rXM" id="Jfi-bR-s8o"/>
                         <outlet property="callButton" destination="umX-PF-LK6" id="xdz-Km-DP8"/>
                         <outlet property="companyTitleLabel" destination="i41-HA-ZbN" id="MQp-2n-q3w"/>
                         <outlet property="detailsImage" destination="XLb-5n-azK" id="epB-rW-s8H"/>

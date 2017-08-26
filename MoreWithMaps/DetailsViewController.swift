@@ -20,6 +20,9 @@ class DetailsViewController: UIViewController {
     
     @IBOutlet weak var websiteLabel: UILabel!
     
+    
+    @IBOutlet weak var backDropImageView: UIImageView!
+    
     var thedetails: String?
     var anAnnot: CustomAnnotat?
     
@@ -48,6 +51,8 @@ class DetailsViewController: UIViewController {
                     let data = try Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     DispatchQueue.main.async {
                         self.detailsImage.image = UIImage(data: data)
+                        self.backDropImageView.image = UIImage(data: data)
+                        self.addBlur(onImage: self.backDropImageView)
                         self.detailsImage.layer.cornerRadius = 125
                         self.detailsImage.layer.borderWidth = 1.0
                         self.detailsImage.layer.borderColor = UIColor.darkGray.cgColor
