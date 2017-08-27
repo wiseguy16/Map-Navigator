@@ -21,7 +21,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var websiteLabel: UILabel!
     
     
-    @IBOutlet weak var backDropImageView: UIImageView!
+  //  @IBOutlet weak var backDropImageView: UIImageView!
     
     var thedetails: String?
     var anAnnot: CustomAnnotat?
@@ -51,10 +51,10 @@ class DetailsViewController: UIViewController {
                     let data = try Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     DispatchQueue.main.async {
                         self.detailsImage.image = UIImage(data: data)
-                        self.backDropImageView.image = UIImage(data: data)
-                        self.addBlur(onImage: self.backDropImageView)
-                        self.detailsImage.layer.cornerRadius = 125
-                        self.detailsImage.layer.borderWidth = 1.0
+                       // self.backDropImageView.image = UIImage(data: data)
+                        //self.addBlur(onImage: self.backDropImageView)
+                        self.detailsImage.layer.cornerRadius = 100
+                        self.detailsImage.layer.borderWidth = 2.0
                         self.detailsImage.layer.borderColor = UIColor.darkGray.cgColor
 
                         self.detailsImage.layer.masksToBounds = true
@@ -85,6 +85,11 @@ class DetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -93,7 +98,10 @@ class DetailsViewController: UIViewController {
     
     
     @IBAction func closeTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+       // zoomAnimation()
+        //UINavigationController.popToRootViewController(animated: Bool)
+        self.navigationController?.popToRootViewController(animated: true)
+        //dismiss(animated: true, completion: nil)
     }
     
     
@@ -133,7 +141,36 @@ class DetailsViewController: UIViewController {
         
     }
     
+    func zoomAnimation() {
+        UIView.animate(withDuration: 2.0, animations: {
+            self.detailsImage?.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
+        }) { (true) in
+            UIView.animate(withDuration: 2.0) {
+                self.detailsImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        }
+        
+//        UIView.animate(withDuration: 2.0, animations: {() -> Void in
+//            self.detailsImage?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+//        }, completion: {(_ finished: Bool) -> Void in
+//            UIView.animate(withDuration: 2.0, animations: {() -> Void in
+//                self.detailsImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
+//            })
+//        })
+
+    }
     
+    func badAnim() {
+        UIView.animate(withDuration: 2.0, animations: {
+           // self.myMapView.setCamera(camera, animated: true)
+        }) { (true) in
+            UIView.animate(withDuration: 2.0) {
+               // self.createCustomAnnots()
+            }
+        }
+
+    }
+
 
 
 }

@@ -132,6 +132,12 @@ class ViewController: UIViewController {
         zoomToOrlando(at: 4.0)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //self.createBadgeWithNumber()
+
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -265,7 +271,8 @@ class ViewController: UIViewController {
         let destVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         destVC.thedetails = beacon.title
         destVC.anAnnot = beacon
-        present(destVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(destVC, animated: true)//   present(destVC, animated: true, completion: nil)
+       // present(destVC, animated: true, completion: nil)
     }
     
     
@@ -610,10 +617,27 @@ class ViewController: UIViewController {
             
         }) { (true) in
             UIView.animate(withDuration: 4.0) {
+               // self.createBadgeWithNumber()
                // self.createCustomAnnots()
                // self.myMapView.showAnnotations(self.custAnnots, animated: true)
             }
         }
+    }
+    
+    func createBadgeWithNumber() {
+        let label = UILabel()
+        let labelXPoint = self.resultsLabel.frame.size.width
+        let labelYPoint = self.resultsLabel.frame.size.height
+        print(labelXPoint)
+        print(labelYPoint)
+        label.frame = CGRect(x: labelXPoint - 10, y: 0, width: 20, height: 20)
+        //label.frame = CGRect(x: -5, y: -5, width: 30, height: 30)
+        label.layer.cornerRadius = 10
+        label.text = "23"
+        label.backgroundColor = .red
+        label.layer.masksToBounds = true
+        self.resultsLabel.addSubview(label)
+        
     }
 
     
