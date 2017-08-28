@@ -88,12 +88,7 @@ class DetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationItem.setHidesBackButton(true, animated: true)
-//        let backBtn = UIBarButtonItem()
-//        backBtn.title = "<—"
-//        self.navigationItem.leftBarButtonItem = backBtn
- //       self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-       // self.navigationController?.isNavigationBarHidden = true
+       // navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {

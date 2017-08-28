@@ -284,14 +284,15 @@ class ViewController: UIViewController {
                 guard let indexPath = myCollectionView.indexPath(for: cell) else { return }
                 let beacon = custAnnots[indexPath.row]
                 let destVC = segue.destination as! DetailsViewController
+//                let backItem = UIBarButtonItem()
+                var backImg: UIImage = UIImage(named: "backArrowWhite")!
+                navigationController?.navigationBar.backIndicatorImage = backImg
+                
+                navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImg
                 let backItem = UIBarButtonItem()
-                backItem.title = "—"
-                //navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+                backItem.title = " "
+                navigationItem.backBarButtonItem = backItem
                 navigationController?.navigationBar.tintColor = .white
-                navigationItem.backBarButtonItem?.tintColor = .white
-                navigationItem.backBarButtonItem = backItem // T
-               // destVC.navigationController?.navigationBar.backItem?.title = "—"
-                // let destVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
                 destVC.thedetails = beacon.title
                 destVC.anAnnot = beacon
                 
