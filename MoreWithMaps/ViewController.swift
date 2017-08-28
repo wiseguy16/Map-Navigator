@@ -300,23 +300,6 @@ class ViewController: UIViewController {
 
  
         }
-//        if segue.identifier == "DetailSegue" {
-//            guard let indexPath = myCollectionView.indexPath(for: cell) else { return }
-//            let beacon = custAnnots[indexPath.row]
-//            let destVC = segue.destination as! DetailsViewController
-//           // let destVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-//            destVC.thedetails = beacon.title
-//            destVC.anAnnot = beacon
-//
-//        }
-//         let button = sender.unsafelyUnwrapped as! UIButton
-//        guard let cell = button.superview?.superview as? MyCollectionCell else {
-//            return // or fatalError() or whatever
-//        }
-        
-          //      self.navigationController?.pushViewController(destVC, animated: true)//   present(destVC, animated: true, completion: nil)
-        // present(destVC, animated: true, completion: nil)
-
     }
     
     

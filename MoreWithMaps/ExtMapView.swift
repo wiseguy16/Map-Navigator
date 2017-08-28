@@ -29,8 +29,8 @@ extension ViewController: MKMapViewDelegate {
         
         //let cpa = annotation as! CustomPointAnnotation
         let cpa = annotation as! CustomAnnotat
-        if let beaconName = cpa.beaconName {
-            annotationView!.image = UIImage(named: beaconName)
+        if let beaconName = cpa.beacon {
+            annotationView!.image = UIImage(named: beaconName.rawValue)
         }
         
         //Added to git

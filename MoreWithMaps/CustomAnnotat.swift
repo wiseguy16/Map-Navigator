@@ -23,6 +23,7 @@ class CustomAnnotat: MKPointAnnotation {
     var companyName: String?
     var category: String?
     var web: String?
+    var beacon: Beacon?
     
     override init() {
         locatCoordLat = 0.0
@@ -42,6 +43,8 @@ class CustomAnnotat: MKPointAnnotation {
         self.locatCoordLong = dictionary["locatCoordLong"] as? CLLocationDegrees
         self.category = dictionary["category"] as? String
         self.web = dictionary["web"] as? String
+        guard let beaconName = self.beaconName else { return }
+        self.beacon = Beacon(rawValue: beaconName)
     }
     
 }
