@@ -275,6 +275,49 @@ class ViewController: UIViewController {
        // present(destVC, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let button = sender as? UIButton {
+            guard let cell = button.superview?.superview as? MyCollectionCell else {
+                            return // or fatalError() or whatever
+                        }
+            if segue.identifier == "DetailSegue" {
+                guard let indexPath = myCollectionView.indexPath(for: cell) else { return }
+                let beacon = custAnnots[indexPath.row]
+                let destVC = segue.destination as! DetailsViewController
+                let backItem = UIBarButtonItem()
+                backItem.title = "—"
+                //navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+                navigationController?.navigationBar.tintColor = .white
+                navigationItem.backBarButtonItem?.tintColor = .white
+                navigationItem.backBarButtonItem = backItem // T
+               // destVC.navigationController?.navigationBar.backItem?.title = "—"
+                // let destVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+                destVC.thedetails = beacon.title
+                destVC.anAnnot = beacon
+                
+            }
+
+ 
+        }
+//        if segue.identifier == "DetailSegue" {
+//            guard let indexPath = myCollectionView.indexPath(for: cell) else { return }
+//            let beacon = custAnnots[indexPath.row]
+//            let destVC = segue.destination as! DetailsViewController
+//           // let destVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+//            destVC.thedetails = beacon.title
+//            destVC.anAnnot = beacon
+//
+//        }
+//         let button = sender.unsafelyUnwrapped as! UIButton
+//        guard let cell = button.superview?.superview as? MyCollectionCell else {
+//            return // or fatalError() or whatever
+//        }
+        
+          //      self.navigationController?.pushViewController(destVC, animated: true)//   present(destVC, animated: true, completion: nil)
+        // present(destVC, animated: true, completion: nil)
+
+    }
+    
     
     @IBAction func showCategoriesTapped(_ sender: UIBarButtonItem) {
         bringOutCategoriesMenu()

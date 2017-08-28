@@ -88,7 +88,12 @@ class DetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        //self.navigationItem.setHidesBackButton(true, animated: true)
+//        let backBtn = UIBarButtonItem()
+//        backBtn.title = "<—"
+//        self.navigationItem.leftBarButtonItem = backBtn
+ //       self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+       // self.navigationController?.isNavigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,7 +105,7 @@ class DetailsViewController: UIViewController {
     @IBAction func closeTapped(_ sender: UIButton) {
        // zoomAnimation()
         //UINavigationController.popToRootViewController(animated: Bool)
-        self.navigationController?.popToRootViewController(animated: true)
+        //self.navigationController?.popToRootViewController(animated: true)
         //dismiss(animated: true, completion: nil)
     }
     
