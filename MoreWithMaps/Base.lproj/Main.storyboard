@@ -439,10 +439,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwz-Cx-Ipo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XLb-5n-azK">
-                                        <rect key="frame" x="87" y="40" width="200" height="200"/>
+                                        <rect key="frame" x="87" y="2" width="200" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="XLb-5n-azK" secondAttribute="height" multiplier="1:1" id="Pe1-FC-9bB"/>
                                             <constraint firstAttribute="height" constant="200" id="zNb-zK-C4E"/>
@@ -451,13 +451,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.26080143451690674" blue="0.49753624200820923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="XLb-5n-azK" firstAttribute="centerY" secondItem="Cwz-Cx-Ipo" secondAttribute="centerY" id="HYQ-ao-abW"/>
+                                    <constraint firstItem="XLb-5n-azK" firstAttribute="top" secondItem="Cwz-Cx-Ipo" secondAttribute="top" constant="2" id="mEz-Bo-Bno"/>
                                     <constraint firstItem="XLb-5n-azK" firstAttribute="centerX" secondItem="Cwz-Cx-Ipo" secondAttribute="centerX" id="n8M-jn-4IT"/>
-                                    <constraint firstAttribute="height" constant="280" id="s7O-Ru-Pty"/>
+                                    <constraint firstAttribute="height" constant="250" id="s7O-Ru-Pty"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzD-xH-ZVH">
-                                <rect key="frame" x="20" y="327.5" width="335" height="105"/>
+                                <rect key="frame" x="20" y="297.5" width="335" height="105"/>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -488,7 +488,7 @@
                                     <action selector="callUsingPhoneTapped:" destination="btL-06-EyJ" eventType="touchUpInside" id="4bA-fL-2Tr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sz-Ul-BpJ">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sz-Ul-BpJ">
                                 <rect key="frame" x="313" y="8" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="Aq5-NQ-6Ar"/>
@@ -505,13 +505,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOs-n1-XzK">
-                                <rect key="frame" x="20" y="436.5" width="335" height="20"/>
+                                <rect key="frame" x="20" y="406.5" width="335" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.22298213839530945" green="0.33298677206039429" blue="0.87023836374282837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i41-HA-ZbN">
-                                <rect key="frame" x="20" y="304" width="335" height="21.5"/>
+                                <rect key="frame" x="20" y="274" width="335" height="21.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
