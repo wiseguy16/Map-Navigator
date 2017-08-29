@@ -65,14 +65,16 @@ class DetailsViewController: UIViewController {
             }            
         }
         if let company = thisAnnot.companyName {
-            companyTitleLabel.text = company
+            let appliedStyledWord = applyStyle2(on: company, color: .black, size: 18.0)
+            companyTitleLabel.attributedText = appliedStyledWord
+           // companyTitleLabel.text = company
         }
         if let details = thisAnnot.category {
             print("\(details)")
 
             let placeholderString = "Placeholder text goes here and is easy to see and use and to notice what goes here and that’s something you’ll want to have because it feels really nice and clean and cool."
             //
-            let appliedStyledWord = applyStyle1(on: placeholderString)
+            let appliedStyledWord = applyStyle1(on: placeholderString, color: .darkGray, size: 10.0)
             detailsLabel.attributedText = appliedStyledWord
         }
         if let website = thisAnnot.imageName {
