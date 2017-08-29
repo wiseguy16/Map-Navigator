@@ -94,8 +94,13 @@ class DetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let aTitle = anAnnot?.category {
+           navigationItem.title = aTitle
+        }
+        
        // navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

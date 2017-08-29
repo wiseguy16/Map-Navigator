@@ -295,8 +295,6 @@ class ViewController: UIViewController {
                 backItem.title = " "
                 navigationItem.backBarButtonItem = backItem
                 navigationController?.navigationBar.tintColor = .white
-                destVC.navigationController?.title = "gkhgewn"
-                navigationController?.title = "njedvs"
                 destVC.thedetails = beacon.title
                 destVC.anAnnot = beacon
                 
