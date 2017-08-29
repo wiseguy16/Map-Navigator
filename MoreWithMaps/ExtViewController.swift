@@ -28,6 +28,87 @@ extension UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         bgView.addSubview(blurEffectView)
     }
+    
+    func applyStyle1(on word: String) -> NSMutableAttributedString {
+        let styledWord = NSMutableAttributedString(string: word)
+        let paragraphStyle = NSMutableParagraphStyle()
+        let helveticaNeue = UIFont(name: "Helvetica Neue", size: 10.0)
+        let lightGrayText = UIColor.lightGray
+        let darkGrayText = UIColor.darkGray
+
+
+        // *** set LineSpacing property in points ***
+        paragraphStyle.lineSpacing = 0.6 // Whatever line spacing you want in points
+        paragraphStyle.alignment = .center
+        // *** Apply attribute to string ***
+        styledWord.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range:NSMakeRange(0, styledWord.length))
+        styledWord.addAttribute(NSKernAttributeName, value: CGFloat(0.12), range: NSRange(location: 0, length: styledWord.length))
+        styledWord.addAttribute(NSFontAttributeName, value: helveticaNeue!, range: NSRange(location: 0, length: styledWord.length))
+        styledWord.addAttribute(NSForegroundColorAttributeName, value: darkGrayText, range: NSRange(location: 0, length: styledWord.length))
+        // *** Set Attributed String to your label ***
+        //fullBodyLabel.attributedText = attributedBody
+
+        return styledWord
+    }
+    
+    func convertTextStyling(_ wordToStyle: String?) -> NSMutableAttributedString
+    {
+        var attributedBody  = NSMutableAttributedString(string: "")
+        if let decodedString = wordToStyle?.stringByDecodingXMLEntities()
+        {
+            attributedBody  = NSMutableAttributedString(string: decodedString)
+        }
+        // *** Create instance of `NSMutableParagraphStyle`
+        let paragraphStyle = NSMutableParagraphStyle()
+        // *** set LineSpacing property in points ***
+        paragraphStyle.lineSpacing = 2 // Whatever line spacing you want in points
+        // *** Apply attribute to string ***
+        attributedBody.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attributedBody.length))
+        attributedBody.addAttribute(NSKernAttributeName, value: CGFloat(0.05), range: NSRange(location: 0, length: attributedBody.length))
+        // *** Set Attributed String to your label ***
+        //fullBodyLabel.attributedText = attributedBody
+        
+        
+        return attributedBody
+    }
+    
+    func makeDevo(_ scrpRef: String?, scrpRead: String?, scrpReflect: String?, dayOf: NSMutableAttributedString) -> NSMutableAttributedString
+    {
+        let noDayRead = "No Scripture reading for today."
+        var dayRead: NSMutableAttributedString
+        let lineBreak = NSMutableAttributedString(string: " \n")
+        let italicsFont = UIFont(name: "FormaDJRText-Italic", size: 16.0)
+        let darkGrayText = UIColor.darkGray
+        
+        let dayBase = dayOf
+        let dayRef = convertTextStyling(scrpRef)
+        if scrpRead == nil
+        {
+            dayRead = convertTextStyling(noDayRead)
+        }
+        else
+        {
+            dayRead = convertTextStyling(scrpRead)
+        }
+        
+        
+        // var range: NSRange = (self.text! as NSString).rangeOfString(scrpRead)
+        dayRead.addAttribute(NSFontAttributeName, value: italicsFont!, range: NSRange(location: 0, length: dayRead.length))
+        
+        dayRead.addAttribute(NSForegroundColorAttributeName, value: darkGrayText, range: NSRange(location: 0, length: dayRead.length))
+        
+        let dayReflect = convertTextStyling(scrpReflect)
+        dayBase.append(dayRef)
+        dayBase.append(lineBreak)
+        dayBase.append(dayRead)
+        dayBase.append(lineBreak)
+        dayBase.append(lineBreak)
+        dayBase.append(dayReflect)
+        
+        return dayBase
+        
+    }
+
 
 }
 

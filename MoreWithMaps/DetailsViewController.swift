@@ -70,7 +70,10 @@ class DetailsViewController: UIViewController {
         if let details = thisAnnot.category {
             print("\(details)")
 
-            detailsLabel.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. adipisicing pecu, sed do eiusmod."
+            let placeholderString = "Placeholder text goes here and is easy to see and use and to notice what goes here and that’s something you’ll want to have because it feels really nice and clean and cool."
+            //
+            let appliedStyledWord = applyStyle1(on: placeholderString)
+            detailsLabel.attributedText = appliedStyledWord
         }
         if let website = thisAnnot.imageName {
             websiteLabel.text = "www." + website
@@ -98,7 +101,7 @@ class DetailsViewController: UIViewController {
     
     
     @IBAction func closeTapped(_ sender: UIButton) {
-       // zoomAnimation()
+       // zoomINGAnimation()
         //UINavigationController.popToRootViewController(animated: Bool)
         //self.navigationController?.popToRootViewController(animated: true)
         //dismiss(animated: true, completion: nil)
@@ -141,7 +144,7 @@ class DetailsViewController: UIViewController {
         
     }
     
-    func zoomAnimation() {
+    func zoomINGAnimation() {
         UIView.animate(withDuration: 2.0, animations: {
             self.detailsImage?.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
         }) { (true) in
