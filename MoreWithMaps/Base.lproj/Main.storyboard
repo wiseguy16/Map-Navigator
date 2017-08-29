@@ -459,7 +459,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzD-xH-ZVH">
-                                <rect key="frame" x="30" y="297.5" width="315" height="105"/>
+                                <rect key="frame" x="45" y="297.5" width="285" height="105"/>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -532,7 +532,7 @@
                             <constraint firstItem="zUB-CZ-a6T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="umX-PF-LK6" secondAttribute="trailing" constant="20" id="8th-O2-TfF"/>
                             <constraint firstItem="i41-HA-ZbN" firstAttribute="top" secondItem="Cwz-Cx-Ipo" secondAttribute="bottom" constant="24" id="Ctk-QD-iV9"/>
                             <constraint firstAttribute="trailing" secondItem="zUB-CZ-a6T" secondAttribute="trailing" constant="20" id="EXH-4O-lI7"/>
-                            <constraint firstItem="wzD-xH-ZVH" firstAttribute="leading" secondItem="GYE-27-Hu1" secondAttribute="leading" constant="30" id="EfC-ET-9Ki"/>
+                            <constraint firstItem="wzD-xH-ZVH" firstAttribute="leading" secondItem="GYE-27-Hu1" secondAttribute="leading" constant="45" id="EfC-ET-9Ki"/>
                             <constraint firstItem="1sz-Ul-BpJ" firstAttribute="top" secondItem="t2E-Zm-utL" secondAttribute="bottom" constant="8" id="F5a-ec-yq3"/>
                             <constraint firstItem="umX-PF-LK6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oOs-n1-XzK" secondAttribute="bottom" constant="4" id="G2c-Tr-e37"/>
                             <constraint firstItem="bew-Q2-THd" firstAttribute="top" secondItem="zUB-CZ-a6T" secondAttribute="bottom" constant="32" id="VaZ-ZX-3o2"/>
@@ -543,7 +543,7 @@
                             <constraint firstItem="oOs-n1-XzK" firstAttribute="top" secondItem="wzD-xH-ZVH" secondAttribute="bottom" constant="4" id="pvd-s5-7xM"/>
                             <constraint firstItem="1sz-Ul-BpJ" firstAttribute="trailing" secondItem="GYE-27-Hu1" secondAttribute="trailingMargin" id="yMu-f7-IoQ"/>
                             <constraint firstItem="umX-PF-LK6" firstAttribute="leading" secondItem="GYE-27-Hu1" secondAttribute="leading" constant="20" id="yTO-85-f87"/>
-                            <constraint firstAttribute="trailing" secondItem="wzD-xH-ZVH" secondAttribute="trailing" constant="30" id="yjN-gg-J64"/>
+                            <constraint firstAttribute="trailing" secondItem="wzD-xH-ZVH" secondAttribute="trailing" constant="45" id="yjN-gg-J64"/>
                             <constraint firstItem="wzD-xH-ZVH" firstAttribute="top" secondItem="i41-HA-ZbN" secondAttribute="bottom" constant="2" id="zk3-Lk-e7S"/>
                         </constraints>
                     </view>
