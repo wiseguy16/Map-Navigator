@@ -53,7 +53,8 @@ class DetailsViewController: UIViewController {
                         self.detailsImage.image = UIImage(data: data)
                        // self.backDropImageView.image = UIImage(data: data)
                         //self.addBlur(onImage: self.backDropImageView)
-                        self.detailsImage.layer.cornerRadius = 100
+                        //self.profileImageView.frame.size.width / 2
+                        self.detailsImage.layer.cornerRadius = self.detailsImage.frame.size.height/2
                         self.detailsImage.layer.borderWidth = 2.0
                         self.detailsImage.layer.borderColor = UIColor.darkGray.cgColor
 

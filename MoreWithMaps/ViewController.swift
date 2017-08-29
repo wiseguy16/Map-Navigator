@@ -260,7 +260,7 @@ class ViewController: UIViewController {
         }
     }
     
-//MODAL PRESENTATION FOR THE SPONSORED COMPANY...
+// OLD!! ---NOT USING--> MODAL PRESENTATION FOR THE SPONSORED COMPANY...
     @IBAction func moreTapped(_ sender: UIButton) {
         guard let cell = sender.superview?.superview as? MyCollectionCell else {
             return // or fatalError() or whatever
@@ -275,6 +275,7 @@ class ViewController: UIViewController {
        // present(destVC, animated: true, completion: nil)
     }
     
+// NOW USING PREPARE FOR SEGUE INSTEAD OF MODAL
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let button = sender as? UIButton {
             guard let cell = button.superview?.superview as? MyCollectionCell else {
@@ -285,14 +286,17 @@ class ViewController: UIViewController {
                 let beacon = custAnnots[indexPath.row]
                 let destVC = segue.destination as! DetailsViewController
 //                let backItem = UIBarButtonItem()
-                var backImg: UIImage = UIImage(named: "backArrowWhite")!
+                let backImg: UIImage = UIImage(named: "backArrowWhite")!
                 navigationController?.navigationBar.backIndicatorImage = backImg
+                
                 
                 navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImg
                 let backItem = UIBarButtonItem()
                 backItem.title = " "
                 navigationItem.backBarButtonItem = backItem
                 navigationController?.navigationBar.tintColor = .white
+                destVC.navigationController?.title = "gkhgewn"
+                navigationController?.title = "njedvs"
                 destVC.thedetails = beacon.title
                 destVC.anAnnot = beacon
                 

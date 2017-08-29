@@ -82,7 +82,7 @@ extension UIViewController {
         paragraphStyle.alignment = .center
         // *** Apply attribute to string ***
         styledWord.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range:NSMakeRange(0, styledWord.length))
-        styledWord.addAttribute(NSKernAttributeName, value: CGFloat(0.3), range: NSRange(location: 0, length: styledWord.length))
+        styledWord.addAttribute(NSKernAttributeName, value: CGFloat(0.15), range: NSRange(location: 0, length: styledWord.length))
         styledWord.addAttribute(NSFontAttributeName, value: helveticaNeue!, range: NSRange(location: 0, length: styledWord.length))
         styledWord.addAttribute(NSForegroundColorAttributeName, value: colorText, range: NSRange(location: 0, length: styledWord.length))
         // *** Set Attributed String to your label ***
