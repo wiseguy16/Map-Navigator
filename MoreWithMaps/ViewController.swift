@@ -41,8 +41,8 @@ class ViewController: UIViewController {
     var showingBusiness = false
     var showingUtility = false
     var hasDisplayedAnnotsOnce = false
-    let upArrow = UIImage(named: "dropUpIcon")
-    let downArrow = UIImage(named: "dropDownIcon")
+    let upArrow = UIImage(named: "Shape-Caret-Up")
+    let downArrow = UIImage(named: "Shape-Caret-Down")
     var areCategoriesHidden = true
     
     
@@ -352,7 +352,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 0.3) {
                 self.myCollectionView.reloadData()
                 self.collectionViewHeight.constant = CGFloat(100 * adjuster) //180.0
-                self.resultsButton.setImage(self.upArrow!, for: .normal)
+                self.resultsButton.setImage(self.downArrow!, for: .normal)
                 //sender.setTitle("Hide", for: .normal)
                 self.view.layoutIfNeeded()
             }
@@ -361,7 +361,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 0.3) {
                 self.myCollectionView.reloadData()
                 self.collectionViewHeight.constant = 0.0
-                self.resultsButton.setImage(self.downArrow!, for: .normal)
+                self.resultsButton.setImage(self.upArrow!, for: .normal)
                 // sender.setTitle("Show", for: .normal)
                 self.view.layoutIfNeeded()
             }
