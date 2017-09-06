@@ -71,18 +71,39 @@ extension UIViewController {
         return styledWord
     }
     
-    func applyStyle3(on word: String, color: UIColor, size: CGFloat) -> NSMutableAttributedString {
+    func applyStyle3(on word: String, color: UIColor, fontSize: CGFloat, kernSize: CGFloat) -> NSMutableAttributedString {
         let styledWord = NSMutableAttributedString(string: word)
         let paragraphStyle = NSMutableParagraphStyle()
-        let helveticaNeueBold = UIFont(name: "HelveticaNeue-Bold", size: size)  //12.0
+        let helveticaNeue = UIFont(name: "Helvetica Neue", size: fontSize)
         //let lightGrayText = UIColor.lightGray
         let colorText = color
         // *** set LineSpacing property in points ***
         paragraphStyle.lineSpacing = 0.6 // Whatever line spacing you want in points
-        paragraphStyle.alignment = .center
+        paragraphStyle.alignment = .left
         // *** Apply attribute to string ***
         styledWord.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range:NSMakeRange(0, styledWord.length))
-        styledWord.addAttribute(NSKernAttributeName, value: CGFloat(0.15), range: NSRange(location: 0, length: styledWord.length))
+        styledWord.addAttribute(NSKernAttributeName, value: kernSize/*CGFloat(0.15)*/, range: NSRange(location: 0, length: styledWord.length))
+        styledWord.addAttribute(NSFontAttributeName, value: helveticaNeue!, range: NSRange(location: 0, length: styledWord.length))
+        styledWord.addAttribute(NSForegroundColorAttributeName, value: colorText, range: NSRange(location: 0, length: styledWord.length))
+        // *** Set Attributed String to your label ***
+        //fullBodyLabel.attributedText = attributedBody
+        
+        return styledWord
+    }
+
+    
+    func applyStyle4(on word: String, color: UIColor, fontSize: CGFloat, kernSize: CGFloat) -> NSMutableAttributedString {
+        let styledWord = NSMutableAttributedString(string: word)
+        let paragraphStyle = NSMutableParagraphStyle()
+        let helveticaNeueBold = UIFont(name: "HelveticaNeue-Bold", size: fontSize)  //12.0
+        //let lightGrayText = UIColor.lightGray
+        let colorText = color
+        // *** set LineSpacing property in points ***
+        paragraphStyle.lineSpacing = 0.6 // Whatever line spacing you want in points
+        paragraphStyle.alignment = .left
+        // *** Apply attribute to string ***
+        styledWord.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range:NSMakeRange(0, styledWord.length))
+        styledWord.addAttribute(NSKernAttributeName, value: kernSize/*CGFloat(0.15)*/, range: NSRange(location: 0, length: styledWord.length))
         styledWord.addAttribute(NSFontAttributeName, value: helveticaNeueBold!, range: NSRange(location: 0, length: styledWord.length))
         styledWord.addAttribute(NSForegroundColorAttributeName, value: colorText, range: NSRange(location: 0, length: styledWord.length))
         // *** Set Attributed String to your label ***

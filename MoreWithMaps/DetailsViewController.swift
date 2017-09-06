@@ -24,6 +24,11 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var hoursLabel: UILabel!
     
     @IBOutlet weak var theWordHOURS: UILabel!
+    
+    @IBOutlet weak var learnMoreLabel: UILabel!
+    
+    @IBOutlet weak var directionsLabel: UILabel!
+    @IBOutlet weak var callLabel: UILabel!
   //  @IBOutlet weak var backDropImageView: UIImageView!
     
     var thedetails: String?
@@ -89,15 +94,22 @@ class DetailsViewController: UIViewController {
             detailsLabel.attributedText = appliedStyledWord
         }
         let webString = "www." + website
-        let appliedWeb = applyStyle1(on: webString, color: .darkGray, fontSize: 12, kernSize: 0.3)
+        let appliedWeb = applyStyle3(on: webString, color: .darkGray, fontSize: 12, kernSize: 0.3)
         websiteLabel.attributedText = appliedWeb
         
         let hoursText = "Monday-Thursday 11 am-3pm\nSaturday 12 pm-5 pm\nSunday 12 pm-3 pm"
         let appliedStyledHours = applyStyle1(on: hoursText, color: .darkGray, fontSize: 10.0, kernSize: 0.3)
         hoursLabel.attributedText = appliedStyledHours
         
-        let styledWordHOURS = applyStyle2(on: "Hours", color: .red, fontSize: 12.0, kernSize: 0.6)
+        let styledWordHOURS = applyStyle2(on: "Hours", color: .red, fontSize: 12.0, kernSize: 0.8)
         theWordHOURS.attributedText = styledWordHOURS
+        let styledDirect = applyStyle4(on: "Directions", color: pantDarkBlue, fontSize: 12.0, kernSize: 0.6)
+        directionsLabel.attributedText = styledDirect
+        let styledCall = applyStyle4(on: "Call", color: pantDarkBlue, fontSize: 12.0, kernSize: 0.8)
+        callLabel.attributedText = styledCall
+        let styledLearn = applyStyle4(on: "Learn more", color: pantDarkBlue, fontSize: 12.0, kernSize: 0.8)
+        learnMoreLabel.attributedText = styledLearn
+
 
         guard let words = thedetails else {
             return

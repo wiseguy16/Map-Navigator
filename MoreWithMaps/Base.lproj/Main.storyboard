@@ -503,8 +503,8 @@
                                                     <action selector="closeTapped:" destination="btL-06-EyJ" eventType="touchUpInside" id="4Fg-9y-DQl"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOs-n1-XzK">
-                                                <rect key="frame" x="62" y="621.5" width="293" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.Label.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOs-n1-XzK">
+                                                <rect key="frame" x="62" y="637" width="293" height="20"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -572,6 +572,24 @@ Sunday 12 pm-3 pm</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn more" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcG-2i-1UC">
+                                                <rect key="frame" x="62" y="616.5" width="293" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuO-yu-jge">
+                                                <rect key="frame" x="62" y="568.5" width="293" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDQ-Ts-8Pk">
+                                                <rect key="frame" x="62" y="520.5" width="293" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -586,27 +604,36 @@ Sunday 12 pm-3 pm</string>
                                             <constraint firstItem="umX-PF-LK6" firstAttribute="leading" secondItem="T8s-3z-TEv" secondAttribute="leading" constant="20" id="7Zi-yH-YUX"/>
                                             <constraint firstItem="dS2-q9-1xz" firstAttribute="top" secondItem="IGk-gq-JeO" secondAttribute="bottom" constant="8" id="ERV-cS-Vbw"/>
                                             <constraint firstAttribute="trailing" secondItem="xRy-UB-xOn" secondAttribute="trailing" id="EZZ-8u-wPw"/>
+                                            <constraint firstItem="NuO-yu-jge" firstAttribute="leading" secondItem="umX-PF-LK6" secondAttribute="trailing" constant="12" id="FWZ-EV-eJF"/>
                                             <constraint firstItem="p74-q0-zfD" firstAttribute="leading" secondItem="T8s-3z-TEv" secondAttribute="leading" id="GYP-dE-dxd"/>
                                             <constraint firstItem="hAw-dJ-Ie7" firstAttribute="top" secondItem="zUB-CZ-a6T" secondAttribute="bottom" constant="8" id="IG7-iq-gPv"/>
                                             <constraint firstAttribute="trailing" secondItem="wzD-xH-ZVH" secondAttribute="trailing" constant="45" id="Iv6-Ed-fAW"/>
+                                            <constraint firstItem="NDQ-Ts-8Pk" firstAttribute="top" secondItem="zUB-CZ-a6T" secondAttribute="top" id="LO8-jz-UAm"/>
+                                            <constraint firstAttribute="trailing" secondItem="zcG-2i-1UC" secondAttribute="trailing" constant="20" id="MJX-jc-Kgz"/>
                                             <constraint firstAttribute="trailing" secondItem="oOs-n1-XzK" secondAttribute="trailing" constant="20" id="MTa-Uk-81h"/>
                                             <constraint firstAttribute="trailing" secondItem="dS2-q9-1xz" secondAttribute="trailing" constant="54" id="RjY-ZS-4Y1"/>
                                             <constraint firstItem="gxP-NM-ZFq" firstAttribute="leading" secondItem="T8s-3z-TEv" secondAttribute="leading" constant="20" id="Smy-Ae-Mcg"/>
                                             <constraint firstItem="i41-HA-ZbN" firstAttribute="top" secondItem="Cwz-Cx-Ipo" secondAttribute="bottom" constant="24" id="TS4-1P-TcK"/>
                                             <constraint firstItem="xRy-UB-xOn" firstAttribute="top" secondItem="umX-PF-LK6" secondAttribute="bottom" constant="8" id="UBJ-Rb-UpO"/>
+                                            <constraint firstItem="zcG-2i-1UC" firstAttribute="top" secondItem="gxP-NM-ZFq" secondAttribute="top" id="UME-dN-ttn"/>
                                             <constraint firstItem="Cwz-Cx-Ipo" firstAttribute="leading" secondItem="T8s-3z-TEv" secondAttribute="leading" id="Wp8-MN-lA8"/>
+                                            <constraint firstItem="NDQ-Ts-8Pk" firstAttribute="leading" secondItem="zUB-CZ-a6T" secondAttribute="trailing" constant="12" id="ZM6-ft-IbK"/>
+                                            <constraint firstItem="NuO-yu-jge" firstAttribute="top" secondItem="umX-PF-LK6" secondAttribute="top" id="ZQk-Zo-NIw"/>
                                             <constraint firstAttribute="trailing" secondItem="1sz-Ul-BpJ" secondAttribute="trailing" constant="8" id="aEc-ms-Ydm"/>
                                             <constraint firstItem="dS2-q9-1xz" firstAttribute="top" secondItem="IGk-gq-JeO" secondAttribute="bottom" constant="8" id="aJu-bm-zxp"/>
                                             <constraint firstItem="gxP-NM-ZFq" firstAttribute="top" secondItem="xRy-UB-xOn" secondAttribute="bottom" constant="8" id="bDZ-i3-fwN"/>
+                                            <constraint firstAttribute="trailing" secondItem="NuO-yu-jge" secondAttribute="trailing" constant="20" id="bcy-PP-sIu"/>
+                                            <constraint firstAttribute="trailing" secondItem="NDQ-Ts-8Pk" secondAttribute="trailing" constant="20" id="bj5-oz-qRn"/>
                                             <constraint firstAttribute="trailing" secondItem="p74-q0-zfD" secondAttribute="trailing" id="c9u-Xs-uQy"/>
                                             <constraint firstItem="i41-HA-ZbN" firstAttribute="leading" secondItem="T8s-3z-TEv" secondAttribute="leading" constant="20" id="dAa-rd-yyO"/>
                                             <constraint firstAttribute="trailing" secondItem="i41-HA-ZbN" secondAttribute="trailing" constant="20" id="dyi-xh-kJ8"/>
                                             <constraint firstAttribute="trailing" secondItem="Cwz-Cx-Ipo" secondAttribute="trailing" id="iYb-c3-WfN"/>
+                                            <constraint firstItem="zcG-2i-1UC" firstAttribute="leading" secondItem="gxP-NM-ZFq" secondAttribute="trailing" constant="12" id="ihc-XH-Ooq"/>
                                             <constraint firstItem="1sz-Ul-BpJ" firstAttribute="top" secondItem="Cwz-Cx-Ipo" secondAttribute="bottom" constant="29" id="irE-tT-mJs"/>
-                                            <constraint firstItem="oOs-n1-XzK" firstAttribute="centerY" secondItem="gxP-NM-ZFq" secondAttribute="centerY" id="ke4-O3-70K"/>
                                             <constraint firstItem="IGk-gq-JeO" firstAttribute="top" secondItem="wzD-xH-ZVH" secondAttribute="bottom" constant="8" id="lu4-AC-m2P"/>
                                             <constraint firstItem="wzD-xH-ZVH" firstAttribute="top" secondItem="i41-HA-ZbN" secondAttribute="bottom" constant="11.5" id="nXc-ps-KEt"/>
                                             <constraint firstItem="xRy-UB-xOn" firstAttribute="leading" secondItem="T8s-3z-TEv" secondAttribute="leading" id="sJw-PF-yK7"/>
+                                            <constraint firstItem="oOs-n1-XzK" firstAttribute="top" secondItem="zcG-2i-1UC" secondAttribute="bottom" id="v0E-iR-A0t"/>
                                             <constraint firstItem="Cwz-Cx-Ipo" firstAttribute="top" secondItem="T8s-3z-TEv" secondAttribute="top" id="yiT-5s-91w"/>
                                             <constraint firstItem="hAw-dJ-Ie7" firstAttribute="leading" secondItem="T8s-3z-TEv" secondAttribute="leading" id="zPS-VG-GAp"/>
                                             <constraint firstItem="IGk-gq-JeO" firstAttribute="centerX" secondItem="T8s-3z-TEv" secondAttribute="centerX" id="zj6-44-4Pe"/>
@@ -639,11 +666,14 @@ Sunday 12 pm-3 pm</string>
                     <size key="freeformSize" width="375" height="804"/>
                     <connections>
                         <outlet property="callButton" destination="umX-PF-LK6" id="xdz-Km-DP8"/>
+                        <outlet property="callLabel" destination="NuO-yu-jge" id="Tc0-Hg-lDc"/>
                         <outlet property="companyTitleLabel" destination="i41-HA-ZbN" id="MQp-2n-q3w"/>
                         <outlet property="detailsImage" destination="XLb-5n-azK" id="epB-rW-s8H"/>
                         <outlet property="detailsLabel" destination="wzD-xH-ZVH" id="ke8-wu-eN5"/>
                         <outlet property="directionsButton" destination="zUB-CZ-a6T" id="pPF-m2-BMc"/>
+                        <outlet property="directionsLabel" destination="NDQ-Ts-8Pk" id="AXo-ME-Is0"/>
                         <outlet property="hoursLabel" destination="dS2-q9-1xz" id="s2A-6V-bXZ"/>
+                        <outlet property="learnMoreLabel" destination="zcG-2i-1UC" id="Aqg-Bu-Q8r"/>
                         <outlet property="theWordHOURS" destination="IGk-gq-JeO" id="rKf-bA-Rpy"/>
                         <outlet property="websiteLabel" destination="oOs-n1-XzK" id="ZzO-YF-XHB"/>
                     </connections>

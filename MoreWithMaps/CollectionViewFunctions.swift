@@ -36,8 +36,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionCell", for: indexPath) as! MyCollectionCell
         let beacon = custAnnots[indexPath.row]
         if let title = beacon.title {
-            let appliedStyledWord = applyStyle2(on: title, color: .black, fontSize: 14.0, kernSize: 0.3)
+            let appliedStyledWord = applyStyle4(on: title, color: .black, fontSize: 14.0, kernSize: 0.3)
             cell.markerTitle.attributedText = appliedStyledWord
+            let descString = title + " is a great place to sit and relax and have a great time with friends."
+            let appliedDescrip = applyStyle3(on: descString, color: .darkGray, fontSize: 12.0, kernSize: 0.3)
+            cell.markerDescription.attributedText = appliedDescrip
 
         }
        // cell.markerTitle.text = beacon.title
@@ -47,8 +50,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.infoButton.layer.masksToBounds = true
         
         if let image = beacon.imageName {
-            let ary = image.components(separatedBy: ".")
-            cell.markerDescription.text = ary[0] + ".com"
+            //let ary = image.components(separatedBy: ".")
+            //cell.markerDescription.text = ary[0] + ".com"
             let theImage = UIImage(named: image)
             cell.markerImageView.image = theImage
             cell.markerImageView.layer.cornerRadius = 30
