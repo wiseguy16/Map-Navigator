@@ -643,61 +643,14 @@ Sunday 12 pm-3 pm</string>
                         <outlet property="detailsImage" destination="XLb-5n-azK" id="epB-rW-s8H"/>
                         <outlet property="detailsLabel" destination="wzD-xH-ZVH" id="ke8-wu-eN5"/>
                         <outlet property="directionsButton" destination="zUB-CZ-a6T" id="pPF-m2-BMc"/>
+                        <outlet property="hoursLabel" destination="dS2-q9-1xz" id="s2A-6V-bXZ"/>
+                        <outlet property="theWordHOURS" destination="IGk-gq-JeO" id="rKf-bA-Rpy"/>
                         <outlet property="websiteLabel" destination="oOs-n1-XzK" id="ZzO-YF-XHB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuF-Mh-SmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2136.8000000000002" y="482.15892053973016"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="bM4-Yg-a8o">
-            <objects>
-                <viewController id="ZeY-OC-qNd" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mgo-FK-Y1g"/>
-                        <viewControllerLayoutGuide type="bottom" id="jlv-et-hYF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0t1-Do-Xp7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H8c-ml-5b7">
-                                <rect key="frame" x="0.0" y="407" width="375" height="260"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="260" id="LQ4-mQ-VjK"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="sdf-fp-bN0">
-                                    <size key="itemSize" width="250" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1JT-xU-hNS">
-                                        <rect key="frame" x="62.5" y="0.0" width="250" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="H8c-ml-5b7" firstAttribute="leading" secondItem="0t1-Do-Xp7" secondAttribute="leading" id="0GW-8s-DdJ"/>
-                            <constraint firstAttribute="trailing" secondItem="H8c-ml-5b7" secondAttribute="trailing" id="AWD-r8-BPu"/>
-                            <constraint firstItem="jlv-et-hYF" firstAttribute="top" secondItem="H8c-ml-5b7" secondAttribute="bottom" id="XXk-5K-VGP"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="jmv-en-lAU"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wYD-ux-lD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4199.1999999999998" y="419.64017991004499"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="auF-5I-G7N">
@@ -811,24 +764,6 @@ Sunday 12 pm-3 pm</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EXP-y1-5gO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="gWC-sd-uPf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ekO-Qk-7sT" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pLe-Xt-9Dh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ZeY-OC-qNd" kind="relationship" relationship="rootViewController" id="Q3p-Jt-Oz3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hy4-aj-5T2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3260" y="420.53973013493254"/>
         </scene>
     </scenes>
     <resources>

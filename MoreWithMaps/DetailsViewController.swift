@@ -21,7 +21,9 @@ class DetailsViewController: UIViewController {
     
     @IBOutlet weak var websiteLabel: UILabel!
     
+    @IBOutlet weak var hoursLabel: UILabel!
     
+    @IBOutlet weak var theWordHOURS: UILabel!
   //  @IBOutlet weak var backDropImageView: UIImageView!
     
     var thedetails: String?
@@ -64,6 +66,7 @@ class DetailsViewController: UIViewController {
         directionsButton.layer.masksToBounds = true
         
         guard let thisAnnot = anAnnot, let urlString = thisAnnot.web, let company = thisAnnot.companyName, let website = thisAnnot.imageName else { return }
+        
         let url = URL(string: urlString)
         detailsImage.sd_setImage(with: url, placeholderImage: nil, options: [.progressiveDownload, .highPriority]) { (image, err , cache, url ) in
             print("loaded")
@@ -74,7 +77,7 @@ class DetailsViewController: UIViewController {
         self.detailsImage.layer.borderColor = UIColor.darkGray.cgColor
         self.detailsImage.layer.masksToBounds = true
         
-        let appliedStyledWord = applyStyle2(on: company, color: .black, size: 18.0)
+        let appliedStyledWord = applyStyle2(on: company, color: .black, fontSize: 18.0, kernSize: 0.3)
         companyTitleLabel.attributedText = appliedStyledWord
         
         if let details = thisAnnot.category {
@@ -82,11 +85,20 @@ class DetailsViewController: UIViewController {
             
             let placeholderString = "Placeholder text goes here and is easy to see and use and to notice what goes here and that’s something you’ll want to have because it feels really nice and clean and cool."
             //
-            let appliedStyledWord = applyStyle1(on: placeholderString, color: .darkGray, size: 10.0)
+            let appliedStyledWord = applyStyle1(on: placeholderString, color: .darkGray, fontSize: 10.0, kernSize: 0.3)
             detailsLabel.attributedText = appliedStyledWord
         }
-        websiteLabel.text = "www." + website
+        let webString = "www." + website
+        let appliedWeb = applyStyle1(on: webString, color: .darkGray, fontSize: 12, kernSize: 0.3)
+        websiteLabel.attributedText = appliedWeb
         
+        let hoursText = "Monday-Thursday 11 am-3pm\nSaturday 12 pm-5 pm\nSunday 12 pm-3 pm"
+        let appliedStyledHours = applyStyle1(on: hoursText, color: .darkGray, fontSize: 10.0, kernSize: 0.3)
+        hoursLabel.attributedText = appliedStyledHours
+        
+        let styledWordHOURS = applyStyle2(on: "Hours", color: .red, fontSize: 12.0, kernSize: 0.6)
+        theWordHOURS.attributedText = styledWordHOURS
+
         guard let words = thedetails else {
             return
         }
