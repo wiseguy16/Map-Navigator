@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SDWebImage
 
 class DetailsViewController: UIViewController {
     
@@ -34,59 +35,8 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       //  self.navigationController?.navigationBar.tintColor = UIColor.white
-        callButton.layer.cornerRadius = 4
-        callButton.layer.masksToBounds = true
-        directionsButton.layer.cornerRadius = 4
-        directionsButton.layer.masksToBounds = true
-
+        setUpDisplay()
         
-        guard let thisAnnot = anAnnot else { return }
-       // detailsImage.image =
-        if let urlString = thisAnnot.web {
-            let url = URL(string: urlString)
-            // let url = changeStringToURL(urlString)
-            // print(url)
-            DispatchQueue.global().async {
-                do {
-                    let data = try Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    DispatchQueue.main.async {
-                        self.detailsImage.image = UIImage(data: data)
-                       // self.backDropImageView.image = UIImage(data: data)
-                        //self.addBlur(onImage: self.backDropImageView)
-                        //self.profileImageView.frame.size.width / 2
-                        self.detailsImage.layer.cornerRadius = self.detailsImage.frame.size.height/2
-                        self.detailsImage.layer.borderWidth = 2.0
-                        self.detailsImage.layer.borderColor = UIColor.darkGray.cgColor
-
-                        self.detailsImage.layer.masksToBounds = true
-                    }
-                } catch {
-                    print("error with this url: \(url!)")
-                }
-            }            
-        }
-        if let company = thisAnnot.companyName {
-            let appliedStyledWord = applyStyle2(on: company, color: .black, size: 18.0)
-            companyTitleLabel.attributedText = appliedStyledWord
-           // companyTitleLabel.text = company
-        }
-        if let details = thisAnnot.category {
-            print("\(details)")
-
-            let placeholderString = "Placeholder text goes here and is easy to see and use and to notice what goes here and that’s something you’ll want to have because it feels really nice and clean and cool."
-            //
-            let appliedStyledWord = applyStyle1(on: placeholderString, color: .darkGray, size: 10.0)
-            detailsLabel.attributedText = appliedStyledWord
-        }
-        if let website = thisAnnot.imageName {
-            websiteLabel.text = "www." + website
-        }
-
-
-        guard let words = thedetails else {
-            return
-        }
-        print("\(words)")
         
 
         // Do any additional setup after loading the view.
@@ -106,6 +56,45 @@ class DetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func setUpDisplay() {
+        callButton.layer.cornerRadius = 4
+        callButton.layer.masksToBounds = true
+        directionsButton.layer.cornerRadius = 4
+        directionsButton.layer.masksToBounds = true
+        
+        guard let thisAnnot = anAnnot, let urlString = thisAnnot.web, let company = thisAnnot.companyName, let website = thisAnnot.imageName else { return }
+        let url = URL(string: urlString)
+        detailsImage.sd_setImage(with: url, placeholderImage: nil, options: [.progressiveDownload, .highPriority]) { (image, err , cache, url ) in
+            print("loaded")
+        }
+        
+        self.detailsImage.layer.cornerRadius = self.detailsImage.frame.size.height/2
+        self.detailsImage.layer.borderWidth = 2.0
+        self.detailsImage.layer.borderColor = UIColor.darkGray.cgColor
+        self.detailsImage.layer.masksToBounds = true
+        
+        let appliedStyledWord = applyStyle2(on: company, color: .black, size: 18.0)
+        companyTitleLabel.attributedText = appliedStyledWord
+        
+        if let details = thisAnnot.category {
+            print("\(details)")
+            
+            let placeholderString = "Placeholder text goes here and is easy to see and use and to notice what goes here and that’s something you’ll want to have because it feels really nice and clean and cool."
+            //
+            let appliedStyledWord = applyStyle1(on: placeholderString, color: .darkGray, size: 10.0)
+            detailsLabel.attributedText = appliedStyledWord
+        }
+        websiteLabel.text = "www." + website
+        
+        guard let words = thedetails else {
+            return
+        }
+        print("\(words)")
+        
+        
+    }
+
     
     
     @IBAction func closeTapped(_ sender: UIButton) {
@@ -152,6 +141,7 @@ class DetailsViewController: UIViewController {
         
     }
     
+    
     func zoomINGAnimation() {
         UIView.animate(withDuration: 2.0, animations: {
             self.detailsImage?.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
@@ -160,6 +150,7 @@ class DetailsViewController: UIViewController {
                 self.detailsImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
         }
+        
         
 //        UIView.animate(withDuration: 2.0, animations: {() -> Void in
 //            self.detailsImage?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)

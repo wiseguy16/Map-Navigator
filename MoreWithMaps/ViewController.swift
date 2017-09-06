@@ -76,7 +76,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var myCollectionView: UICollectionView!
     
   //  @IBOutlet weak var augSegmentControl: UISegmentedControl!
-    @IBOutlet weak var moveTableViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var moveCollectionViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var categoryMenuConstraint: NSLayoutConstraint!
     
   //  @IBOutlet weak var categoryMenuVerticalPoint: NSLayoutConstraint!
