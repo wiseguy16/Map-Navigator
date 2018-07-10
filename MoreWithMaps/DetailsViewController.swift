@@ -12,41 +12,25 @@ import SDWebImage
 
 class DetailsViewController: UIViewController {
     
-    
     @IBOutlet weak var detailsImage: UIImageView!
-    
     @IBOutlet weak var detailsLabel: UILabel!
-    
     @IBOutlet weak var companyTitleLabel: UILabel!
-    
     @IBOutlet weak var websiteLabel: UILabel!
-    
     @IBOutlet weak var hoursLabel: UILabel!
-    
     @IBOutlet weak var theWordHOURS: UILabel!
-    
     @IBOutlet weak var learnMoreLabel: UILabel!
-    
     @IBOutlet weak var directionsLabel: UILabel!
     @IBOutlet weak var callLabel: UILabel!
-  //  @IBOutlet weak var backDropImageView: UIImageView!
     
     var thedetails: String?
     var anAnnot: CustomAnnotat?
     
     @IBOutlet weak var callButton: UIButton!
-    
     @IBOutlet weak var directionsButton: UIButton!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  self.navigationController?.navigationBar.tintColor = UIColor.white
         setUpDisplay()
-        
-        
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,14 +38,6 @@ class DetailsViewController: UIViewController {
         if let aTitle = anAnnot?.category {
            navigationItem.title = aTitle
         }
-        
-       // navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setUpDisplay() {
@@ -109,28 +85,13 @@ class DetailsViewController: UIViewController {
         callLabel.attributedText = styledCall
         let styledLearn = applyStyle4(on: "Learn more", color: pantDarkBlue, fontSize: 12.0, kernSize: 0.8)
         learnMoreLabel.attributedText = styledLearn
-
-
-        guard let words = thedetails else {
-            return
-        }
-        print("\(words)")
-        
-        
     }
 
-    
-    
     @IBAction func closeTapped(_ sender: UIButton) {
-       // zoomINGAnimation()
-        //UINavigationController.popToRootViewController(animated: Bool)
-        //self.navigationController?.popToRootViewController(animated: true)
-        //dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
-    
     
     // CALLING A PHONE NUMBER...
-    //UIApplication.shared.openURL(NSURL(string: "telprompt://9809088798")! as URL)
     
     @IBAction func callUsingPhoneTapped(_ sender: UIButton) {
         callNumber(phoneNumber: "321-230-4229")
@@ -141,7 +102,6 @@ class DetailsViewController: UIViewController {
         if let phoneCallURL:URL = URL(string:"tel://\(phoneNumber)") {
             let application = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
-                //application.openURL(phoneCallURL)
                 application.open(phoneCallURL, options: [:], completionHandler: nil)
             }
         }
@@ -162,9 +122,7 @@ class DetailsViewController: UIViewController {
         mapItem.name = company
         mapItem.openInMaps(launchOptions: options)
         
-        
     }
-    
     
     func zoomINGAnimation() {
         UIView.animate(withDuration: 2.0, animations: {
@@ -174,29 +132,6 @@ class DetailsViewController: UIViewController {
                 self.detailsImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
         }
-        
-        
-//        UIView.animate(withDuration: 2.0, animations: {() -> Void in
-//            self.detailsImage?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-//        }, completion: {(_ finished: Bool) -> Void in
-//            UIView.animate(withDuration: 2.0, animations: {() -> Void in
-//                self.detailsImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
-//            })
-//        })
-
     }
-    
-    func badAnim() {
-        UIView.animate(withDuration: 2.0, animations: {
-           // self.myMapView.setCamera(camera, animated: true)
-        }) { (true) in
-            UIView.animate(withDuration: 2.0) {
-               // self.createCustomAnnots()
-            }
-        }
-
-    }
-
-
 
 }
