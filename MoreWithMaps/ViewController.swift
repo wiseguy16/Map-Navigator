@@ -372,41 +372,6 @@ class ViewController: UIViewController {
         myMapView.zoomToUserLocation(with: myMapView)
     }
     
-    //FIRST SUCCESFUL DIRECTIONS FUNCTION WITH OVERLAY ON MAP AND STEPS LOGGED TO CONSOLE...
-    func firstDayDirections() {
-        let request = MKDirectionsRequest()
-        request.source = MKMapItem.forCurrentLocation()
-        request.destination = destinationMapItem
-        request.requestsAlternateRoutes = false
-        
-        let directions = MKDirections(request: request)
-        directions.calculate { (response: MKDirectionsResponse!, error: Error!) in
-            if error != nil {
-                print("got an errror: \(error.localizedDescription)")
-            } else {
-                // NO ERROR, SO HERE ARE YOUR DIRECTIONS:.....
-                
-                // MAYBE DONT REMOVE OVERLAYS HERE?? SOMEHOW RETAIN THE ONE YOU'RE GOING TO?
-                let overlays = self.myMapView.overlays
-                self.myMapView.removeOverlays(overlays)
-                
-                for route in response.routes {
-                    self.myMapView.add(route.polyline, level: .aboveRoads)
-                    var stepNumber = 0
-                    for next in route.steps {
-                        print("Step \(stepNumber): \(next.instructions)")
-                        stepNumber = stepNumber + 1
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    func secondDayDirections() {
-        getDirections(to: destinationMapItem)
-    }
-    
     // ACTUAL BUTTON FOR STARTING TURN BY TURN DIRECTIONS...
     @IBAction func giveDirectionsTapped(_ sender: UIButton) {
         
@@ -420,73 +385,6 @@ class ViewController: UIViewController {
             }
         }
         secondDayDirections()
-    }
-    
-    // STEP by STEP DIRECTIONS WITH GEOFENCES TO TELL WHEN TO MOVE
-    func getDirections(to destination: MKMapItem) {
-        guard let curntCoord = currentCoord else { return }
-        let sourcePlacemark = MKPlacemark(coordinate: curntCoord)
-        _ = MKMapItem(placemark: sourcePlacemark)
-        
-        let directionsRequest = MKDirectionsRequest()
-        directionsRequest.source = MKMapItem.forCurrentLocation()
-        directionsRequest.destination = destination
-        directionsRequest.transportType = .automobile
-        directionsRequest.requestsAlternateRoutes = false
-        
-        let directions = MKDirections(request: directionsRequest)
-        directions.calculate { (response, error) in
-            if error != nil {
-                print("You didn't have any results and the error is: \(error!.localizedDescription)")
-            }
-            guard let response = response else { return }
-            guard let primaryRoute = response.routes.first else { return }
-            
-            self.myMapView.add(primaryRoute.polyline, level: .aboveRoads)
-            
-            self.locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
-            
-            self.steps = primaryRoute.steps
-            for i in 0..<primaryRoute.steps.count {
-                let step = primaryRoute.steps[i]
-                print("This is step \(i) :\(step.instructions)")
-                print("This is how may meters: \(step.distance)")
-                let region = CLCircularRegion(center: step.polyline.coordinate, radius: 40, identifier: "\(i)")
-                self.locationManager.startMonitoring(for: region)
-                region.notifyOnEntry = true
-                
-                let circle = MKCircle(center: region.center, radius: region.radius)
-                self.myMapView.add(circle)
-            }
-            
-            var speakableMessage = ""
-            var printableMessage = ""
-            //SPEECH FOR DIRECTIONS!!!...
-            let dist1 = self.useMilesAndFeet(with: self.steps[0].distance)
-            let dist2 = self.useMilesAndFeet(with: self.steps[1].distance)
-            let instr1 = self.readableStrings(with: self.steps[0].instructions)
-            let instr2 = self.readableStrings(with: self.steps[1].instructions)
-            if self.steps[0].distance < 0.01 {
-                printableMessage = "\(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
-                speakableMessage = "\(instr1). Then in \(dist2), \(instr2)."
-                
-            } else {
-                printableMessage = "In \(dist1), \(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
-                speakableMessage = "In \(dist1), \(instr1). Then in \(dist2), \(instr2)."
-            }
-            
-            self.directionsLabel.text = printableMessage
-            
-            let speechUtterance = AVSpeechUtterance(string: "Starting route. " + speakableMessage)
-            speechUtterance.voice = self.uniqueVoice
-            self.speechSynthesizer.speak(speechUtterance)
-            self.stepCounter += 1
-        }
-        for mntrRegion in locationManager.monitoredRegions {
-            print(mntrRegion.identifier)
-            print(mntrRegion.notifyOnEntry)
-            print(mntrRegion.notifyOnExit)
-        }
     }
     
     // INITIALIZING ANNOTS FROM HARD CODED DICTIONARY...
@@ -570,6 +468,113 @@ class ViewController: UIViewController {
                 // self.myMapView.showAnnotations(self.custAnnots, animated: true)
             }
         }
+    }
+    
+}
+
+// MARK: Speech and Directions
+extension ViewController {
+    
+    // STEP by STEP DIRECTIONS WITH GEOFENCES TO TELL WHEN TO MOVE
+    func getDirections(to destination: MKMapItem) {
+        guard let curntCoord = currentCoord else { return }
+        let sourcePlacemark = MKPlacemark(coordinate: curntCoord)
+        _ = MKMapItem(placemark: sourcePlacemark)
+        
+        let directionsRequest = MKDirectionsRequest()
+        directionsRequest.source = MKMapItem.forCurrentLocation()
+        directionsRequest.destination = destination
+        directionsRequest.transportType = .automobile
+        directionsRequest.requestsAlternateRoutes = false
+        
+        let directions = MKDirections(request: directionsRequest)
+        directions.calculate { (response, error) in
+            if error != nil {
+                print("You didn't have any results and the error is: \(error!.localizedDescription)")
+            }
+            guard let response = response else { return }
+            guard let primaryRoute = response.routes.first else { return }
+            
+            self.myMapView.add(primaryRoute.polyline, level: .aboveRoads)
+            
+            self.locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
+            
+            self.steps = primaryRoute.steps
+            for i in 0..<primaryRoute.steps.count {
+                let step = primaryRoute.steps[i]
+                print("This is step \(i) :\(step.instructions)")
+                print("This is how may meters: \(step.distance)")
+                let region = CLCircularRegion(center: step.polyline.coordinate, radius: 40, identifier: "\(i)")
+                self.locationManager.startMonitoring(for: region)
+                region.notifyOnEntry = true
+                
+                let circle = MKCircle(center: region.center, radius: region.radius)
+                self.myMapView.add(circle)
+            }
+            
+            var speakableMessage = ""
+            var printableMessage = ""
+            //SPEECH FOR DIRECTIONS!!!...
+            let dist1 = self.useMilesAndFeet(with: self.steps[0].distance)
+            let dist2 = self.useMilesAndFeet(with: self.steps[1].distance)
+            let instr1 = self.readableStrings(with: self.steps[0].instructions)
+            let instr2 = self.readableStrings(with: self.steps[1].instructions)
+            if self.steps[0].distance < 0.01 {
+                printableMessage = "\(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
+                speakableMessage = "\(instr1). Then in \(dist2), \(instr2)."
+                
+            } else {
+                printableMessage = "In \(dist1), \(self.steps[0].instructions). Then in \(dist2), \(self.steps[1].instructions)."
+                speakableMessage = "In \(dist1), \(instr1). Then in \(dist2), \(instr2)."
+            }
+            
+            self.directionsLabel.text = printableMessage
+            
+            let speechUtterance = AVSpeechUtterance(string: "Starting route. " + speakableMessage)
+            speechUtterance.voice = self.uniqueVoice
+            self.speechSynthesizer.speak(speechUtterance)
+            self.stepCounter += 1
+        }
+        for mntrRegion in locationManager.monitoredRegions {
+            print(mntrRegion.identifier)
+            print(mntrRegion.notifyOnEntry)
+            print(mntrRegion.notifyOnExit)
+        }
+    }
+    
+    //FIRST SUCCESFUL DIRECTIONS FUNCTION WITH OVERLAY ON MAP AND STEPS LOGGED TO CONSOLE...
+    func firstDayDirections() {
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = destinationMapItem
+        request.requestsAlternateRoutes = false
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { (response: MKDirectionsResponse!, error: Error!) in
+            if error != nil {
+                print("got an errror: \(error.localizedDescription)")
+            } else {
+                // NO ERROR, SO HERE ARE YOUR DIRECTIONS:.....
+                
+                // MAYBE DONT REMOVE OVERLAYS HERE?? SOMEHOW RETAIN THE ONE YOU'RE GOING TO?
+                let overlays = self.myMapView.overlays
+                self.myMapView.removeOverlays(overlays)
+                
+                for route in response.routes {
+                    self.myMapView.add(route.polyline, level: .aboveRoads)
+                    var stepNumber = 0
+                    for next in route.steps {
+                        print("Step \(stepNumber): \(next.instructions)")
+                        stepNumber = stepNumber + 1
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func secondDayDirections() {
+        getDirections(to: destinationMapItem)
     }
     
 }
