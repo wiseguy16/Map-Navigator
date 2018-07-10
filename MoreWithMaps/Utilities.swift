@@ -16,13 +16,9 @@ extension UIViewController {
 extension MKMapView {
     func zoomToUserLocation(with map: MKMapView) {
         guard let coordinate = userLocation.location?.coordinate else { return }
-//        let region = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000)
-//        setRegion(region, animated: true)
-//        
         let camera1 = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 30000, pitch: 0, heading: 23)
         let camera2 = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 3000, pitch: 0, heading: 23)
 
-        
         UIView.animate(withDuration: 2.0, animations: {
             map.setCamera(camera1, animated: true)
         }) { (true) in

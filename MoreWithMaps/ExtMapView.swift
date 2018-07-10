@@ -27,14 +27,10 @@ extension ViewController: MKMapViewDelegate {
             annotationView!.annotation = annotation
         }
         
-        //let cpa = annotation as! CustomPointAnnotation
         let cpa = annotation as! CustomAnnotat
         if let beaconName = cpa.beacon {
             annotationView!.image = UIImage(named: beaconName.rawValue)
         }
-        
-        //Added to git
-        // annotationView!.image = UIImage(named: cpa.imageName)
         
         return annotationView
     }
@@ -50,11 +46,8 @@ extension ViewController: MKMapViewDelegate {
         
     }
     
-    
-    
     // DRAWING THE DIRECTIONS ON MAP.....
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        // PROBABLY BOTH THESE WORK??
         
         let routeLine = MKPolylineRenderer(overlay: overlay)
         routeLine.strokeColor = .blue
@@ -77,8 +70,6 @@ extension ViewController: MKMapViewDelegate {
             return routeLine
         }
     }
-    
-    
     
 }
 
@@ -103,6 +94,6 @@ extension MKMapView {
             setRegion(_region, animated: animated)
 
         }
-       // setRegion(_region, animated: animated)
     }
+    
 }
