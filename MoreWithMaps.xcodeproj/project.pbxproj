@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E31A49E20F4F700005D4202 /* BeaconAnnotsDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E31A49D20F4F700005D4202 /* BeaconAnnotsDictionary.swift */; };
 		4A0F61FE1F2FD5DC00BD358D /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0F61FD1F2FD5DC00BD358D /* AnnotationView.swift */; };
 		4A0F62001F30DB3E00BD358D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0F61FF1F30DB3E00BD358D /* DetailsViewController.swift */; };
 		4A0F62051F3273D400BD358D /* dropDownIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0F62031F3273D400BD358D /* dropDownIcon.png */; };
@@ -113,6 +114,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E31A49D20F4F700005D4202 /* BeaconAnnotsDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconAnnotsDictionary.swift; sourceTree = "<group>"; };
 		3EDD86E5216119161EB35A0D /* Pods-MoreWithMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoreWithMaps.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoreWithMaps/Pods-MoreWithMaps.release.xcconfig"; sourceTree = "<group>"; };
 		4A0F61FD1F2FD5DC00BD358D /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		4A0F61FF1F30DB3E00BD358D /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 			children = (
 				4AC1FF3A1F2E3E8E00613334 /* CustomAnnotat.swift */,
 				4ADA96711F4B7B7700F7F289 /* DataTypes.swift */,
+				1E31A49D20F4F700005D4202 /* BeaconAnnotsDictionary.swift */,
 				4A6FE8CB1F3A4C0B0012CA50 /* AbbreviationsHelper.swift */,
 				4A0F61FD1F2FD5DC00BD358D /* AnnotationView.swift */,
 			);
@@ -655,6 +658,7 @@
 				4ADA96741F4C99D100F7F289 /* ExtCLLocationManager.swift in Sources */,
 				4A39EDCE1F50B1B10030A055 /* MyCollectionCell.swift in Sources */,
 				4A39EDD01F50B27E0030A055 /* CollectionViewFunctions.swift in Sources */,
+				1E31A49E20F4F700005D4202 /* BeaconAnnotsDictionary.swift in Sources */,
 				4A0F61FE1F2FD5DC00BD358D /* AnnotationView.swift in Sources */,
 				4ADA96761F4C99EB00F7F289 /* ExtViewController.swift in Sources */,
 				4AC1FF3B1F2E3E8E00613334 /* CustomAnnotat.swift in Sources */,
