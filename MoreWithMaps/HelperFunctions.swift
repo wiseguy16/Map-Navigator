@@ -21,7 +21,6 @@ extension ViewController {
             self.view.layoutIfNeeded()
         }
         isTableHidden = !isTableHidden
-        
     }
     
     // HELPER FUNCTIONS FOR ADDING/ REMOVING COMPANIES
@@ -31,9 +30,6 @@ extension ViewController {
         UIView.animate(withDuration: 2.0) {
             self.myMapView.removeAnnotations(annots)
         }
-        // self.myMapView.showAnnotations(self.custAnnots, animated: true)
-
-       // myMapView.removeAnnotations(annots)
     }
     
     func filterAnnotAdd(with category: String, annots: [CustomAnnotat]) {
@@ -42,12 +38,10 @@ extension ViewController {
         UIView.animate(withDuration: 2.0) {
             self.myMapView.addAnnotations(annots)
         }
-        //myMapView.addAnnotations(annots)
     }
     
     func useMilesAndFeet(with distance: Double) -> String {
         var output = ""
-       // output = String(format: "%.1f miles", myDouble)
         let miles = (distance * 0.0006214)
         if miles >= 0.2843 {
             output = String(format: "%.1f miles", miles)
@@ -67,7 +61,6 @@ extension ViewController {
         return output
     }
     
-    
     func readableStrings(with phrase: String) -> String {
         var mutablePhrase = phrase
         let wordsArray = mutablePhrase.components(separatedBy: " ")
@@ -75,7 +68,6 @@ extension ViewController {
         for word in wordsArray {
             if let val = mappingsDict[word] {
                 mutablePhrase = mutablePhrase + " " + val
-                // now val is not nil and the Optional has been unwrapped, so use it
             } else {
                 mutablePhrase = mutablePhrase + " " + word
             }
@@ -83,6 +75,4 @@ extension ViewController {
         return mutablePhrase
     }
 
-  
-    
 }

@@ -50,7 +50,6 @@ let mappingsDict: [String: String] = [
     
 ]
 
-
 let Abbreviations = [
     "apartments": "Apts",
     "center": "Ctr",
@@ -191,7 +190,6 @@ extension String {
         scanner.charactersToBeSkipped = nil
         
         let boundaryCharacterSet = CharacterSet(charactersIn: " \t\n\r;")
-        // let boundaryCharacterSet = NSCharacterSet(charactersInString: " \t\r;") &apos;
         
         repeat {
             var nonEntityString: NSString? = nil
@@ -255,9 +253,6 @@ extension String {
         return result
     }
 }
-
-
-
 
 /// Options that specify what kinds of words in a string should be abbreviated.
 struct StringAbbreviationOptions : OptionSet {

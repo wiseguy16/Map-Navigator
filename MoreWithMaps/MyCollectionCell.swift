@@ -10,7 +10,6 @@ import UIKit
 
 class MyCollectionCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var markerImageView: UIImageView!
     @IBOutlet weak var markerTitle: UILabel!
     @IBOutlet weak var markerDescription: UILabel!

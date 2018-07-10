@@ -18,8 +18,6 @@ extension ViewController: CLLocationManagerDelegate {
         myMapView.showsUserLocation = true
         guard let currentLocation = locations.first else { return }
         currentCoord = currentLocation.coordinate
-        print("\(currentCoord)")
-        //myMapView.userTrackingMode = .followWithHeading
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {

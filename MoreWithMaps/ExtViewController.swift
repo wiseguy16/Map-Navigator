@@ -36,7 +36,6 @@ extension UIViewController {
         //let lightGrayText = UIColor.lightGray
         let colorText = color
 
-
         // *** set LineSpacing property in points ***
         paragraphStyle.lineSpacing = 0.6 // Whatever line spacing you want in points
         paragraphStyle.alignment = .center
@@ -91,7 +90,6 @@ extension UIViewController {
         return styledWord
     }
 
-    
     func applyStyle4(on word: String, color: UIColor, fontSize: CGFloat, kernSize: CGFloat) -> NSMutableAttributedString {
         let styledWord = NSMutableAttributedString(string: word)
         let paragraphStyle = NSMutableParagraphStyle()
@@ -154,7 +152,6 @@ extension UIViewController {
             dayRead = convertTextStyling(scrpRead)
         }
         
-        
         // var range: NSRange = (self.text! as NSString).rangeOfString(scrpRead)
         dayRead.addAttribute(NSFontAttributeName, value: italicsFont!, range: NSRange(location: 0, length: dayRead.length))
         
@@ -172,11 +169,4 @@ extension UIViewController {
         
     }
 
-
 }
-
-
-
-
-
-

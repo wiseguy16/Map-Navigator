@@ -14,7 +14,6 @@ class OldCodeForReviewViewController: UIViewController {
     // Daniel
     let daniel = "com.apple.ttsbundle.Daniel-compact"
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,7 +32,6 @@ class OldCodeForReviewViewController: UIViewController {
         speechUtterance.voice = myVoice
         // speechUtterance.rate = 0.5
         speechUtterance.pitchMultiplier = 1.0
-        
         
         
     }
